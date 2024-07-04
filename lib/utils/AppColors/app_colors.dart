@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 class AppColors {
+
   ///======================== Yellow Series ===========================
 
   static const Color yellowLight = Color(0xffFDF7E6);

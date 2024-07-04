@@ -9,37 +9,27 @@ class AppStaticStrings {
 
 
   static const matchPettern = "Password must have 8 and one capital latter";
-  static const dental = "Dental";
-  static const banningSmileClub =
-      "Banning Smile Club an exclusive service provided by banning dental group ltd. copyright 2024";
-  static const brightenYourSmile =
-      "Brighten your smile with Banning Smile Club, where dental excellence meets exclusive care";
-  static const unlockTheSecretTo =
-      "Unlock the secret to a radiant smile with Banning Smile Club, the ultimate dental experience";
-  static const joinTheElite =
-      "Join the elite league of smiles with Banning Smile Club, setting new standards in dental care";
-
-  static const getStarted = "Get Started";
-  static const welcomeBack = "Welcome Back !";
-  static const pleaseEnterYour = "Please Enter Your provided informations";
+  static const signUp = "Sign Up";
+  static const welcomeBack = "WellCome Back";
+  static const login = "Login";
+  static const rememberMe = "Remember me";
+  static const byRegister = "By registration you are agree to our terms of use and privacy policy.";
   static const email = "Email";
   static const emailConfirmation = "Email Confirmation";
   static const enterYourEmail = "Enter your email here";
-  static const enterYourContact = "Enter your contact here";
-  static const enterYourDateOfBirth = "Enter your date of birth here";
-  static const enterYourAge = "Enter your age here";
-  static const enterYourPin = "Enter your pin here";
-  static const enterYourGender = "Enter your gender here";
-
+  static const forgotPassword = "Forgot password";
   static const enterYourName = "Enter your name here";
+  static const dontHaveAcount = "Don’t have a account? Sign up";
+  static const survey = "Survey";
+  static const submit = "Submit";
 
   static const enterYourOldPass = "Enter your old password";
 
   static const enterYourNewPass = "Enter your new password";
   static const confirmPass = "Confirm Password";
 
-  static const pinNo = "Pin no";
-  static const enterYourPinNum = "Enter your pin number";
+  static const allSurveyCompany = "All Survey Company";
+  static const searchHere = "Search here";
   static const password = "Password";
 
   static const oldPass = "Old password";
@@ -47,64 +37,69 @@ class AppStaticStrings {
 
   static const enterYourPassword = "Enter your Password";
   static const logIn = "Log in";
+  static const scanQRCode  = "Scan QR Code";
+  static const sendCode  = "Send Code";
+  static const verification   = "Verification";
+  static const verify   = "Verify";
+  static const enterVerificationCode   = "Enter verification code";
+  static const ifYouDidntAnyCode= "If you didn't any code!";
+  static const resend = "Resend ";
+  static const dontWorry  = "Don’t worry! It Occurs. Please enter the email address linked with your account.";
 
-  //============================= Home Screen ================================
+  ///============================= Home Screen ================================
 
   static const searchhere = "Search here";
-  static const expertsAdvice = "Expert's Advice";
-  static const dentalCondition = "Dental Condition";
-  static const skinCondition = "Skin Condition";
-  static const fAQ = "FAQ";
-  static const seeMore = "See more";
-  static const currentOffers = "Current Offers";
-  static const currentOffersDetails = "Current Offer Details";
+  static const allProjects = "All Projects";
+  static const joinedCompany = "Joined Company";
+  static const joinedSurvey = "Joined Survey";
 
-  static const smartCheck = "Smart Check";
-
-  static const home = "Home";
-  static const myPlan = "My Plan";
-  static const profile = "Profile";
-  static const needHelp = "Need Help";
-  static const help = " Help ";
-
-  static const dentalApp = "Dental app";
-  static const message = "Message";
 
   ///==================== Side Drawer ======================
 
-  static const myProfile = "My Profile";
-  static const settings = "Settings";
-  static const aboutUs = "About us";
-  static const privacyPolicy = "Privacy Policy";
-  static const termsConditions = "Terms & Conditions";
-  static const logOut = "Log Out";
-  static const changePassword = "Change Password";
-  static const oldPassword = "Old Password";
-  static const newPassword = "New Password";
-  static const confirmPassword = "Confirm Password";
+  static const profile = "Profile";
+  static const gotQRCode = "Got QR Code";
+  static const yourSurvey = "Your Survey";
 
-  ///========================== Profiles ===========================
-  static const userProfile = "User Profile";
-  static const name = "Name";
-  static const contactNo = "Contact No";
-  static const dateofbirth = "Date of Birth";
-  static const age = "Age";
-  static const gender = "Gender";
-  static const plan = "Plan";
-  static const editUserProfile = "Edit User Profile";
-  static const saveChange = "Save & Change";
 
-  ///========================== Others ===========================
+  ///|<========================== Survey section ====================>
 
-  static const aboutus = "About us";
-  static const notifications = "Notifications";
-  static const search = "Search";
-  static const call = "Call";
-  static const chat = "Chat";
-  static const mail = "Mail";
 
-  static const writeYourMessage = "Write your message";
+  static const allSurvey = "All Survey";
+  static const howSatisfiedYou = "How satisfied are you with your current work environment?";
+  static const bad = "Bad";
+  static const verySatisfied = "Very satisfied";
+  static const good = "Good";
+  static const totalQuestion= "Total Question 12";
+  static const writeYourQuestion= "Write your comment here";
+  static const next= "Next";
+  static const quit= "Quit";
 
-  static const memberShipPackage = "Membership Package";
-  static const fieldCantBeEmpty = "Field Can't Be Empty";
+
+///<============================== All result section ======================>
+
+  static const allResult= "All Results";
+  static const companyName= "Company Name:";
+  static const projectName= "Project Name:";
+  static const surveyName= "Survey Name:";
+  static const totalQuestionWithColon= "Total Question:";
+  static const QN= "QN.";
+  static const ans= "Ans:";
+  static const export= "Export";
+  static const today= "Today";
+  static const thisWeek= "This week";
+  static const thisMonth= "This Month";
+  static const lastMonth= "Last Month";
+  static const paiChart= "Pai chart";
+  static const lineChart= "Line chart";
+  static const satisfied= "Satisfied";
+  static const angry= "Angry";
+  static const history= "History";
+
+
+
+
+  static const notifications= "Notifications";
+  static const companyID= "Company ID";
+
+
 }

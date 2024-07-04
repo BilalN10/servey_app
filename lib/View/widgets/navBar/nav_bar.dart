@@ -20,8 +20,8 @@ class _NavBarState extends State<NavBar> {
   var bottomNavIndex = 0;
 
   List<String> selectedText = [
-    AppStaticStrings.home,
-    AppStaticStrings.myPlan,
+    // AppStaticStrings.home,
+    // AppStaticStrings.myPlan,
     AppStaticStrings.profile,
     "Chat",
   ];
@@ -47,7 +47,7 @@ class _NavBarState extends State<NavBar> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
