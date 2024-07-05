@@ -28,7 +28,7 @@ class AppRoute {
 ///<=============================== Auth Section ============================>
 
     GetPage(name: signInScreen, page: () =>  SignInScreen()),
-    GetPage(name: signUpScreen, page: () => const SignUpScreen()),
+    GetPage(name: signUpScreen, page: () =>  SignUpScreen()),
 
 
 

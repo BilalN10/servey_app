@@ -32,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
           Get.offAllNamed(AppRoute.homeScreen);
         }else{Get.offAllNamed(AppRoute.signInScreen);
         }
-
     });
   }
 

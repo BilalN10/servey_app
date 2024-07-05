@@ -6,6 +6,7 @@ import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
+import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
@@ -151,7 +152,9 @@ class SignInScreen extends StatelessWidget {
                 ///<======================= This is the Login button =====================>
 
                 CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                   Get.toNamed(AppRoute.homeScreen);
+                  },
                   fillColor: AppColors.yellowNormal,
                   title: AppStaticStrings.login,
                 ),
@@ -166,7 +169,9 @@ class SignInScreen extends StatelessWidget {
                     const CustomText(
                         text: "${AppStaticStrings.dontHaveAcount}?  "),
                     GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                        Get.toNamed(AppRoute.signUpScreen);
+                        },
                         child: const CustomText(
                           text: AppStaticStrings.signUp,
                           color: AppColors.yellowDark,

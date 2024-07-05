@@ -10,5 +10,6 @@ class AppImages {
   static const String signInAndSignUpIcon= "$basePath/sign_in_and_sign_up_icon.png";
   static const String splashLogo= "$basePath/splash_logo.png";
   static const String verySatisfied= "$basePath/veri_satisfied.png";
+  static const String surveyImage= "$basePath/survey.png";
 
 }
