@@ -10,6 +10,7 @@ class AppStaticStrings {
 
   static const matchPettern = "Password must have 8 and one capital latter";
   static const signUp = "Sign Up";
+  static const signIn = "Sign In ";
   static const welcomeBack = "WellCome Back";
   static const login = "Login";
   static const rememberMe = "Remember me";
@@ -19,7 +20,7 @@ class AppStaticStrings {
   static const enterYourEmail = "Enter your email here";
   static const forgotPassword = "Forgot password";
   static const enterYourName = "Enter your name here";
-  static const dontHaveAcount = "Don’t have a account? Sign up";
+  static const dontHaveAcount = "Don’t have a account";
   static const survey = "Survey";
   static const submit = "Submit";
 

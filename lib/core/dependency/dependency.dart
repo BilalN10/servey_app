@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
 
 class DependancyInjection extends Bindings {
   @override
@@ -8,9 +9,9 @@ class DependancyInjection extends Bindings {
     // ///================ Home Controller =================
     // Get.lazyPut(() => HomeController(), fenix: true);
     //
-    // ///================ Auth Controller =================
+    ///================ Auth Controller =================
     //
-    // Get.lazyPut(() => AuthController(), fenix: true);
+    Get.lazyPut(() => AuthController(), fenix: true);
     //
     // ///================ Message Controller =================
     //

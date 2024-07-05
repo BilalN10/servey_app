@@ -9,7 +9,7 @@ class AppConstants {
   static String error = "Oops, something went wrong";
   static String profileID = "profileID";
   static String userStatus = "userStatus";
-  static String rememberMe = "rememberMe";
+  static String isRemember = "isRemember";
   static var chatId = "chatID";
 
   static String onlineImage =

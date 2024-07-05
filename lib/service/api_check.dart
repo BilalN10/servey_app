@@ -10,7 +10,7 @@ class ApiChecker {
   static void checkApi(Response response, {bool getXSnackBar = false}) async {
     if (response.statusCode == 401) {
       await SharePrefsHelper.remove(AppConstants.bearerToken);
-      Get.offAllNamed(AppRoute.signIn);
+      Get.offAllNamed(AppRoute.signInScreen);
     } else {
       showCustomSnackBar(response.statusText!, getXSnackBar: getXSnackBar);
     }

@@ -1,36 +1,14 @@
 class AppImages {
   static const String basePath = "assets/images";
 
-  ///====================== OnBoarding Image =========================
+  static const String appLogo = "$basePath/app_logo.png";
+  static const String badIcon = "$basePath/bad_icon.png";
+  static const String forgotPassImage= "$basePath/forgot_pass_image.png";
+  static const String gooGood= "$basePath/good.png";
+  static const String notificationImage = "$basePath/notification_image.png";
+  static const String profileImage = "$basePath/profile_image.png";
+  static const String signInAndSignUpIcon= "$basePath/sign_in_and_sign_up_icon.png";
+  static const String splashLogo= "$basePath/splash_logo.png";
+  static const String verySatisfied= "$basePath/veri_satisfied.png";
 
-  static const String onBoarding1 = "$basePath/onBoarding1.png";
-  static const String onBoarding2 = "$basePath/onBoarding2.png";
-  static const String onBoarding3 = "$basePath/onBoarding3.png";
-
-  ///====================== Banner Image =========================
-  //TODO Have to remove those image
-  static const String banner1 = "$basePath/banner1.png";
-  static const String banner2 = "$basePath/banner2.png";
-
-  ///====================== Home Image =========================
-
-  static const String dentalCondition = "$basePath/dentalCondition.png";
-  static const String skinCare = "$basePath/skinCare.png";
-
-  //TODO Have to remove those image
-  static const String currentOffer1 = "$basePath/currentOffer1.png";
-  static const String currentOffer2 = "$basePath/currentOffer2.png";
-  static const String currentOffer3 = "$basePath/currentOffer3.png";
-
-  ///====================== Sub Category =========================
-
-  //TODO Have to remove those image
-  static const String dental1 = "$basePath/dental1.png";
-  static const String dental2 = "$basePath/dental2.png";
-  static const String dental3 = "$basePath/dental3.png";
-  static const String skin1 = "$basePath/skin1.png";
-  static const String skin2 = "$basePath/skin2.png";
-  static const String skin3 = "$basePath/skin3.png";
-
-  static const String hygienist = "$basePath/Hygienist.png";
 }
