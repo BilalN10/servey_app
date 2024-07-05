@@ -14,25 +14,27 @@ class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
   final formKey = GlobalKey<FormState>();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: GetBuilder<AuthController>(builder: (controller) {
+        child: GetBuilder<AuthController>(builder:(controller){
           return Form(
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+
                 SizedBox(
                   height: 77.h,
                 ),
+
                 SizedBox(
                   height: 64.h,
                 ),
 
                 ///<============== This is logo section =====================>
-
                 Align(
                     alignment: AlignmentDirectional.center,
                     child: CustomImage(
