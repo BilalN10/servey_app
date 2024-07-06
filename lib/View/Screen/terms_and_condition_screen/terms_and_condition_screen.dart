@@ -11,7 +11,7 @@ class TermsAndConditionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      ///====================Privacy Policy Appbar=============
+      ///====================Terms and condition Appbar=============
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         title: CustomText(
