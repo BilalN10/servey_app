@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
-import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
-import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class NavBar extends StatefulWidget {
   final int currentIndex;
@@ -121,7 +120,7 @@ class _NavBarState extends State<NavBar> {
     //
     else if (index == 3) {
       if (!(widget.currentIndex == 3)){
-        //Get.to(() => MessageScreen());
+        Get.to(() => const ProfileScreen());
       }
     }
   }

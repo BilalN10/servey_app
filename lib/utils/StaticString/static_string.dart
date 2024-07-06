@@ -79,7 +79,7 @@ class AppStaticStrings {
 ///<============================== All result section ======================>
 
   static const allResult= "All Results";
-  static const companyName= "Company Name:";
+  static const companyName= "Company Name";
   static const projectName= "Project Name:";
   static const surveyName= "Survey Name:";
   static const totalQuestionWithColon= "Total Question:";
