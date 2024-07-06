@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/notification_screen/notification_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
@@ -114,7 +115,7 @@ class _NavBarState extends State<NavBar> {
       }
     } else if (index == 2) {
       if (!(widget.currentIndex == 2)) {
-        //Get.offAll(() =>  ProfileScreen());
+        Get.to(() =>  const NotificationScreen());
       }
     }
     //
