@@ -11,5 +11,6 @@ class AppImages {
   static const String splashLogo= "$basePath/splash_logo.png";
   static const String verySatisfied= "$basePath/veri_satisfied.png";
   static const String surveyImage= "$basePath/survey.png";
+  static const String code= "$basePath/code.png";
 
 }

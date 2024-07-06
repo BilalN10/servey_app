@@ -61,6 +61,8 @@ class AppStaticStrings {
   static const gotQRCode = "Got QR Code";
   static const yourSurvey = "Your Survey";
   static const editProfile = "Edit Profile";
+  static const privacyPolicy = "Privacy Policy";
+  static const termsAndCondition = "Terms & Condition";
 
 
   ///|<========================== Survey section ====================>
