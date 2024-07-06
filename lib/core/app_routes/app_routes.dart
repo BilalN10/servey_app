@@ -38,7 +38,7 @@ class AppRoute {
 
 
 ///<========================= Home section ====================>
-    GetPage(name: homeScreen, page: () => const HomeScreen()),
+    GetPage(name: homeScreen, page: () =>  HomeScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
   ];
 }

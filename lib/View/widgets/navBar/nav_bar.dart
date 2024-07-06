@@ -109,7 +109,7 @@ class _NavBarState extends State<NavBar> {
   void onTap(int index) {
     if (index == 0) {
       if (!(widget.currentIndex == 0)) {
-       Get.offAll(() => const HomeScreen());
+       Get.offAll(() =>  HomeScreen());
       }
     } else if (index == 1) {
       if (!(widget.currentIndex == 1)) {
