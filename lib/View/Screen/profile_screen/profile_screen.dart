@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
 import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
+import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
@@ -16,15 +17,19 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+
       bottomNavigationBar: const NavBar(currentIndex: 3),
 
       ///===============================Profile Appbar=====================
       appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+
         actions: [
           ///==============================Edit profile Icon=================
           InkWell(
               onTap: () {
-                // Get.toNamed(AppRoutes.editProfileScreen);
+                Get.toNamed(AppRoute.editProfileScreen);
               },
               child: const CustomImage(
                 imageSrc: AppIcons.editIcon,
