@@ -16,85 +16,92 @@ class HomeScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       key: scaffoldKey,
       drawer: const SideDrawer(),
       bottomNavigationBar: const NavBar(currentIndex: 0),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 64.h,
-          ),
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: 24.w),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 64.h,
+            ),
 
-          ///<====================== This is the app Bar ================>
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomImage(
-                imageSrc: AppImages.appLogo,
-                imageType: ImageType.png,
-                sizeWidth: 139.w,
-              ),
-              IconButton(
-                  onPressed: () {
-                    scaffoldKey.currentState!.openDrawer();
-                  },
-                  icon: const CustomImage(imageSrc: AppIcons.drawreIcon)),
-            ],
-          ),
+            ///<====================== This is the app Bar ================>
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomImage(
+                  imageSrc: AppImages.appLogo,
+                  imageType: ImageType.png,
+                  sizeWidth: 139.w,
+                ),
+                IconButton(
+                    onPressed: () {
+                      scaffoldKey.currentState!.openDrawer();
+                    },
+                    icon: const CustomImage(imageSrc: AppIcons.drawreIcon)),
+              ],
+            ),
 
-          SizedBox(
-            height: 14.h,
-          ),
+            SizedBox(
+              height: 14.h,
+            ),
 
-          ///<=================== This is the top iamge section =============>
+            ///<=================== This is the top iamge section =============>
 
-          const CustomImage(
-            imageSrc: AppImages.surveyImage,
-            imageType: ImageType.png,
-          ),
+            const CustomImage(
+              imageSrc: AppImages.surveyImage,
+              imageType: ImageType.png,
+            ),
 
-          SizedBox(
-            height: 24.h,
-          ),
+            SizedBox(
+              height: 24.h,
+            ),
 
-          ///<================== this is the  survey card ==================>
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 140.w, vertical: 40.h),
-              decoration: BoxDecoration(
-                color: AppColors.yellowNormal,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: const CustomText(
-                text: AppStaticStrings.survey,
-                color: AppColors.whiteNormal,
+            ///<================== this is the  survey card ==================>
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 140.w, vertical: 40.h),
+                decoration: BoxDecoration(
+                  color: AppColors.yellowNormal,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const CustomText(
+                  text: AppStaticStrings.survey,
+                  color: AppColors.whiteNormal,
+                ),
               ),
             ),
-          ),
 
-          SizedBox(
-            height: 29.h,
-          ),
 
-          Expanded(
-            child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return CustomCompanyCard(
-                    companyName: "BdCalling",
-                    image: AppImages.splashLogo,
-                  );
-                }),
-          ),
+            const CustomText(text:AppStaticStrings.joinedSurvey,fontSize: 20,fontWeight: FontWeight.w600,top: 24,),
 
-          SizedBox(
-            height: 16.h,
-          ),
-        ],
+            SizedBox(
+              height: 29.h,
+            ),
+
+
+            Expanded(
+              child: ListView.builder(
+                  physics:const BouncingScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return CustomCompanyCard(
+                      companyName: "BdCalling",
+                      image: AppImages.splashLogo,
+                    );
+                  }),
+            ),
+
+            SizedBox(
+              height: 16.h,
+            ),
+          ],
+        ),
       ),
     );
   }

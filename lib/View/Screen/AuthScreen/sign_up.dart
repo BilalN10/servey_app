@@ -18,183 +18,183 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<AuthController>(builder: (controller) {
-        return SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  height: 77.h,
-                ),
+        return SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
 
-                SizedBox(
-                  height: 64.h,
-                ),
 
-                ///<============== This is logo section =====================>
-                Align(
-                    alignment: AlignmentDirectional.center,
-                    child: CustomImage(
-                      imageSrc: AppImages.signInAndSignUpIcon,
-                      imageType: ImageType.png,
-                      size: 102.r,
-                    )),
+                  SizedBox(
+                    height: 64.h,
+                  ),
 
-                ///<============== This is Sign In text =====================>
-                Align(
-                    alignment: AlignmentDirectional.center,
-                    child: CustomText(
-                      text: AppStaticStrings.signUp,
-                      fontSize: 40,
-                      fontWeight: FontWeight.w500,
-                      top: 24.h,
-                      bottom: 19.h,
-                    )),
+                  ///<============== This is logo section =====================>
+                  Align(
+                      alignment: AlignmentDirectional.center,
+                      child: CustomImage(
+                        imageSrc: AppImages.signInAndSignUpIcon,
+                        imageType: ImageType.png,
+                        size: 102.r,
+                      )),
 
-                ///<===================== This is the email section ========================>
-
-                CustomText(
-                  text: AppStaticStrings.email,
-                  bottom: 16.h,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                ),
-
-                const CustomTextField(
-                  hintText: AppStaticStrings.enterYourEmail,
-                  fillColor: AppColors.blueLight,
-                ),
-
-                ///<===================== This is the password section ========================>
-
-                CustomText(
-                  text: AppStaticStrings.password,
-                  bottom: 16.h,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  top: 16.h,
-                ),
-
-                const CustomTextField(
-                  isPassword: true,
-                  hintText: AppStaticStrings.enterYourPassword,
-                  fillColor: AppColors.blueLight,
-                ),
-
-                ///<===================== This is the Confirm password section ========================>
-
-                CustomText(
-                  text: AppStaticStrings.confirmPass,
-                  bottom: 16.h,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  top: 16.h,
-                ),
-
-                const CustomTextField(
-                  isPassword: true,
-                  hintText: AppStaticStrings.enterYourPassword,
-                  fillColor: AppColors.blueLight,
-                ),
-
-                SizedBox(
-                  height: 16.h,
-                ),
-
-                Row(
-                  children: [
-                    ///================ Remember me ===============
-
-                    GestureDetector(
-                      onTap: () {
-                        controller.updateRememberMe();
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: const Offset(0, 4),
-                                blurRadius: 8,
-                                color: Colors.black.withOpacity(.15))
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: controller.isRemember
-                              ? const Icon(
-                                  Icons.check,
-                                  color: AppColors.blueNormal,
-                                  size: 24,
-                                )
-                              : const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                  size: 24,
-                                ),
-                        ),
-                      ),
-                    ),
-
-                    const Expanded(
+                  ///<============== This is Sign In text =====================>
+                  Align(
+                      alignment: AlignmentDirectional.center,
                       child: CustomText(
-                        left: 10,
-                        textAlign: TextAlign.start,
-                        maxLines: 10,
-                        text: AppStaticStrings.byRegister,
-                        fontSize: 12,
-                      ),
-                    )
-                  ],
-                ),
+                        text: AppStaticStrings.signUp,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w500,
+                        top: 24.h,
+                        bottom: 19.h,
+                      )),
 
-                SizedBox(
-                  height: 52.h,
-                ),
+                  ///<===================== This is the email section ========================>
 
-                ///<======================= This is the signUp button =====================>
+                  CustomText(
+                    text: AppStaticStrings.email,
+                    bottom: 16.h,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
 
-                CustomButton(
-                  onTap: () {
-                  Get.toNamed(AppRoute.homeScreen);
-                  },
-                  fillColor: AppColors.yellowNormal,
-                  title: AppStaticStrings.signUp,
-                ),
+                  const CustomTextField(
+                    hintText: AppStaticStrings.enterYourEmail,
+                    fillColor: AppColors.blueLight,
+                  ),
 
-                SizedBox(
-                  height: 16.h,
-                ),
+                  ///<===================== This is the password section ========================>
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const CustomText(text:"If you have an account?   "),
-                    GestureDetector(
+                  CustomText(
+                    text: AppStaticStrings.password,
+                    bottom: 16.h,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    top: 16.h,
+                  ),
+
+                  const CustomTextField(
+                    isPassword: true,
+                    hintText: AppStaticStrings.enterYourPassword,
+                    fillColor: AppColors.blueLight,
+                  ),
+
+                  ///<===================== This is the Confirm password section ========================>
+
+                  CustomText(
+                    text: AppStaticStrings.confirmPass,
+                    bottom: 16.h,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    top: 16.h,
+                  ),
+
+                  const CustomTextField(
+                    isPassword: true,
+                    hintText: AppStaticStrings.enterYourPassword,
+                    fillColor: AppColors.blueLight,
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  Row(
+                    children: [
+                      ///================ Remember me ===============
+
+                      GestureDetector(
                         onTap: () {
-                          Get.toNamed(AppRoute.signInScreen);
+                          controller.updateRememberMe();
                         },
-                        child: const CustomText(
-                          text: AppStaticStrings.login,
-                          color: AppColors.yellowDark,
-                        )),
-                  ],
-                ),
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 8,
+                                  color: Colors.black.withOpacity(.15))
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Center(
+                            child: controller.isRemember
+                                ? const Icon(
+                                    Icons.check,
+                                    color: AppColors.blueNormal,
+                                    size: 24,
+                                  )
+                                : const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                    size: 24,
+                                  ),
+                          ),
+                        ),
+                      ),
 
-                SizedBox(
-                  height: 16.h,
-                ),
+                      const Expanded(
+                        child: CustomText(
+                          left: 10,
+                          textAlign: TextAlign.start,
+                          maxLines: 10,
+                          text: AppStaticStrings.byRegister,
+                          fontSize: 12,
+                        ),
+                      )
+                    ],
+                  ),
 
-                SizedBox(
-                  height: 16.h,
-                ),
-              ],
+                  SizedBox(
+                    height: 52.h,
+                  ),
+
+                  ///<======================= This is the signUp button =====================>
+
+                  CustomButton(
+                    onTap: () {
+                   Get.toNamed(AppRoute.otpVerifiedScreen);
+                    },
+                    fillColor: AppColors.yellowNormal,
+                    title: AppStaticStrings.signUp,
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CustomText(text:"If you have an account?   "),
+                      GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoute.signInScreen);
+                          },
+                          child: const CustomText(
+                            text: AppStaticStrings.login,
+                            color: AppColors.yellowDark,
+                          )),
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                ],
+              ),
             ),
           ),
         );

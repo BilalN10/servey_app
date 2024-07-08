@@ -18,11 +18,13 @@ class AuthController extends GetxController{
   TextEditingController signInEmailController= TextEditingController();
   TextEditingController signInPassController= TextEditingController();
 
+  ///<==================== This is verify otp ======================>
+
+   TextEditingController otpController=TextEditingController();
 
 
   //
   // TextEditingController signInEmailController= TextEditingController();
   // TextEditingController signInEmailController= TextEditingController();
-
 
 }

@@ -1,8 +1,11 @@
 
 
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/AuthScreen/otp_verified_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/sign_in.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/sign_up.dart';
+import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_otp.dart';
+import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
@@ -19,6 +22,8 @@ class AppRoute {
   ///<======================== Auth section ========================>
   static const String signInScreen="/signIn";
   static const String signUpScreen="/signUp";
+  static const String otpVerifiedScreen="/otpVerifiedScreen";
+  static const String forgotOTP="/forgotOTP";
 
   ///=========================Profile==================
   static const String editProfileScreen="/EditProfileScreen";
@@ -26,6 +31,9 @@ class AppRoute {
   static const String scanQrCodeScreen="/ScanQrCodeScreen";
   static const String privacyPolicyScreen="/PrivacyPolicyScreen";
   static const String termsAndConditionScreen="/TermsAndConditionScreen";
+
+  ///<================================== This is for forgot pass ========================>
+  static const String forgotPass ="/forgotPass";
 
 
 
@@ -42,6 +50,8 @@ class AppRoute {
 
     GetPage(name: signInScreen, page: () =>  SignInScreen()),
     GetPage(name: signUpScreen, page: () =>  SignUpScreen()),
+    GetPage(name: otpVerifiedScreen, page: () =>  OtpVerifiedScreen()),
+    GetPage(name: forgotOTP, page: () =>  ForgotOtp()),
 
 
 
@@ -54,5 +64,9 @@ class AppRoute {
     GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
     GetPage(name: privacyPolicyScreen, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsAndConditionScreen, page: () => const TermsAndConditionScreen()),
+
+
+    ///<========================= Forgot pass section ====================>
+    GetPage(name: forgotPass, page: () =>  ForgotPassScreen()),
   ];
 }

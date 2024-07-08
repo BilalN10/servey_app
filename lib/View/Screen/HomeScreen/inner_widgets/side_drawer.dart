@@ -103,6 +103,17 @@ class SideDrawer extends StatelessWidget {
                   icon: AppIcons.termsCondition,
                 ),
                 const Divider(),
+
+                customRow(
+                  onTap: () {
+                    Get.offNamed(AppRoute.signInScreen);
+
+                  },
+                  title:"Log out",
+                  icon:AppIcons.logoutIcon,
+                ),
+
+                const Divider(),
               ],
             ),
           ),

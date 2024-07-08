@@ -28,9 +28,9 @@ class SignInScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
 
-                SizedBox(
-                  height: 75.h,
-                ),
+                // SizedBox(
+                //   height: 75.h,
+                // ),
 
                 SizedBox(
                   height: 64.h,
@@ -141,6 +141,9 @@ class SignInScreen extends StatelessWidget {
                       ],
                     ),
                     GestureDetector(
+                       onTap: (){
+                         Get.toNamed(AppRoute.forgotPass);
+                       },
                         child: const CustomText(
                             text: AppStaticStrings.forgotPassword)),
                   ],

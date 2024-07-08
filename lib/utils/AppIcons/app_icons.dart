@@ -21,5 +21,6 @@ class AppIcons {
   static const String termsCondition= "$basePath/terms_condition.svg";
   static const String verySetisfiedIcon= "$basePath/very_setisfied_icon.svg";
   static const String yourSurvey= "$basePath/your_survey.svg";
+  static const String logoutIcon= "$basePath/logout.svg";
 
 }
