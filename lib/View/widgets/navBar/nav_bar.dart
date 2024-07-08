@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
+import 'package:survey_markus/View/Screen/all_survey_company/all_survey_company.dart';
+import 'package:survey_markus/View/Screen/notification_screen/notification_screen.dart';
+import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
-import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
-import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class NavBar extends StatefulWidget {
   final int currentIndex;
@@ -107,21 +109,22 @@ class _NavBarState extends State<NavBar> {
   void onTap(int index) {
     if (index == 0) {
       if (!(widget.currentIndex == 0)) {
-       // Get.offAll(() => HomeScreen());
+       Get.offAll(() =>  HomeScreen());
       }
     } else if (index == 1) {
       if (!(widget.currentIndex == 1)) {
-        //Get.offAll(() => MyPlan());
+        Get.to(() =>  const AllSurveyCompany());
+
       }
     } else if (index == 2) {
       if (!(widget.currentIndex == 2)) {
-        //Get.offAll(() =>  ProfileScreen());
+        Get.to(() =>  const NotificationScreen());
       }
     }
     //
     else if (index == 3) {
       if (!(widget.currentIndex == 3)){
-        //Get.to(() => MessageScreen());
+        Get.to(() => const ProfileScreen());
       }
     }
   }

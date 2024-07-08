@@ -60,6 +60,9 @@ class AppStaticStrings {
   static const profile = "Profile";
   static const gotQRCode = "Got QR Code";
   static const yourSurvey = "Your Survey";
+  static const editProfile = "Edit Profile";
+  static const privacyPolicy = "Privacy Policy";
+  static const termsAndCondition = "Terms & Condition";
 
 
   ///|<========================== Survey section ====================>
@@ -79,7 +82,7 @@ class AppStaticStrings {
 ///<============================== All result section ======================>
 
   static const allResult= "All Results";
-  static const companyName= "Company Name:";
+  static const companyName= "Company Name";
   static const projectName= "Project Name:";
   static const surveyName= "Survey Name:";
   static const totalQuestionWithColon= "Total Question:";

@@ -8,6 +8,7 @@ class AppColors {
   ///======================== Yellow Series ===========================
 
   static const Color yellowLight = Color(0xffFDF7E6);
+  static const Color backgroundColor = Color(0xffFFFFFF);
   static const Color yellowLightHover = Color(0xfffcf3da);
   static const Color yellowLightActive = Color(0xfff9e7b2);
   static const Color yellowNormal = Color(0xffecb206);
@@ -59,6 +60,11 @@ class AppColors {
   static const Color grayDarkHover = Color(0xff5e5f68);
   static const Color grayDarkActive = Color(0xff4b4c53);
   static const Color grayDarker = Color(0xff2c2c30);
+
+  ///========================black ==================
+  static const Color blackNew = Color(0xff0A0A0A);
+  static const Color normalGray = Color(0xffB4B4B4);
+  static const Color normalBlack = Color(0xff2C2C2C);
 
 
 
