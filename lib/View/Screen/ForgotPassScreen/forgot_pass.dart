@@ -21,11 +21,12 @@ class ForgotPassScreen extends StatelessWidget {
         child: Form(
           key: formKey,
           child: Column(
+
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 217.h,
+                height: 217.h
               ),
               Center(
                   child: CustomImage(
@@ -47,8 +48,8 @@ class ForgotPassScreen extends StatelessWidget {
               ///<============================== This is the  dont worry text ===============================>
 
               Center(
-                  child: CustomText(
-                text: AppStaticStrings.dontWorry,
+                  child:CustomText(
+                text:AppStaticStrings.dontWorry,
                 fontSize: 12,
                 bottom: 40.h,
                 fontWeight: FontWeight.w400,
