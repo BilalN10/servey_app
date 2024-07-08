@@ -22,13 +22,14 @@ class SignInScreen extends StatelessWidget {
         child: GetBuilder<AuthController>(builder:(controller){
           return Form(
             key: formKey,
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
 
                 SizedBox(
-                  height: 77.h,
+                  height: 75.h,
                 ),
 
                 SizedBox(
