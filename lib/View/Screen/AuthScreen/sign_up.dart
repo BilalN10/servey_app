@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,6 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
 
                   SizedBox(
                     height: 64.h,
@@ -141,15 +141,63 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const Expanded(
-                        child: CustomText(
-                          left: 10,
-                          textAlign: TextAlign.start,
-                          maxLines: 10,
-                          text: AppStaticStrings.byRegister,
-                          fontSize: 12,
+                       SizedBox(width: 10.w,),
+
+                       //
+                      //  const Expanded(
+                      //   child: CustomText(
+                      //     left: 10,
+                      //     textAlign: TextAlign.start,
+                      //     maxLines: 10,
+                      //     text: AppStaticStrings.byRegister,
+                      //     fontSize: 12,
+                      //   ),
+                      // )
+                      Expanded(
+                        child: RichText(
+                          maxLines: 2,
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              const TextSpan(
+                                text: AppStaticStrings.byRegistasion,
+                                style: TextStyle(
+                                    color: AppColors.blueDarker,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                              ),
+                              TextSpan(
+                                text: " ${AppStaticStrings.termsAndCondition}",
+                                style: const TextStyle(
+                                    color: AppColors.yellowNormal,
+
+                                    fontWeight: FontWeight.w500),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Get.toNamed(AppRoute.termsAndConditionScreen);
+                                  },
+                              ),
+                              const TextSpan(
+                                text:" and ",
+                                style: TextStyle(
+                                    color: AppColors.blueDarker,
+                                    fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: "${AppStaticStrings.privacyPolicy}.",
+                                style: const TextStyle(
+                                    color: AppColors.yellowNormal,
+
+                                    fontWeight: FontWeight.w500),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Get.toNamed(AppRoute.privacyPolicyScreen);
+                                  },
+                              ),
+                            ],
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
 

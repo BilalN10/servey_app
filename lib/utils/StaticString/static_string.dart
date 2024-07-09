@@ -15,6 +15,7 @@ class AppStaticStrings {
   static const login = "Login";
   static const rememberMe = "Remember me";
   static const byRegister = "By registration you are agree to our terms of use and privacy policy.";
+  static const byRegistasion = "By registration you are agree to our ";
   static const email = "Email";
   static const emailConfirmation = "Email Confirmation";
   static const enterYourEmail = "Enter your email here";

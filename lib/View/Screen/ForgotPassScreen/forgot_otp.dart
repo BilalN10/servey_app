@@ -171,7 +171,7 @@ class _ForgotOtpState extends State<ForgotOtp> {
               CustomButton(
                 fillColor: AppColors.yellowNormal,
                 onTap: (){
-                  Get.toNamed(AppRoute.homeScreen);
+                  Get.offNamed(AppRoute.resetPassScreen);
                 },
                 title:"Verify code",
               ),

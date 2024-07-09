@@ -1,11 +1,13 @@
 
 
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/Allproject/all_project_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/otp_verified_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/sign_in.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/sign_up.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_otp.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
+import 'package:survey_markus/View/Screen/ForgotPassScreen/reset_pass.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
@@ -34,8 +36,10 @@ class AppRoute {
 
   ///<================================== This is for forgot pass ========================>
   static const String forgotPass ="/forgotPass";
+  static const String resetPassScreen ="/resetPassScreen";
 
-
+///<=============================== All project  section ========================>
+ static const String allProjectScreen="/allProjectScreen";
 
 
 
@@ -58,6 +62,11 @@ class AppRoute {
 ///<========================= Home section ====================>
     GetPage(name: homeScreen, page: () =>  HomeScreen()),
 
+
+
+    ///<======================== This is the all survey section =====================>
+    GetPage(name: allProjectScreen, page: () => AllProjectScreen()),
+
     ///========================Profile=======================
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
@@ -68,5 +77,7 @@ class AppRoute {
 
     ///<========================= Forgot pass section ====================>
     GetPage(name: forgotPass, page: () =>  ForgotPassScreen()),
+
+    GetPage(name: resetPassScreen, page: () =>const ResetPassScreen()),
   ];
 }

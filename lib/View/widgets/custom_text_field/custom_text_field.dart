@@ -29,6 +29,7 @@ class CustomTextField extends StatefulWidget{
     super.key,
     this.onTapClick = _defaultOnTap,
     this.isPrefixIcon = false,
+    this.prefixIconColor,
     this.focusBorderColor = AppColors.blueLight,
     this.height = 48,
     this.maxLength,
@@ -54,6 +55,7 @@ class CustomTextField extends StatefulWidget{
   final Color? fillColor;
   final Color? suffixIconColor;
   final Widget? suffixIcon;
+  final Color? prefixIconColor;
   final double borderRadius;
   final Color fieldBorderColor;
   final Color focusBorderColor;
@@ -76,6 +78,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      //shadowColor:AppColors.greenLight,
       color: Colors.transparent,
       child: Container(
         padding: EdgeInsets.all(0.r),
@@ -119,7 +122,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         horizontal: 0, vertical: 0),
                     child: Icon(
                       Icons.search,
-                      color: AppColors.blueDark,
+                      color:widget.prefixIconColor,
                       size: 24.h,
                     ),
                   )
@@ -140,6 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ))
                 : widget.suffixIcon,
             suffixIconColor: widget.suffixIconColor,
+            prefixIconColor: widget.prefixIconColor,
 
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.borderRadius),
