@@ -22,5 +22,10 @@ class AppIcons {
   static const String verySetisfiedIcon= "$basePath/very_setisfied_icon.svg";
   static const String yourSurvey= "$basePath/your_survey.svg";
   static const String logoutIcon= "$basePath/logout.svg";
+  static const String ratingOneImoji= "$basePath/ratting_one_imoji.svg";
+  static const String ratingTwoImoji= "$basePath/ratting_two_imoji.svg";
+  static const String ratingThreeImoji= "$basePath/ratting_three_imoji.svg";
+  static const String ratingFourImoji= "$basePath/ratting_four_imoji.svg";
+  static const String ratingFiveImoji= "$basePath/ratting_five_imoji.svg";
 
 }

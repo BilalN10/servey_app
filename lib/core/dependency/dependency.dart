@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
+import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 
 class DependancyInjection extends Bindings {
   @override
@@ -12,40 +13,10 @@ class DependancyInjection extends Bindings {
     ///================ Auth Controller =================
     //
     Get.lazyPut(() => AuthController(), fenix: true);
-    //
-    // ///================ Message Controller =================
-    //
-    // Get.lazyPut(() => MessageController(), fenix: true);
-    //
-    // ///================ Terms Condition Controller =================
-    //
-    // Get.lazyPut(() => TermsConditionController(), fenix: true);
-    //
-    // ///================ About Us Controller =================
-    //
-    // Get.lazyPut(() => AboutUsController(), fenix: true);
-    //
-    // ///================ Privacy Policy  Controller =================
-    //
-    // Get.lazyPut(() => PrivacyController(), fenix: true);
-    //
-    // ///================ Profile  Controller =================
-    //
-    // Get.lazyPut(() => ProfileController(), fenix: true);
-    //
-    // ///================ Article   Controller =================
-    //
-    // Get.lazyPut(() => ArticleController(), fenix: true);
-    //
-    // Get.lazyPut(() => ArticleDetailsController(), fenix: true);
-    //
-    // Get.lazyPut(()=> MessageController(), fenix: true);
-    //
-    // Get.lazyPut(()=> NotificationController(), fenix: true);
-    //
-    // Get.lazyPut(()=> GeneralController(), fenix: true);
-    //
-    // Get.put(GeneralController());
+
+    Get.lazyPut(() => SurveController(), fenix: true);
+
+
 
 
 

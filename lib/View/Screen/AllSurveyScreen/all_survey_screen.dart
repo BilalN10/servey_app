@@ -11,8 +11,8 @@ import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
-class AllProjectScreen extends StatelessWidget {
-  const AllProjectScreen({super.key});
+class AllSurveyScreen extends StatelessWidget {
+  const AllSurveyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class AllProjectScreen extends StatelessWidget {
 
             CustomNetworkImage(
               imageUrl:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2SGUn4hUElhp9PuU1US_9R6Fp9l7QJNsMw&s",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2SGUn4hUElhp9PuU1US_9R6Fp9l7QJNsMw&s",
               height: 40.h,
               width: 58.w,
               boxShape: BoxShape.circle,
@@ -52,11 +52,11 @@ class AllProjectScreen extends StatelessWidget {
 
           Center(
               child: CustomText(
-            text: AppStaticStrings.allProjects,
-            fontWeight: FontWeight.w500,
-            fontSize: 20,
-            top: 16.h,
-          )),
+                text: AppStaticStrings.allSurvey,
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+                top: 16.h,
+              )),
 
           Column(
             children: [
@@ -88,7 +88,7 @@ class AllProjectScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: const CustomImage(
-                  imageSrc: AppImages.allProjectImage,
+                  imageSrc: AppImages.allSurveyImage,
                   imageType: ImageType.png,
                 ),
               )
@@ -107,8 +107,8 @@ class AllProjectScreen extends StatelessWidget {
                   mainAxisSpacing: 8.0,
                 ),
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                      child: FeedbackCard(title: "Employee Feedback",onTap: (){Get.toNamed(AppRoute.allSurvey);},));
+                  return FeedbackCard(title: "Customer Feedback",
+                    onTap:(){Get.toNamed(AppRoute.mainSurvey);},);
                 },
                 itemCount: 100, // Total number of items in the grid
               ),

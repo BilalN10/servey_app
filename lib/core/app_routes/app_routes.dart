@@ -1,6 +1,7 @@
 
 
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/AllSurveyScreen/all_survey_screen.dart';
 import 'package:survey_markus/View/Screen/Allproject/all_project_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/otp_verified_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/sign_in.dart';
@@ -10,6 +11,7 @@ import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/reset_pass.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
+import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
@@ -38,8 +40,17 @@ class AppRoute {
   static const String forgotPass ="/forgotPass";
   static const String resetPassScreen ="/resetPassScreen";
 
-///<=============================== All project  section ========================>
+ ///<=============================== All project  section ========================>
+
  static const String allProjectScreen="/allProjectScreen";
+
+ ///<========================== This is the all survey section =====================>
+
+ static const String allSurvey="/allSurvey";
+
+ ///<==================== This is the main survey  ===============================>
+
+ static const String mainSurvey="/mainSurvey";
 
 
 
@@ -79,5 +90,14 @@ class AppRoute {
     GetPage(name: forgotPass, page: () =>  ForgotPassScreen()),
 
     GetPage(name: resetPassScreen, page: () =>const ResetPassScreen()),
+
+    ///<======================== this is for  all survey section ===================>
+
+    GetPage(name: allSurvey, page: () =>const AllSurveyScreen()),
+
+    ///<====================== This is for main Survey ===========================>
+    GetPage(name: mainSurvey, page: () => MainSurveySCreen()),
+
+
   ];
 }
