@@ -1,6 +1,7 @@
 
 
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/AllResultScreen/all_result.dart';
 import 'package:survey_markus/View/Screen/AllSurveyScreen/all_survey_screen.dart';
 import 'package:survey_markus/View/Screen/Allproject/all_project_screen.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/otp_verified_screen.dart';
@@ -11,6 +12,7 @@ import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/reset_pass.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/survey_history.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/edit_profile_screen/edit_profile_screen.dart';
@@ -51,6 +53,15 @@ class AppRoute {
  ///<==================== This is the main survey  ===============================>
 
  static const String mainSurvey="/mainSurvey";
+
+ ///<======================= All result screen ====================================>
+
+ static const String allResultScreeen="/allResultScreeen";
+
+ ///<====================== This is for  survey history =========================>
+
+ static const String surveyHistoryScreen="/surveyHistoryScreen";
+
 
 
 
@@ -97,6 +108,16 @@ class AppRoute {
 
     ///<====================== This is for main Survey ===========================>
     GetPage(name: mainSurvey, page: () => MainSurveySCreen()),
+
+    ///<============================== All result screen ==========================>
+
+    GetPage(name: allResultScreeen, page: () => AllResultScreen()),
+
+    ///<========================== This is for survey screden =========================>
+
+    GetPage(name: surveyHistoryScreen, page: () => SurveyHistory()),
+
+
 
 
   ];

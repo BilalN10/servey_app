@@ -10,6 +10,7 @@ import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
+import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
@@ -97,12 +98,6 @@ class MainSurveySCreen extends StatelessWidget {
                   ),
                 ),
 
-
-
-
-
-
-
                 ///<============================ This is the emoji section ==================>
 
                 SingleChildScrollView(
@@ -148,7 +143,7 @@ class MainSurveySCreen extends StatelessWidget {
                 SizedBox(height: 60.h,),
 
 
-                 CustomText(text:AppStaticStrings.totalQuestion,bottom: 12.h,fontWeight: FontWeight.w500,fontSize: 12,),
+                 CustomText(text: "${AppStaticStrings.totalQuestion}${controller.qustionList.length}",bottom: 12.h,fontWeight: FontWeight.w500,fontSize: 12,),
 
                ///<========================================= This is the progressbar ==================>
 
@@ -158,7 +153,7 @@ class MainSurveySCreen extends StatelessWidget {
                   currentStep:controller.qustionIndex,
                   progressColor:AppColors.yellowNormal,
                   backgroundColor: Colors.grey,
-                  minHeight: 14,
+                  minHeight: 12,
 
                 ),
 
@@ -167,7 +162,7 @@ class MainSurveySCreen extends StatelessWidget {
                   child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  CustomText(text:"${controller.qustionList.length}")  ,
+                  CustomText(text:"${controller.qustionIndex}")  ,
 
                   CustomText(text:"${controller.qustionList.length-controller.qustionIndex}")
                   ],
@@ -196,8 +191,8 @@ class MainSurveySCreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r),
               color: AppColors.blueDarker
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: CustomImage(
                 imageSrc: AppImages.commentIcon,imageType: ImageType.png,
                 size: 20,
@@ -212,15 +207,13 @@ class MainSurveySCreen extends StatelessWidget {
                  Expanded(
                   child:TextFormField(
 
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                     hintText: "Write your comment here",
                     hintStyle: TextStyle(color: AppColors.grayNormalHover),
                     border: InputBorder.none
                     ),
                   )
                 ),
-
-
               ],
               ),
               ),
@@ -229,35 +222,41 @@ class MainSurveySCreen extends StatelessWidget {
               SizedBox(height: 24.h,),
 
               ///<============================= This is the next button ==================>
+
               Padding(
                 padding: EdgeInsets.symmetric(horizontal:97.w),
                 child: CustomButton(onTap:(){
+
                   if(controller.qustionList.length-1!=controller.qustionIndex){
                     controller.qustionIndex++;
                     controller.update();
+                  }else{
+                    Get.offNamed(AppRoute.allResultScreeen);
                   }
-
-
                 },fillColor:AppColors.yellowNormal,title: AppStaticStrings.next,),
               ),
 
                 SizedBox(height: 16.h,),
 
-                // Padding(
-                //   padding:EdgeInsets.symmetric(horizontal: 97.w,),
-                //   child: Container(
-                //   padding: EdgeInsets.symmetric(horizontal: 75.w,vertical: 14.h),
-                //   decoration: BoxDecoration(
-                //   border: Border.all(
-                //   width: 1.w ,
-                //   color:AppColors.yellowNormal,
-                //   ),
-                //   borderRadius: BorderRadius.circular(8.r),
-                //
-                //   ),
-                //   child: const Center(child: CustomText(text:"Quit",color:AppColors.yellowNormal,fontSize: 16,fontWeight: FontWeight.w400,)),
-                //   ),
-                // ),
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                  margin: EdgeInsets.symmetric(horizontal:97.w),
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  decoration: BoxDecoration(
+                  border: Border.all(
+                  width: 1.w ,
+                  color:AppColors.yellowNormal,
+                  ),
+                  borderRadius: BorderRadius.circular(8.r),
+
+                  ),
+                  child: const CustomText(text:AppStaticStrings.quit,fontWeight: FontWeight.w400,fontSize: 16,color:AppColors.yellowNormal)
+                  ),
+                ),
               ],
               ),
             ),

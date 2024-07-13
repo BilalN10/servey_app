@@ -6,9 +6,6 @@ import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/core/dependency/dependency.dart';
 
 import 'service/socket_service.dart';
-
-
-
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
   DeviceUtils.lockDevicePortrait();

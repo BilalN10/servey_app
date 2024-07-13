@@ -3,10 +3,20 @@ import 'package:get/get.dart';
 
 class SurveController extends GetxController{
 
-  int lenguageTab=1;
+   int lenguageTab=1;
 
    int rattingTabIndex=0;
+
    int qustionIndex=0;
+
+   int chartCategoryIndex=1;
+
+   int periodicGraphTabIndex=0;
+
+
+
+
+
   PageController pageController = PageController();
 
    List<String> qustionList=[
@@ -16,8 +26,11 @@ class SurveController extends GetxController{
      "How do you feel about the work-life balance in your company?",
      "How satisfied are you with your current work environment?",
      "How do you feel about the work-life balance in your company?",
-
    ];
+
+
+
+
 
 
 }

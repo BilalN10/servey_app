@@ -75,7 +75,7 @@ class AppStaticStrings {
   static const bad = "Bad";
   static const verySatisfied = "Very satisfied";
   static const good = "Good";
-  static const totalQuestion= "Total Question 12";
+  static const totalQuestion= "Total Question ";
   static const writeYourQuestion= "Write your comment here";
   static const next= "Next";
   static const quit= "Quit";
@@ -84,9 +84,9 @@ class AppStaticStrings {
 ///<============================== All result section ======================>
 
   static const allResult= "All Results";
-  static const companyName= "Company Name";
-  static const projectName= "Project Name:";
-  static const surveyName= "Survey Name:";
+  static const companyName="Company Name";
+  static const projectName="Project Name:";
+  static const surveyName="Survey Name:";
   static const totalQuestionWithColon= "Total Question:";
   static const QN= "QN.";
   static const ans= "Ans:";
