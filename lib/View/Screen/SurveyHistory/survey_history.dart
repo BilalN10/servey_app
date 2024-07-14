@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/Inner/line_chart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/Inner/piechart.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Inner/custom_toggle_button.dart';
@@ -9,14 +10,26 @@ import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
+import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
-class SurveyHistory extends StatelessWidget {
+class SurveyHistory extends StatefulWidget {
    SurveyHistory({super.key});
 
+  @override
+  State<SurveyHistory> createState() => _SurveyHistoryState();
+}
+
+class _SurveyHistoryState extends State<SurveyHistory> {
   List<String> periodicName=[AppStaticStrings.today,AppStaticStrings.thisWeek,AppStaticStrings.thisMonth,AppStaticStrings.lastMonth];
+  late bool isShowingMainData;
 
-
+  @override
+  void initState() {
+    super.initState();
+    isShowingMainData = true;
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -183,13 +196,10 @@ class SurveyHistory extends StatelessWidget {
                             child: Column(
                             children: [
                              CustomText(text:periodicName[index],fontSize: 14,fontWeight: FontWeight.w500,bottom: 12.h,),
-
-
                             Container(
                              height: 5.h,
                              width: 46.w,
                              color:controller.periodicGraphTabIndex==index?AppColors.yellowNormal:Colors.transparent,
-
                             ),
                             ],
                             ),
@@ -198,17 +208,35 @@ class SurveyHistory extends StatelessWidget {
                       },),
                       ),
                     ),
-                    ///<==================================== This is divider =================================>
-                    Container(
+
+                 ///<==================================== This is divider =================================>
+
+                 Container(
                      height: 1.h,
                      color:AppColors.grayNormalHover,
                     ),
 
                  SizedBox(height: 16.h,),
 
-                 PieChartScreen(),
+              controller.chartCategoryIndex==1? PieChartScreen(index: controller.periodicGraphTabIndex)
+                  //:LineChart(indeex:controller.periodicGraphTabIndex),
+              :LineChartScreen(),
 
-                const CustomText(text:AppStaticStrings.verySatisfied)
+
+                SizedBox(height: 16.h,),
+
+                Center(child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,sizeWidth: 30.w,),
+
+                    CustomText(text: AppStaticStrings.verySatisfied,fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,),
+
+               //     CustomText(text: "80%",fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,color: AppColors.yellowNormal,),
+
+                  ],
+                )),
 
                   ],
                 ),

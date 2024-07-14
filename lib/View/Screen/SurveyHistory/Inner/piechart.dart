@@ -96,29 +96,63 @@
 
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
+import 'package:survey_markus/utils/AppImg/app_img.dart';
 
 class PieChartScreen extends StatelessWidget {
-   PieChartScreen({super.key});
-  Map<String,double> dataMap={
-    "Very satisfied":40,
-    "Good":30,
-    "Bad":20,
-    "Angry":10,
-  };
+   PieChartScreen({super.key,required this.index});
+
+   int index=0;
+
+   List<String> emojiList=[AppImages.rattingOneEmoji,AppImages.rattingTwoEmoji,AppImages.rattingThreeEmoji];
+
+  //   Map<String,double> dataMap={
+  //   "Very satisfied":40,
+  //   "Good":30,
+  //   "Bad":20,
+  //   "Angry":10,
+  // };
+  //
+    List<Map<String,double>> dataMap=[
+     {
+        "Very satisfied":40,
+        "Good":30,
+        "Bad":20,
+        "Angry":10,
+     },
+      {
+        "Very satisfied":10,
+        "Good":20,
+        "Bad":30,
+        "Angry":40,
+      },
+      {
+        "Very satisfied":40,
+        "Good":30,
+        "Bad":20,
+        "Angry":10,
+      },
+      {
+        "Very satisfied":10,
+        "Good":20,
+        "Bad":30,
+        "Angry":40,
+      },
+    ];
    List<Color>colorsList =[
     AppColors.yellowNormal,
     AppColors.blueNormal,
-    AppColors.yellowLight,
-    AppColors.greenLight,
+    AppColors.yellowLightActive,
+    AppColors.greenNormal,
     AppColors.yellowDarker,
 
   ];
   @override
   Widget build(BuildContext context) {
     return PieChart(
-      dataMap: dataMap,
-       animationDuration: Duration(milliseconds: 800),
+      dataMap:dataMap[index],
+       animationDuration: const Duration(milliseconds: 800),
       chartLegendSpacing: 32,
        chartRadius: MediaQuery.of(context).size.width / 3.2,
        colorList:colorsList,
@@ -126,7 +160,7 @@ class PieChartScreen extends StatelessWidget {
        chartType: ChartType.disc,
        ringStrokeWidth: 32,
        centerText: "%",
-      legendOptions: const LegendOptions(
+      legendOptions:  const LegendOptions(
         showLegendsInRow: false,
         legendPosition: LegendPosition.bottom,
         showLegends: true,
@@ -136,7 +170,7 @@ class PieChartScreen extends StatelessWidget {
         ),
       ),
 
-      chartValuesOptions: ChartValuesOptions(
+      chartValuesOptions: const ChartValuesOptions(
         showChartValueBackground: true,
         showChartValues: true,
         showChartValuesInPercentage: true,

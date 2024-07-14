@@ -61,6 +61,8 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   syncfusion_flutter_charts: ^26.1.41+1
   pie_chart: ^5.4.0
+  chart_sparkline: ^1.0.15+1
+  fl_chart:
 
 dev_dependencies:
   flutter_test:

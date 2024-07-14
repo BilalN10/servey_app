@@ -77,7 +77,7 @@ class SideDrawer extends StatelessWidget {
                 ///============================Your Survey====================
                 customRow(
                   onTap: () {
-                    // Get.toNamed(AppRoutes.settingScreen);
+                    Get.toNamed(AppRoute.historyScreen);
                   },
                   title: AppStaticStrings.yourSurvey,
                   icon: AppIcons.yourSurvey,

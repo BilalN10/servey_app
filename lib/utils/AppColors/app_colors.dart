@@ -4,6 +4,7 @@ class AppColors {
 
 
   static const Color greenLight=Color(0xffF3F1ED);
+  static const Color greenNormal=Color(0xff85714D);
   static const Color redColor = Color(0xffF16365);
   ///======================== Yellow Series ===========================
 

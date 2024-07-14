@@ -20,13 +20,15 @@ class FeedbackCard extends StatelessWidget {
 
         ),
          padding: EdgeInsets.symmetric(horizontal: 39.w,vertical: 34.h),
-        child:  CustomText(
-        maxLines:3,
-        text:title,
-        color: AppColors.whiteNormal,
-        fontSize:14,
-        fontWeight: FontWeight.w600,
+        child:  Center(
+          child: CustomText(
+          maxLines:3,
+          text:title,
+          color: AppColors.whiteNormal,
+          fontSize:14,
+          fontWeight: FontWeight.w600,
 
+          ),
         ),
       ),
     );

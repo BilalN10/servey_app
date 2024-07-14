@@ -1,5 +1,3 @@
-
-
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/AllResultScreen/all_result.dart';
 import 'package:survey_markus/View/Screen/AllSurveyScreen/all_survey_screen.dart';
@@ -10,7 +8,9 @@ import 'package:survey_markus/View/Screen/AuthScreen/sign_up.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_otp.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/reset_pass.dart';
+import 'package:survey_markus/View/Screen/HistoryScreen/history.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
+import 'package:survey_markus/View/Screen/Result/result.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/survey_history.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
@@ -61,6 +61,9 @@ class AppRoute {
  ///<====================== This is for  survey history =========================>
 
  static const String surveyHistoryScreen="/surveyHistoryScreen";
+
+ static const String historyScreen="/historyScreen";
+ static const String resultScreen="/resultScreen";
 
 
 
@@ -116,6 +119,11 @@ class AppRoute {
     ///<========================== This is for survey screden =========================>
 
     GetPage(name: surveyHistoryScreen, page: () => SurveyHistory()),
+
+
+    GetPage(name: historyScreen, page: () => HistoryScreen()),
+
+    GetPage(name: resultScreen, page: () => ResultScreen()),
 
 
 
