@@ -101,52 +101,52 @@ class MainSurveySCreen extends StatelessWidget {
 
                 ///<============================ This is the emoji section ==================>
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:List.generate(emojiList.length,(index){
-
-                    return Padding(
-                      padding:  EdgeInsets.only(right:15.w),
-                      child: SizedBox(
-                       child:IconButton(onPressed:(){
-                         controller.emojiTabIndex=index;
-                         controller.update();
-                       }, icon: CustomImage(imageSrc:emojiList[index],imageType: ImageType.png,
-                         size:
-                         controller
-                         .emojiTabIndex==index?50:
-                         35,)),
-                      ),
-                    );
-                  },),
-                  ),
-                ),
+                // SingleChildScrollView(
+                //   scrollDirection: Axis.horizontal,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children:List.generate(emojiList.length,(index){
+                //
+                //     return Padding(
+                //       padding:  EdgeInsets.only(right:15.w),
+                //       child: SizedBox(
+                //        child:IconButton(onPressed:(){
+                //          controller.emojiTabIndex=index;
+                //          controller.update();
+                //        }, icon: CustomImage(imageSrc:emojiList[index],imageType: ImageType.png,
+                //          size:
+                //          controller
+                //          .emojiTabIndex==index?50:
+                //          35,)),
+                //       ),
+                //     );
+                //   },),
+                //   ),
+                // ),
 
                 SizedBox(height: 12.h,),
 
                 ///<=========================== This is the ratting bar ====================>
 
-                // Center(
-                //   child: SingleChildScrollView(
-                //     scrollDirection: Axis.horizontal,
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children:List.generate(5,(index){
-                //
-                //       return
-                //          IconButton(onPressed: (){
-                //            controller.rattingTabIndex=index;
-                //            controller.update();
-                //          }, icon:Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,
-                //            size:controller.rattingTabIndex==index?55:45,
-                //          ));
-                //         //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
-                //     },),
-                //     ),
-                //   ),
-                // ),
+                Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:List.generate(5,(index){
+
+                      return
+                         IconButton(onPressed: (){
+                           controller.rattingTabIndex=index;
+                           controller.update();
+                         }, icon:Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,
+                           size:controller.rattingTabIndex==index?55:45,
+                         ));
+                        //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
+                    },),
+                    ),
+                  ),
+                ),
 
                 SizedBox(height: 60.h,),
 
