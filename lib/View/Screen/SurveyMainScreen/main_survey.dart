@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -110,12 +111,12 @@ class MainSurveySCreen extends StatelessWidget {
                       padding:  EdgeInsets.only(right:15.w),
                       child: SizedBox(
                        child:IconButton(onPressed:(){
-                         controller.rattingTabIndex=index;
+                         controller.emojiTabIndex=index;
                          controller.update();
                        }, icon: CustomImage(imageSrc:emojiList[index],imageType: ImageType.png,
                          size:
                          controller
-                         .rattingTabIndex==index?50:
+                         .emojiTabIndex==index?50:
                          35,)),
                       ),
                     );
@@ -125,25 +126,32 @@ class MainSurveySCreen extends StatelessWidget {
 
                 SizedBox(height: 12.h,),
 
-
                 ///<=========================== This is the ratting bar ====================>
 
-                Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:List.generate(5,(index){
-                      return  Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,);
-                    },),
-                    ),
-                  ),
-                ),
+                // Center(
+                //   child: SingleChildScrollView(
+                //     scrollDirection: Axis.horizontal,
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children:List.generate(5,(index){
+                //
+                //       return
+                //          IconButton(onPressed: (){
+                //            controller.rattingTabIndex=index;
+                //            controller.update();
+                //          }, icon:Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,
+                //            size:controller.rattingTabIndex==index?55:45,
+                //          ));
+                //         //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
+                //     },),
+                //     ),
+                //   ),
+                // ),
 
                 SizedBox(height: 60.h,),
 
 
-                 CustomText(text: "${AppStaticStrings.totalQuestion}${controller.qustionList.length}",bottom: 12.h,fontWeight: FontWeight.w500,fontSize: 12,),
+                 CustomText(text:"${AppStaticStrings.totalQuestion}${controller.qustionList.length}",bottom: 12.h,fontWeight: FontWeight.w500,fontSize: 12,),
 
                ///<========================================= This is the progressbar ==================>
 
@@ -169,7 +177,7 @@ class MainSurveySCreen extends StatelessWidget {
                   ),
                 ),
 
-               SizedBox(height: 24.h,),
+                 SizedBox(height: 24.h,),
 
               ///<=========================== This is the comment box ==================>
 
@@ -206,7 +214,6 @@ class MainSurveySCreen extends StatelessWidget {
 
                  Expanded(
                   child:TextFormField(
-
                     decoration: const InputDecoration(
                     hintText: "Write your comment here",
                     hintStyle: TextStyle(color: AppColors.grayNormalHover),
@@ -237,6 +244,10 @@ class MainSurveySCreen extends StatelessWidget {
               ),
 
                 SizedBox(height: 16.h,),
+
+
+
+                ///<============================= Quit button ========================>
 
                 GestureDetector(
                   onTap: (){

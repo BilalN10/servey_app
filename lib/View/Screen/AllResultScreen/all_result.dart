@@ -159,12 +159,24 @@ class AllResultScreen extends StatelessWidget {
                          ///<=========================== This is the ans section =======================================>
 
                          ListTile(
-                        leading:const CustomText(text:AppStaticStrings.ans,fontSize: 14,fontWeight: FontWeight.w400,),
-                        title: Row(
-                        children: [
-                        const CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,size: 16,),
+                         leading:const CustomText(text:AppStaticStrings.ans,fontSize: 14,fontWeight: FontWeight.w400,),
+                         title: Row(
 
-                        CustomText(text:"Very satisfied",left: 16.w,)
+                         children: [
+
+                           ///<============================= This is the star section ======================>
+                            Row(
+                           children: [
+                             const Icon(Icons.star,size: 16,color: AppColors.yellowNormal,),
+                             CustomText(text:"1 Star",left: 5.w,),
+                           ],
+                           ),
+
+                            ///<============================= This is the emoji section ======================>
+
+
+                            // const CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,size: 16,),
+
 
                         ],
                         ),

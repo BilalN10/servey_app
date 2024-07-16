@@ -43,7 +43,7 @@ class ResultScreen extends StatelessWidget {
                    borderRadius: BorderRadius.circular(8.r)
                    ),
                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 30.h),
-                   child: Center(
+                   child: const Center(
                      child: CustomText(text:"Project 1",color: AppColors.whiteNormal,fontWeight: FontWeight.w400,fontSize: 12,),
                    ),
                    ),

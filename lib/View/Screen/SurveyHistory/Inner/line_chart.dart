@@ -349,7 +349,16 @@ class LineChartScreen extends StatelessWidget {
                 SalesData('😡', 0),
                 SalesData('😳', 60),
                 SalesData('😊', 10),
-                SalesData('😍',80),
+                SalesData('😀',80),
+                SalesData('😍',30),
+
+                // SalesData('1 ⭐',0),
+                // SalesData('2 ⭐',60),
+                // SalesData('3 ⭐',10),
+                // SalesData('4 ⭐',80),
+                // SalesData('5 ⭐',30),
+
+
                 // SalesData('May', 40)
               ],
               xValueMapper: (SalesData sales, _) => sales.year,

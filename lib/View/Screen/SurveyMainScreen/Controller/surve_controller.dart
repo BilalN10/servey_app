@@ -7,6 +7,8 @@ class SurveController extends GetxController{
 
    int rattingTabIndex=0;
 
+   int emojiTabIndex=0;
+
    int qustionIndex=0;
 
    int chartCategoryIndex=1;

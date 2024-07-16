@@ -220,23 +220,24 @@ class _SurveyHistoryState extends State<SurveyHistory> {
 
               controller.chartCategoryIndex==1? PieChartScreen(index: controller.periodicGraphTabIndex)
                   //:LineChart(indeex:controller.periodicGraphTabIndex),
-              :LineChartScreen(),
+
+              :const LineChartScreen(),
 
 
                 SizedBox(height: 16.h,),
 
-                Center(child:Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                    CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,sizeWidth: 30.w,),
-
-                    CustomText(text: AppStaticStrings.verySatisfied,fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,),
-
-               //     CustomText(text: "80%",fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,color: AppColors.yellowNormal,),
-
-                  ],
-                )),
+               //  Center(child:Row(
+               //    mainAxisAlignment: MainAxisAlignment.center,
+               //    children: [
+               //
+               //      CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,sizeWidth: 30.w,),
+               //
+               //      CustomText(text: AppStaticStrings.verySatisfied,fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,),
+               //
+               // //     CustomText(text: "80%",fontWeight: FontWeight.w500,fontSize: 14,left: 16.w,color: AppColors.yellowNormal,),
+               //
+               //    ],
+               //  )),
 
                   ],
                 ),
