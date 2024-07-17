@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/widgets/DeletePopup/delete.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
@@ -10,8 +11,8 @@ import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class SideDrawer extends StatelessWidget {
-  const SideDrawer({super.key});
-
+   SideDrawer({super.key});
+TextEditingController controller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -114,6 +115,33 @@ class SideDrawer extends StatelessWidget {
                 ),
 
                 const Divider(),
+
+               customRow(title:"Delete Account", icon:AppIcons.delete_icon, onTap: (){
+                 showDialog(
+                   context: context,
+                   builder: (context) {
+                     return  AlertDialog(
+                       contentPadding: EdgeInsets.zero,
+                       backgroundColor: Colors.white,
+                       title: DeletePopup(
+                         controller:controller,
+                          onTap: (){
+
+                            // if(controller.passControllers.text.isEmpty==true){
+                            //   toastMessage(message:"Password field is required") ;
+                            // }else{
+                            //   controller.deleteAccount();
+                            //   controller.update();
+                            // }
+                          },
+                       ),
+                     );
+                   },
+                 );
+
+               }),
+
+                const Divider(),
               ],
             ),
           ),
@@ -136,6 +164,7 @@ class SideDrawer extends StatelessWidget {
             child: Row(
               children: [
                 CustomImage(
+                  size: 24,
                   imageSrc: icon,
                   // imageType: ImageType.svg,
                 ),

@@ -352,11 +352,18 @@ class LineChartScreen extends StatelessWidget {
                 // SalesData('😀',80),
                 // SalesData('😍',30),
 
-                SalesData('1 ⭐',0),
-                SalesData('2 ⭐',60),
-                SalesData('3 ⭐',10),
-                SalesData('4 ⭐',80),
-                SalesData('5 ⭐',30),
+                SalesData('Jan',0),
+                SalesData('Feb',60),
+                SalesData('Mar',10),
+                SalesData('Apr',80),
+                SalesData('May',30),
+                SalesData('June',30),
+                SalesData('July',30),
+                SalesData('Aug',34),
+                SalesData('Sept',40),
+                SalesData('Oct',20),
+                SalesData('Nov',25),
+                SalesData('Dec',15),
 
 
                 // SalesData('May', 40)
@@ -374,4 +381,5 @@ class SalesData {
   SalesData(this.year, this.sales);
   final String year;
   final double sales;
+
 }

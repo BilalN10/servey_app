@@ -6,14 +6,11 @@ import 'package:survey_markus/View/Screen/SurveyHistory/Inner/line_chart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/Inner/piechart.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Inner/custom_toggle_button.dart';
-import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-
 class SurveyHistory extends StatefulWidget {
    SurveyHistory({super.key});
 
@@ -24,6 +21,14 @@ class SurveyHistory extends StatefulWidget {
 class _SurveyHistoryState extends State<SurveyHistory> {
   List<String> periodicName=[AppStaticStrings.today,AppStaticStrings.thisWeek,AppStaticStrings.thisMonth,AppStaticStrings.lastMonth];
   late bool isShowingMainData;
+
+  bool click=false;
+
+
+  String dropdownvalue="Monthly";
+
+  List<String> monthName=["Jan","Fab","Mar","Apr","May","June",'July',"Aug","Sept","Oct","Nov","Dec"];
+
 
   @override
   void initState() {
@@ -143,6 +148,7 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                                   color:controller.chartCategoryIndex==1?AppColors.whiteNormal:AppColors.yellowNormal),
                           ),
                         ),
+
                         SizedBox(width: 16.w,),
 
 
@@ -178,51 +184,96 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                    SizedBox(height: 24.h,),
 
                    ///<=============================== This is the tab bar =====================================>
-
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:List.generate(4, (index) {
-                        return Padding(
-                          padding:  EdgeInsets.only(right: 29.w),
-
-                          child: GestureDetector(
-                            onTap: (){
-                            controller.periodicGraphTabIndex=index;
-                            controller.update();
-                            print("This is table value${controller.periodicGraphTabIndex}");
-                            },
-                            child: Column(
-                            children: [
-                             CustomText(text:periodicName[index],fontSize: 14,fontWeight: FontWeight.w500,bottom: 12.h,),
-                            Container(
-                             height: 5.h,
-                             width: 46.w,
-                             color:controller.periodicGraphTabIndex==index?AppColors.yellowNormal:Colors.transparent,
-                            ),
-                            ],
-                            ),
-                          ),
-                        );
-                      },),
-                      ),
-                    ),
-
+                    // SingleChildScrollView(
+                    //   scrollDirection: Axis.horizontal,
+                    //   child: Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children:List.generate(4, (index) {
+                    //     return Padding(
+                    //       padding:  EdgeInsets.only(right: 29.w),
+                    //
+                    //       child: GestureDetector(
+                    //         onTap: (){
+                    //         controller.periodicGraphTabIndex=index;
+                    //         controller.update();
+                    //         print("This is table value${controller.periodicGraphTabIndex}");
+                    //         },
+                    //         child: Column(
+                    //         children: [
+                    //          CustomText(text:periodicName[index],fontSize: 14,fontWeight: FontWeight.w500,bottom: 12.h,),
+                    //         Container(
+                    //          height: 5.h,
+                    //          width: 46.w,
+                    //          color:controller.periodicGraphTabIndex==index?AppColors.yellowNormal:Colors.transparent,
+                    //         ),
+                    //         ],
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },),
+                    //   ),
+                    // ),
                  ///<==================================== This is divider =================================>
-
                  Container(
                      height: 1.h,
                      color:AppColors.grayNormalHover,
                     ),
 
-                 SizedBox(height: 16.h,),
+                    ///<================================ This is drop down section ======================>
+
+                    Align(
+                      alignment:AlignmentDirectional.bottomEnd,
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                              onTap:(){
+                              setState(() {
+                                click=!click;
+                                print("hi");
+                              });
+                              },
+                              child: const CustomText(text:"Monthly 🔽",fontWeight: FontWeight.w400,fontSize:12,)),
+
+                         click==true?Container(
+                            width: 150.w,
+                            height: 50.h,
+                            padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 8.h),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.r),
+
+                            ),
+                            child: SingleChildScrollView(
+
+                              child: Column(
+                                children:List.generate(monthName.length,(index) {
+                                  return CustomText(text:monthName[index],fontSize: 14,fontWeight: FontWeight.w400,);
+                                },),
+                              ),
+                            ),
+                          )
+
+                             :SizedBox(),
+                        ],
+                      ),
+                    ),
+
+
+
+                    SizedBox(height: 16.h,),
 
               controller.chartCategoryIndex==1? PieChartScreen(index: controller.periodicGraphTabIndex)
                   //:LineChart(indeex:controller.periodicGraphTabIndex),
 
               :const LineChartScreen(),
 
+               SizedBox(height: 5.h,),
+
+                // Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // children:List.generate(5,(index) {
+                //   return CustomText(text: AppStaticStrings.submit);
+                // },),
+                // ),
 
                 SizedBox(height: 16.h,),
 

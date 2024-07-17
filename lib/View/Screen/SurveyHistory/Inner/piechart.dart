@@ -115,34 +115,40 @@ class PieChartScreen extends StatelessWidget {
   // };
   //
     List<Map<String,double>> dataMap=[
-     // {
-     //    "Very satisfied":40,
-     //    "Satisfied":40,
-     //    "Good":30,
-     //    "Bad":20,
-     //    "Angry":10,
-     // },
-     //  {
-     //    "Very satisfied":10,
-     //    "Satisfied":10,
-     //    "Good":20,
-     //    "Bad":30,
-     //    "Angry":40,
-     //  },
-     //  {
-     //    "Very satisfied":40,
-     //    "Satisfied":40,
-     //    "Good":30,
-     //    "Bad":20,
-     //    "Angry":10,
-     //  },
-     //  {
-     //    "Very satisfied":10,
-     //    "Satisfied":10,
-     //    "Good":20,
-     //    "Bad":30,
-     //    "Angry":40,
-     //  },
+
+
+
+      // {
+      //   "😍 5 Star ":40,
+      //   "😀 4 Star ":30,
+      //   "😊 3 Star ":20,
+      //   "😳 2 Star ":10,
+      //   "😡 1 Star ":10,
+      // },
+      // {
+      //   "😍 5 Star ":10,
+      //   "😀 4 Star ":20,
+      //   "😊 3 Star ":30,
+      //   "😳 2 Star ":40,
+      //   "😡1 Star ":40,
+      // },
+      // {
+      //   "😍 5 Star ":40,
+      //   "😀 4 Star ":30,
+      //   "😊 3 Star ":20,
+      //   "😳 2 Star ":10,
+      //   "😡 1 Star ":10,
+      // },
+      //
+      // {
+      //   "😍 5 Star ":10,
+      //   "😀 4 Star ":20,
+      //   "😊 3 Star ":30,
+      //   "😳 2 Star ":40,
+      //   "😡1 Star ":40,
+      // },
+
+
 
       {
         "⭐ 5 Star ":40,

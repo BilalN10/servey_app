@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context){
     return Scaffold(
       key: scaffoldKey,
-      drawer: const SideDrawer(),
+      drawer:  SideDrawer(),
       bottomNavigationBar: const NavBar(currentIndex: 0),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                 ),
         
         
-                const CustomText(text:AppStaticStrings.joinedSurvey,fontSize: 20,fontWeight: FontWeight.w600,top: 24,),
+                const CustomText(text:"Joined Company",fontSize: 20,fontWeight: FontWeight.w600,top: 24,),
         
                 SizedBox(
                   height: 29.h,
