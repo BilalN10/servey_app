@@ -3,17 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
-import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
-import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class OtpVerifiedScreen extends StatefulWidget {
-   OtpVerifiedScreen({super.key});
+   const OtpVerifiedScreen({super.key});
 
   @override
   State<OtpVerifiedScreen> createState() => _OtpVerifiedScreenState();

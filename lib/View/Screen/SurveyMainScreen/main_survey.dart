@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Inner/custom_toggle_button.dart';
-import 'package:survey_markus/View/Screen/all_survey_company/all_survey_company.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
-import 'package:survey_markus/utils/AppIcons/app_icons.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class MainSurveySCreen extends StatelessWidget {
    MainSurveySCreen({super.key});
 
-   List<String> emojiList=[AppImages.rattingOneEmoji,AppImages.rattingTwoEmoji,AppImages.rattingThreeEmoji,AppImages.rattingFourEmoji,AppImages.rattingFiveEmoji,];
+  final List<String> emojiList=[AppImages.rattingOneEmoji,AppImages.rattingTwoEmoji,AppImages.rattingThreeEmoji,AppImages.rattingFourEmoji,AppImages.rattingFiveEmoji,];
   @override
   Widget build(BuildContext context) {
 
@@ -182,7 +177,7 @@ class MainSurveySCreen extends StatelessWidget {
               ///<=========================== This is the comment box ==================>
 
               Container(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               margin: EdgeInsets.symmetric(horizontal:20.w),
               decoration: BoxDecoration(
               border:Border.all(width: 1.w,color:AppColors.grayLight),

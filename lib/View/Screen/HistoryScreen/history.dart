@@ -14,7 +14,7 @@ class HistoryScreen extends StatelessWidget {
     return Scaffold(
          appBar: AppBar(
          centerTitle: true,
-         title:CustomText(
+         title:const CustomText(
          text: AppStaticStrings.history,
          fontSize: 24,
          fontWeight: FontWeight.w500,

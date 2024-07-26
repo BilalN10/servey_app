@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';

@@ -5,10 +5,10 @@ import 'package:survey_markus/helper/network_img/network_img.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 
 class CustomCompanyCard extends StatelessWidget {
-  CustomCompanyCard(
+  const CustomCompanyCard(
       {super.key, required this.image, required this.companyName});
-  String image;
-  String companyName;
+  final String image;
+  final String companyName;
   @override
   Widget build(BuildContext context) {
     return Container(

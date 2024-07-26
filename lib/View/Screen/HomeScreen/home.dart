@@ -11,25 +11,24 @@ import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
+  HomeScreen({super.key});
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      drawer:  SideDrawer(),
+      drawer: SideDrawer(),
       bottomNavigationBar: const NavBar(currentIndex: 0),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 24.w),
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               children: [
-
                 ///<====================== This is the app Bar ================>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,28 +45,34 @@ class HomeScreen extends StatelessWidget {
                         icon: const CustomImage(imageSrc: AppIcons.drawreIcon)),
                   ],
                 ),
-        
+
                 SizedBox(
                   height: 14.h,
                 ),
-        
+
                 ///<=================== This is the top iamge section =============>
-        
+
                 const CustomImage(
                   imageSrc: AppImages.homeImage,
                   imageType: ImageType.png,
                 ),
-        
-        
-                 CustomText(text:AppStaticStrings.wellComeMarkus,fontWeight: FontWeight.w600,fontSize: 32,maxLines: 2,top: 24.h,bottom: 24.h,),
-        
-        
+
+                CustomText(
+                  text: AppStaticStrings.wellComeMarkus,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 32,
+                  maxLines: 2,
+                  top: 24.h,
+                  bottom: 24.h,
+                ),
+
                 ///<================== this is the  survey card ==================>
-        
+
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 140.w, vertical: 40.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 140.w, vertical: 40.h),
                     decoration: BoxDecoration(
                       color: AppColors.yellowNormal,
                       borderRadius: BorderRadius.circular(4),
@@ -78,10 +83,14 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-        
-        
-                const CustomText(text:"Joined Company",fontSize: 20,fontWeight: FontWeight.w600,top: 24,),
-        
+
+                const CustomText(
+                  text: "Joined Company",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  top: 24,
+                ),
+
                 SizedBox(
                   height: 29.h,
                 ),
@@ -95,19 +104,21 @@ class HomeScreen extends StatelessWidget {
                 //       );
                 //     }),
                 SingleChildScrollView(
-                  scrollDirection:Axis.vertical,
+                  scrollDirection: Axis.vertical,
                   physics: const NeverScrollableScrollPhysics(),
                   child: Column(
-                  children:List.generate(10,(index){
-                    return CustomCompanyCard(
-                      companyName: "BdCalling it ltd",
-                      image: AppImages.splashLogo,
-                    );
-                  },),
+                    children: List.generate(
+                      10,
+                      (index) {
+                        return const CustomCompanyCard(
+                          companyName: "BdCalling it ltd",
+                          image: AppImages.splashLogo,
+                        );
+                      },
+                    ),
                   ),
                 ),
-        
-        
+
                 SizedBox(
                   height: 16.h,
                 ),

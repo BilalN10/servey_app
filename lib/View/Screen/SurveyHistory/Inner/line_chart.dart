@@ -340,7 +340,7 @@ class LineChartScreen extends StatelessWidget {
     return SfCartesianChart(
 
       // Initialize category axis
-        primaryXAxis: CategoryAxis(),
+        primaryXAxis: const CategoryAxis(),
        enableSideBySideSeriesPlacement: true,
         series: <LineSeries<SalesData, String>>[
           LineSeries<SalesData, String>(

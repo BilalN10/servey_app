@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
-import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
-import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class AllResultScreen extends StatelessWidget {
@@ -24,7 +22,7 @@ class AllResultScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 24.w,vertical: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,165 +30,186 @@ class AllResultScreen extends StatelessWidget {
             ///<======================== This is the company name section ==================>
 
             Column(
-             children: [
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      textAlign: TextAlign.start,
+                      text: "${AppStaticStrings.companyName}:  ",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                    Expanded(
+                        child: CustomText(
+                            text: "BdCalling IT Ltd",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: AppColors.yellowNormal,
+                            textAlign: TextAlign.start)),
+                  ],
+                ),
 
-               const Row(
-                 mainAxisAlignment: MainAxisAlignment.start,
-                 children: [
-                   CustomText(
-                     textAlign: TextAlign.start,
-                     text:"${AppStaticStrings.companyName}:  ",
-                     fontWeight: FontWeight.w500,
-                     fontSize: 14,
-                   ),
-                   Expanded(
-                       child: CustomText(
-                           text: "BdCalling IT Ltd",
-                           fontWeight: FontWeight.w500,
-                           fontSize: 12,
-                           color: AppColors.yellowNormal,
-                           textAlign: TextAlign.start)),
-                 ],
-               ),
+                SizedBox(
+                  height: 16.h,
+                ),
 
-               SizedBox(
-                 height: 16.h,
-               ),
+                ///<======================== This is the project name section ==================>
 
-               ///<======================== This is the project name section ==================>
+                const Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: AppStaticStrings.projectName,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                    Expanded(
+                        child: CustomText(
+                            text: "  Employee Feedback",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: AppColors.yellowNormal,
+                            maxLines: 2,
+                            textAlign: TextAlign.start)),
+                  ],
+                ),
 
-               const Row(
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 mainAxisAlignment: MainAxisAlignment.start,
-                 children: [
-                   CustomText(
-                     text: AppStaticStrings.projectName,
-                     fontWeight: FontWeight.w500,
-                     fontSize: 14,
-                   ),
-                   Expanded(
-                       child: CustomText(
-                           text: "  Employee Feedback",
-                           fontWeight: FontWeight.w500,
-                           fontSize: 12,
-                           color: AppColors.yellowNormal,
-                           maxLines: 2,
-                           textAlign: TextAlign.start)),
-                 ],
-               ),
+                SizedBox(
+                  height: 16.h,
+                ),
 
-               SizedBox(
-                 height: 16.h,
-               ),
+                ///<======================== This is the survey  name section ==================>
 
-               ///<======================== This is the survey  name section ==================>
+                const Row(
+                  children: [
+                    CustomText(
+                      text: AppStaticStrings.surveyName,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                    Expanded(
+                        child: CustomText(
+                            text: "  Survey No 01",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: AppColors.yellowNormal,
+                            textAlign: TextAlign.start)),
+                  ],
+                ),
 
-               const Row(
-                 children: [
-                   CustomText(
-                     text: AppStaticStrings.surveyName,
-                     fontWeight: FontWeight.w500,
-                     fontSize: 14,
-                   ),
-                   Expanded(
-                       child: CustomText(
-                           text: "  Survey No 01",
-                           fontWeight: FontWeight.w500,
-                           fontSize: 12,
-                           color: AppColors.yellowNormal,
-                           textAlign: TextAlign.start)),
-                 ],
-               ),
+                SizedBox(
+                  height: 16.h,
+                ),
 
-               SizedBox(
-                 height: 16.h,
-               ),
+                ///<======================== This is the total Question section ==================>
 
-               ///<======================== This is the total Question section ==================>
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: "${AppStaticStrings.totalQuestion}:",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                    Expanded(
+                        child: CustomText(
+                      text: "  6",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
+                      color: AppColors.yellowNormal,
+                      textAlign: TextAlign.start,
+                    )),
+                  ],
+                ),
 
-               const Row(
-                 mainAxisAlignment: MainAxisAlignment.start,
-                 children: [
-                   CustomText(
-                     text: "${AppStaticStrings.totalQuestion}:",
-                     fontWeight: FontWeight.w500,
-                     fontSize: 14,
-                   ),
-                   Expanded(
-                       child: CustomText(
-                         text: "  6",
-                         fontWeight: FontWeight.w500,
-                         fontSize: 12,
-                         color: AppColors.yellowNormal,
-                         textAlign: TextAlign.start,
-                       )),
-                 ],
-               ),
+                SizedBox(
+                  height: 16.h,
+                ),
+              ],
+            ),
 
-               SizedBox(
-                 height: 16.h,
-               ),
-             ],
-             ),
+            SizedBox(
+              height: 24.h,
+            ),
 
-
-            SizedBox(height: 24.h,),
             ///<========================== This is the all question section ================>
             Expanded(
               child: ListView.builder(
-                itemCount:100,
+                itemCount: 100,
                 physics: const BouncingScrollPhysics(),
-                itemBuilder:(context, index) {
-                  return   GestureDetector(
-                    onTap: (){
-                    Get.toNamed(AppRoute.surveyHistoryScreen);
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoute.surveyHistoryScreen);
                     },
                     child: Column(
                       children: [
-
                         ///<========================== This is the question section ====================================>
                         ListTile(
-                        leading:CustomText(text: "${AppStaticStrings.QN}${index+1}",fontSize: 14,fontWeight: FontWeight.w400,),
-                        title:const CustomText(text: "How satisfied are you with your current work environment?",maxLines: 2,textAlign: TextAlign.start,),
-                        ) ,
-
-                        SizedBox(height: 20.h,),
-
-                         ///<=========================== This is the ans section =======================================>
-
-                         ListTile(
-                         leading:const CustomText(text:AppStaticStrings.ans,fontSize: 14,fontWeight: FontWeight.w400,),
-                         title: Row(
-
-                         children: [
-
-                           ///<============================= This is the star section ======================>
-                            Row(
-                           children: [
-                             const Icon(Icons.star,size: 16,color: AppColors.yellowNormal,),
-                             CustomText(text:"1 Star",left: 5.w,),
-                           ],
-                           ),
-
-                            ///<============================= This is the emoji section ======================>
-
-
-                            // const CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,size: 16,),
-
-
-                        ],
+                          leading: CustomText(
+                            text: "${AppStaticStrings.qN}${index + 1}",
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          title: const CustomText(
+                            text:
+                                "How satisfied are you with your current work environment?",
+                            maxLines: 2,
+                            textAlign: TextAlign.start,
+                          ),
                         ),
+
+                        SizedBox(
+                          height: 20.h,
+                        ),
+
+                        ///<=========================== This is the ans section =======================================>
+
+                        ListTile(
+                          leading: const CustomText(
+                            text: AppStaticStrings.ans,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          title: Row(
+                            children: [
+                              ///<============================= This is the star section ======================>
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    size: 16,
+                                    color: AppColors.yellowNormal,
+                                  ),
+                                  CustomText(
+                                    text: "1 Star",
+                                    left: 5.w,
+                                  ),
+                                ],
+                              ),
+
+                              ///<============================= This is the emoji section ======================>
+
+                              // const CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,size: 16,),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   );
-                },),
+                },
+              ),
             ),
 
             ///<========================= This is the export button =======================>
 
-            CustomButton(onTap:(){},title: AppStaticStrings.export,fillColor: AppColors.yellowNormal,),
-
+            CustomButton(
+              onTap: () {},
+              title: AppStaticStrings.export,
+              fillColor: AppColors.yellowNormal,
+            ),
           ],
         ),
       ),

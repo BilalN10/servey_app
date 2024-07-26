@@ -6,16 +6,16 @@ import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/core/dependency/dependency.dart';
 
 import 'service/socket_service.dart';
-void main(){
+
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   DeviceUtils.lockDevicePortrait();
   DependancyInjection di = DependancyInjection();
   SocketApi.init();
   di.dependencies();
   runApp(const MyApp());
-
-  
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -33,4 +33,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

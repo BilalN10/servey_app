@@ -12,9 +12,6 @@ class ScanQrCodeScreen extends StatefulWidget {
 }
 
 class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
-
-
-
   String? _scanBarcode;
 
   Future<void> scanBarcodeNormal() async {
@@ -22,7 +19,6 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -35,7 +31,8 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     setState(() {
       _scanBarcode = barcodeScanRes;
 
-      print("This is the barqode result=-=-=-=-=-=-=-=-=-=-=- ${_scanBarcode}");
+      debugPrint(
+          "This is the barqode result=-=-=-=-=-=-=-=-=-=-=- $_scanBarcode");
     });
   }
 
@@ -47,11 +44,15 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
-          title: const CustomText(text: AppStaticStrings.scanQRCode,fontWeight: FontWeight.w500,fontSize: 24,)),
+          title: const CustomText(
+            text: AppStaticStrings.scanQRCode,
+            fontWeight: FontWeight.w500,
+            fontSize: 24,
+          )),
     );
   }
 }

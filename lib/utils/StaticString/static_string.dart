@@ -3,10 +3,7 @@ class AppStaticStrings {
   static RegExp emailRegexp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
-  static RegExp passRegexp =
-  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.{8,}$)');
-
-
+  static RegExp passRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.{8,}$)');
 
   static const matchPettern = "Password must have 8 and one capital latter";
   static const wellComeMarkus = "Welcome!      Markus";
@@ -15,7 +12,8 @@ class AppStaticStrings {
   static const welcomeBack = "WellCome Back";
   static const login = "Login";
   static const rememberMe = "Remember me";
-  static const byRegister = "By registration you are agree to our terms of use and privacy policy.";
+  static const byRegister =
+      "By registration you are agree to our terms of use and privacy policy.";
   static const byRegistasion = "By registration you are agree to our ";
   static const email = "Email";
   static const emailConfirmation = "Email Confirmation";
@@ -40,14 +38,15 @@ class AppStaticStrings {
 
   static const enterYourPassword = "Enter your Password";
   static const logIn = "Log in";
-  static const scanQRCode  = "Scan QR Code";
-  static const sendCode  = "Send Code";
-  static const verification   = "Verification";
-  static const verify   = "Verify";
-  static const enterVerificationCode   = "Enter verification code";
-  static const ifYouDidntAnyCode= "If you didn't any code!";
+  static const scanQRCode = "Scan QR Code";
+  static const sendCode = "Send Code";
+  static const verification = "Verification";
+  static const verify = "Verify";
+  static const enterVerificationCode = "Enter verification code";
+  static const ifYouDidntAnyCode = "If you didn't any code!";
   static const resend = "Resend ";
-  static const dontWorry  = "Don’t worry! It Occurs. Please enter the email address linked with your account.";
+  static const dontWorry =
+      "Don’t worry! It Occurs. Please enter the email address linked with your account.";
 
   ///============================= Home Screen ================================
 
@@ -55,7 +54,6 @@ class AppStaticStrings {
   static const allProjects = "All Projects";
   static const joinedCompany = "Joined Company";
   static const joinedSurvey = "Joined Survey";
-
 
   ///==================== Side Drawer ======================
 
@@ -66,46 +64,39 @@ class AppStaticStrings {
   static const privacyPolicy = "Privacy Policy";
   static const termsAndCondition = "Terms & Condition";
 
-
   ///|<========================== Survey section ====================>
 
-
   static const allSurvey = "All Survey";
-  static const howSatisfiedYou = "How satisfied are you with your current work environment?";
+  static const howSatisfiedYou =
+      "How satisfied are you with your current work environment?";
   static const bad = "Bad";
   static const verySatisfied = "Very satisfied";
   static const good = "Good";
-  static const totalQuestion= "Total Question ";
-  static const writeYourQuestion= "Write your comment here";
-  static const next= "Next";
-  static const quit= "Quit";
+  static const totalQuestion = "Total Question ";
+  static const writeYourQuestion = "Write your comment here";
+  static const next = "Next";
+  static const quit = "Quit";
 
+  ///<============================== All result section ======================>
 
-///<============================== All result section ======================>
+  static const allResult = "All Results";
+  static const companyName = "Company Name";
+  static const projectName = "Project Name:";
+  static const surveyName = "Survey Name:";
+  static const totalQuestionWithColon = "Total Question:";
+  static const qN = "QN.";
+  static const ans = "Ans:";
+  static const export = "Export";
+  static const today = "Today";
+  static const thisWeek = "This week";
+  static const thisMonth = "This Month";
+  static const lastMonth = "Last Month";
+  static const paiChart = "Pai chart";
+  static const lineChart = "Line chart";
+  static const satisfied = "Satisfied";
+  static const angry = "Angry";
+  static const history = "History";
 
-  static const allResult= "All Results";
-  static const companyName="Company Name";
-  static const projectName="Project Name:";
-  static const surveyName="Survey Name:";
-  static const totalQuestionWithColon= "Total Question:";
-  static const QN= "QN.";
-  static const ans= "Ans:";
-  static const export= "Export";
-  static const today= "Today";
-  static const thisWeek= "This week";
-  static const thisMonth= "This Month";
-  static const lastMonth= "Last Month";
-  static const paiChart= "Pai chart";
-  static const lineChart= "Line chart";
-  static const satisfied= "Satisfied";
-  static const angry= "Angry";
-  static const history= "History";
-
-
-
-
-  static const notifications= "Notifications";
-  static const companyID= "Company ID";
-
-
+  static const notifications = "Notifications";
+  static const companyID = "Company ID";
 }

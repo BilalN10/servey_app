@@ -11,8 +11,8 @@ import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class SideDrawer extends StatelessWidget {
-   SideDrawer({super.key});
-TextEditingController controller=TextEditingController();
+  SideDrawer({super.key});
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -51,7 +51,7 @@ TextEditingController controller=TextEditingController();
                 ///=======================Got Qr Code===============================
 
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.toNamed(AppRoute.scanQrCodeScreen);
                   },
                   child: Row(
@@ -70,7 +70,8 @@ TextEditingController controller=TextEditingController();
                       ),
                     ],
                   ),
-                ), SizedBox(
+                ),
+                SizedBox(
                   height: 15.h,
                 ),
                 const Divider(),
@@ -108,38 +109,38 @@ TextEditingController controller=TextEditingController();
                 customRow(
                   onTap: () {
                     Get.offNamed(AppRoute.signInScreen);
-
                   },
-                  title:"Log out",
-                  icon:AppIcons.logoutIcon,
+                  title: "Log out",
+                  icon: AppIcons.logoutIcon,
                 ),
 
                 const Divider(),
 
-               customRow(title:"Delete Account", icon:AppIcons.delete_icon, onTap: (){
-                 showDialog(
-                   context: context,
-                   builder: (context) {
-                     return  AlertDialog(
-                       contentPadding: EdgeInsets.zero,
-                       backgroundColor: Colors.white,
-                       title: DeletePopup(
-                         controller:controller,
-                          onTap: (){
-
-                            // if(controller.passControllers.text.isEmpty==true){
-                            //   toastMessage(message:"Password field is required") ;
-                            // }else{
-                            //   controller.deleteAccount();
-                            //   controller.update();
-                            // }
-                          },
-                       ),
-                     );
-                   },
-                 );
-
-               }),
+                customRow(
+                    title: "Delete Account",
+                    icon: AppIcons.deleteIcon,
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            contentPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.white,
+                            title: DeletePopup(
+                              controller: controller,
+                              onTap: () {
+                                // if(controller.passControllers.text.isEmpty==true){
+                                //   toastMessage(message:"Password field is required") ;
+                                // }else{
+                                //   controller.deleteAccount();
+                                //   controller.update();
+                                // }
+                              },
+                            ),
+                          );
+                        },
+                      );
+                    }),
 
                 const Divider(),
               ],

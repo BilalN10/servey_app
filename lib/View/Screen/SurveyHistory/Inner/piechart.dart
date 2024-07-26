@@ -96,16 +96,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 
 class PieChartScreen extends StatelessWidget {
-   PieChartScreen({super.key,required this.index});
+  PieChartScreen({super.key, this.index = 0});
 
-   int index=0;
+  final int index;
 
-   List<String> emojiList=[AppImages.rattingOneEmoji,AppImages.rattingTwoEmoji,AppImages.rattingThreeEmoji];
+  final List<String> emojiList = [
+    AppImages.rattingOneEmoji,
+    AppImages.rattingTwoEmoji,
+    AppImages.rattingThreeEmoji
+  ];
 
   //   Map<String,double> dataMap={
   //   "Very satisfied":40,
@@ -114,99 +117,92 @@ class PieChartScreen extends StatelessWidget {
   //   "Angry":10,
   // };
   //
-    List<Map<String,double>> dataMap=[
+  final List<Map<String, double>> dataMap = [
+    // {
+    //   "😍 5 Star ":40,
+    //   "😀 4 Star ":30,
+    //   "😊 3 Star ":20,
+    //   "😳 2 Star ":10,
+    //   "😡 1 Star ":10,
+    // },
+    // {
+    //   "😍 5 Star ":10,
+    //   "😀 4 Star ":20,
+    //   "😊 3 Star ":30,
+    //   "😳 2 Star ":40,
+    //   "😡1 Star ":40,
+    // },
+    // {
+    //   "😍 5 Star ":40,
+    //   "😀 4 Star ":30,
+    //   "😊 3 Star ":20,
+    //   "😳 2 Star ":10,
+    //   "😡 1 Star ":10,
+    // },
+    //
+    // {
+    //   "😍 5 Star ":10,
+    //   "😀 4 Star ":20,
+    //   "😊 3 Star ":30,
+    //   "😳 2 Star ":40,
+    //   "😡1 Star ":40,
+    // },
 
-
-
-      // {
-      //   "😍 5 Star ":40,
-      //   "😀 4 Star ":30,
-      //   "😊 3 Star ":20,
-      //   "😳 2 Star ":10,
-      //   "😡 1 Star ":10,
-      // },
-      // {
-      //   "😍 5 Star ":10,
-      //   "😀 4 Star ":20,
-      //   "😊 3 Star ":30,
-      //   "😳 2 Star ":40,
-      //   "😡1 Star ":40,
-      // },
-      // {
-      //   "😍 5 Star ":40,
-      //   "😀 4 Star ":30,
-      //   "😊 3 Star ":20,
-      //   "😳 2 Star ":10,
-      //   "😡 1 Star ":10,
-      // },
-      //
-      // {
-      //   "😍 5 Star ":10,
-      //   "😀 4 Star ":20,
-      //   "😊 3 Star ":30,
-      //   "😳 2 Star ":40,
-      //   "😡1 Star ":40,
-      // },
-
-
-
-      {
-        "⭐ 5 Star ":40,
-        "⭐ 4 Star ":30,
-        "⭐ 3 Star ":20,
-        "⭐ 2 Star ":10,
-        "⭐ 1 Star ":10,
-      },
-      {
-        "⭐ 5 Star ":10,
-        "⭐ 4 Star ":20,
-        "⭐ 3 Star ":30,
-        "⭐ 2 Star ":40,
-        "⭐ 1 Star ":40,
-      },
-      {
-        "⭐ 5 Star":40,
-        "⭐ 4 Star":30,
-        "⭐ 3 Star":20,
-        "⭐ 2 Star":10,
-        "⭐ 1 Star":10,
-      },
-      {
-        "⭐ 5 Star ":10,
-        "⭐ 4 Star ":20,
-        "⭐ 3 Star":30,
-        "⭐ 2 Star ":40,
-        "⭐ 1 Star ":40,
-      },
-
-    ];
-   List<Color>colorsList =[
+    {
+      "⭐ 5 Star ": 40,
+      "⭐ 4 Star ": 30,
+      "⭐ 3 Star ": 20,
+      "⭐ 2 Star ": 10,
+      "⭐ 1 Star ": 10,
+    },
+    {
+      "⭐ 5 Star ": 10,
+      "⭐ 4 Star ": 20,
+      "⭐ 3 Star ": 30,
+      "⭐ 2 Star ": 40,
+      "⭐ 1 Star ": 40,
+    },
+    {
+      "⭐ 5 Star": 40,
+      "⭐ 4 Star": 30,
+      "⭐ 3 Star": 20,
+      "⭐ 2 Star": 10,
+      "⭐ 1 Star": 10,
+    },
+    {
+      "⭐ 5 Star ": 10,
+      "⭐ 4 Star ": 20,
+      "⭐ 3 Star": 30,
+      "⭐ 2 Star ": 40,
+      "⭐ 1 Star ": 40,
+    },
+  ];
+  final List<Color> colorsList = [
     AppColors.yellowNormal,
     AppColors.blueNormal,
     AppColors.yellowLightActive,
     AppColors.greenNormal,
     AppColors.yellowDarker,
-
   ];
   @override
   Widget build(BuildContext context) {
     return PieChart(
-      dataMap:dataMap[index],
-       animationDuration: const Duration(milliseconds: 800),
+      dataMap: dataMap[index],
+      animationDuration: const Duration(milliseconds: 800),
       chartLegendSpacing: 32,
-       chartRadius: MediaQuery.of(context).size.width / 3.2,
-       colorList:colorsList,
-       initialAngleInDegree: 0,
-       chartType: ChartType.disc,
-       ringStrokeWidth: 32,
-       centerText: "%",
-      legendOptions:  const LegendOptions(
+      chartRadius: MediaQuery.of(context).size.width / 3.2,
+      colorList: colorsList,
+      initialAngleInDegree: 0,
+      chartType: ChartType.disc,
+      ringStrokeWidth: 32,
+      centerText: "%",
+      legendOptions: const LegendOptions(
         showLegendsInRow: false,
         legendPosition: LegendPosition.bottom,
         showLegends: true,
-        legendShape:BoxShape.circle,
+        legendShape: BoxShape.circle,
         legendTextStyle: TextStyle(
-        fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.bold,
         ),
       ),
 

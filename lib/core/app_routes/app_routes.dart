@@ -79,8 +79,8 @@ class AppRoute {
 
     GetPage(name: signInScreen, page: () =>  SignInScreen()),
     GetPage(name: signUpScreen, page: () =>  SignUpScreen()),
-    GetPage(name: otpVerifiedScreen, page: () =>  OtpVerifiedScreen()),
-    GetPage(name: forgotOTP, page: () =>  ForgotOtp()),
+    GetPage(name: otpVerifiedScreen, page: () =>  const OtpVerifiedScreen()),
+    GetPage(name: forgotOTP, page: () =>  const ForgotOtp()),
 
 
 
@@ -90,7 +90,7 @@ class AppRoute {
 
 
     ///<======================== This is the all survey section =====================>
-    GetPage(name: allProjectScreen, page: () => AllProjectScreen()),
+    GetPage(name: allProjectScreen, page: () => const AllProjectScreen()),
 
     ///========================Profile=======================
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
@@ -114,16 +114,16 @@ class AppRoute {
 
     ///<============================== All result screen ==========================>
 
-    GetPage(name: allResultScreeen, page: () => AllResultScreen()),
+    GetPage(name: allResultScreeen, page: () => const AllResultScreen()),
 
     ///<========================== This is for survey screden =========================>
 
-    GetPage(name: surveyHistoryScreen, page: () => SurveyHistory()),
+    GetPage(name: surveyHistoryScreen, page: () => const SurveyHistory()),
 
 
-    GetPage(name: historyScreen, page: () => HistoryScreen()),
+    GetPage(name: historyScreen, page: () => const HistoryScreen()),
 
-    GetPage(name: resultScreen, page: () => ResultScreen()),
+    GetPage(name: resultScreen, page: () => const ResultScreen()),
 
 
 
