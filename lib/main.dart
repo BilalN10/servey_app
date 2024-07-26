@@ -13,6 +13,8 @@ void main(){
   SocketApi.init();
   di.dependencies();
   runApp(const MyApp());
+
+  
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
