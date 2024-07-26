@@ -15,6 +15,7 @@ import 'package:survey_markus/utils/StaticString/static_string.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final formKey = GlobalKey<FormState>();
+  final AuthController authController = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +29,8 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   SizedBox(
-                    height: 64.h,
+                    height: 54.h,
                   ),
 
                   ///<============== This is logo section =====================>
@@ -62,7 +62,18 @@ class SignUpScreen extends StatelessWidget {
                     fontSize: 16,
                   ),
 
-                  const CustomTextField(
+                  CustomTextField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return AppStaticStrings.enterValidEmail;
+                      } else if (!AppStaticStrings.emailRegexp.hasMatch(
+                          authController.signUPEmailController.text)) {
+                        return AppStaticStrings.enterValidEmail;
+                      } else {
+                        return null;
+                      }
+                    },
+                    textEditingController: authController.signUPEmailController,
                     hintText: AppStaticStrings.enterYourEmail,
                     fillColor: AppColors.blueLight,
                   ),
@@ -77,7 +88,18 @@ class SignUpScreen extends StatelessWidget {
                     top: 16.h,
                   ),
 
-                  const CustomTextField(
+                  CustomTextField(
+                    textEditingController: authController.signUPPassController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return AppStaticStrings.passWordMustBeAtLeast;
+                      } else if (value.length < 8 ||
+                          !AppStaticStrings.passRegexp.hasMatch(value)) {
+                        return AppStaticStrings.passwordLengthAndContain;
+                      } else {
+                        return null;
+                      }
+                    },
                     isPassword: true,
                     hintText: AppStaticStrings.enterYourPassword,
                     fillColor: AppColors.blueLight,
@@ -93,7 +115,18 @@ class SignUpScreen extends StatelessWidget {
                     top: 16.h,
                   ),
 
-                  const CustomTextField(
+                  CustomTextField(
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return AppStaticStrings.fieldCantNotBeEmpty;
+                      } else if (value !=
+                          authController.signUPPassController.text) {
+                        return "Password should match";
+                      }
+                      return null;
+                    },
+                    textEditingController:
+                        authController.signUPConfiPassController,
                     isPassword: true,
                     hintText: AppStaticStrings.enterYourPassword,
                     fillColor: AppColors.blueLight,
@@ -141,9 +174,11 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
 
-                       SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
 
-                       //
+                      //
                       //  const Expanded(
                       //   child: CustomText(
                       //     left: 10,
@@ -161,33 +196,32 @@ class SignUpScreen extends StatelessWidget {
                               const TextSpan(
                                 text: AppStaticStrings.byRegistasion,
                                 style: TextStyle(
-                                    color: AppColors.blueDarker,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                  color: AppColors.blueDarker,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                               TextSpan(
                                 text: " ${AppStaticStrings.termsAndCondition}",
                                 style: const TextStyle(
                                     color: AppColors.yellowNormal,
-
                                     fontWeight: FontWeight.w500),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(AppRoute.termsAndConditionScreen);
+                                    Get.toNamed(
+                                        AppRoute.termsAndConditionScreen);
                                   },
                               ),
                               const TextSpan(
-                                text:" and ",
+                                text: " and ",
                                 style: TextStyle(
-                                    color: AppColors.blueDarker,
-                                    fontWeight: FontWeight.w500,
-                                    ),
+                                  color: AppColors.blueDarker,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                               TextSpan(
                                 text: "${AppStaticStrings.privacyPolicy}.",
                                 style: const TextStyle(
                                     color: AppColors.yellowNormal,
-
                                     fontWeight: FontWeight.w500),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
@@ -209,7 +243,7 @@ class SignUpScreen extends StatelessWidget {
 
                   CustomButton(
                     onTap: () {
-                   Get.toNamed(AppRoute.otpVerifiedScreen);
+                      Get.toNamed(AppRoute.otpVerifiedScreen);
                     },
                     fillColor: AppColors.yellowNormal,
                     title: AppStaticStrings.signUp,
@@ -222,7 +256,7 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const CustomText(text:"If you have an account?   "),
+                      const CustomText(text: "If you have an account?   "),
                       GestureDetector(
                           onTap: () {
                             Get.toNamed(AppRoute.signInScreen);

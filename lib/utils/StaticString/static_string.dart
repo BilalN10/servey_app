@@ -24,6 +24,8 @@ class AppStaticStrings {
   static const dontHaveAcount = "Don’t have a account";
   static const survey = "Survey";
   static const submit = "Submit";
+  static const somethingWentWrong = "Something went wrong";
+  static const String enterValidEmail = "Enter a valid email";
 
   static const enterYourOldPass = "Enter your old password";
 
@@ -73,7 +75,6 @@ class AppStaticStrings {
   static const privacyPolicy = "Privacy Policy";
   static const termsAndCondition = "Terms & Condition";
   static const logOut = "Log Out";
-
 
   ///|<========================== Survey section ====================>
 

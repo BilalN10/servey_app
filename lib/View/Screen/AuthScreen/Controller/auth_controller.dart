@@ -7,6 +7,7 @@ import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
 import 'package:survey_markus/service/api_client.dart';
 import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
+import 'package:survey_markus/utils/StaticString/static_string.dart';
 import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class AuthController extends GetxController {
@@ -25,9 +26,17 @@ class AuthController extends GetxController {
   TextEditingController signInPassController =
       TextEditingController(text: kDebugMode ? "1234567rr" : "");
 
-  ///<==================== This is verify otp ======================>
+  TextEditingController signUPEmailController =
+      TextEditingController(text: kDebugMode ? "employee2@gmail.com" : "");
+  TextEditingController signUPPassController =
+      TextEditingController(text: kDebugMode ? "1234567rr" : "");
+
+  TextEditingController signUPConfiPassController =
+      TextEditingController(text: kDebugMode ? "1234567rr" : "");
 
   TextEditingController otpController = TextEditingController();
+
+  ///<==================== Sign In User ======================>
 
   signIn() async {
     generalController.showPopUpLoader();
@@ -48,6 +57,36 @@ class AuthController extends GetxController {
 
       toastMessage(
         message: response.body["message"],
+      );
+    }
+  }
+
+  ///<==================== Sign Up User ======================>
+  signUp() async {
+    generalController.showPopUpLoader();
+
+    var body = {
+      "role_type": "EMPLOYEE",
+      "email": signUPEmailController.text,
+      "password": signUPPassController.text,
+      "password_confirmation": signUPConfiPassController.text,
+    };
+
+    var response = await ApiClient.postData(ApiUrl.login, body);
+    if (response.statusCode == 200) {
+      navigator!.pop();
+      Get.toNamed(AppRoute.otpVerifiedScreen);
+    } else if (response.statusCode == 400) {
+      navigator!.pop();
+
+      toastMessage(
+        message: response.body["message"]["email"][0] ??
+            AppStaticStrings.somethingWentWrong,
+      );
+    } else {
+      navigator!.pop();
+      toastMessage(
+        message: AppStaticStrings.somethingWentWrong,
       );
     }
   }
