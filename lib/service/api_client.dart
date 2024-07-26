@@ -34,9 +34,9 @@ class ApiClient extends GetxService {
 
       http.Response response = await client
           .get(
-        Uri.parse(ApiConstant.baseUrl + uri),
-        headers: headers ?? mainHeaders,
-      )
+            Uri.parse(ApiUrl.baseUrl + uri),
+            headers: headers ?? mainHeaders,
+          )
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
@@ -60,10 +60,10 @@ class ApiClient extends GetxService {
 
       http.Response response = await client
           .post(
-        Uri.parse(ApiConstant.baseUrl + uri),
-        body: body,
-        headers: headers ?? mainHeaders,
-      )
+            Uri.parse(ApiUrl.baseUrl + uri),
+            body: body,
+            headers: headers ?? mainHeaders,
+          )
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
@@ -88,10 +88,10 @@ class ApiClient extends GetxService {
 
       http.Response response = await client
           .patch(
-        Uri.parse(ApiConstant.baseUrl + uri),
-        body: body,
-        headers: headers ?? mainHeaders,
-      )
+            Uri.parse(ApiUrl.baseUrl + uri),
+            body: body,
+            headers: headers ?? mainHeaders,
+          )
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
@@ -101,11 +101,10 @@ class ApiClient extends GetxService {
     }
   }
 
-
   static Future<Response> postMultipartData(
       String uri, Map<String, String> body,
       {List<MultipartBody>? multipartBody,
-        Map<String, String>? headers}) async {
+      Map<String, String>? headers}) async {
     try {
       bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
 
@@ -128,7 +127,7 @@ class ApiClient extends GetxService {
       //   }
       // }
       var request =
-      http.MultipartRequest('POST', Uri.parse(ApiConstant.baseUrl + uri));
+          http.MultipartRequest('POST', Uri.parse(ApiUrl.baseUrl + uri));
       request.fields.addAll(body);
 
       if (multipartBody!.isNotEmpty) {
@@ -166,12 +165,11 @@ class ApiClient extends GetxService {
       return const Response(statusCode: 1, statusText: noInternetMessage);
     }
   }
-
 
   static Future<Response> patchMultipartData(
       String uri, Map<String, String> body,
       {List<MultipartBody>? multipartBody,
-        Map<String, String>? headers}) async {
+      Map<String, String>? headers}) async {
     try {
       bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
 
@@ -194,7 +192,7 @@ class ApiClient extends GetxService {
       //   }
       // }
       var request =
-      http.MultipartRequest('PATCH', Uri.parse(ApiConstant.baseUrl + uri));
+          http.MultipartRequest('PATCH', Uri.parse(ApiUrl.baseUrl + uri));
       request.fields.addAll(body);
 
       if (multipartBody!.isNotEmpty) {
@@ -232,8 +230,6 @@ class ApiClient extends GetxService {
       return const Response(statusCode: 1, statusText: noInternetMessage);
     }
   }
-
-
 
   Future<Response> putData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
@@ -249,10 +245,10 @@ class ApiClient extends GetxService {
 
       http.Response response = await http
           .put(
-        Uri.parse(ApiConstant.baseUrl + uri),
-        body: jsonEncode(body),
-        headers: headers ?? mainHeaders,
-      )
+            Uri.parse(ApiUrl.baseUrl + uri),
+            body: jsonEncode(body),
+            headers: headers ?? mainHeaders,
+          )
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
@@ -262,8 +258,8 @@ class ApiClient extends GetxService {
 
   static Future<Response> putMultipartData(String uri, Map<String, String> body,
       {List<MultipartBody>? multipartBody,
-        List<MultipartListBody>? multipartListBody,
-        Map<String, String>? headers}) async {
+      List<MultipartListBody>? multipartListBody,
+      Map<String, String>? headers}) async {
     try {
       bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
 
@@ -288,7 +284,7 @@ class ApiClient extends GetxService {
       // }
 
       var request =
-      http.MultipartRequest('PUT', Uri.parse(ApiConstant.baseUrl + uri));
+          http.MultipartRequest('PUT', Uri.parse(ApiUrl.baseUrl + uri));
       request.fields.addAll(body);
 
       if (multipartBody!.isNotEmpty) {
@@ -348,8 +344,8 @@ class ApiClient extends GetxService {
       debugPrint('====> API Call: $uri\n Body: $body');
 
       http.Response response = await http
-          .delete(Uri.parse(ApiConstant.baseUrl + uri),
-          headers: headers ?? mainHeaders, body: body)
+          .delete(Uri.parse(ApiUrl.baseUrl + uri),
+              headers: headers ?? mainHeaders, body: body)
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {

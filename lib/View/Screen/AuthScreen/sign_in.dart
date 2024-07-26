@@ -14,20 +14,20 @@ import 'package:survey_markus/utils/StaticString/static_string.dart';
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
   final formKey = GlobalKey<FormState>();
+
+  final AuthController authController = Get.find<AuthController>();
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: GetBuilder<AuthController>(builder:(controller){
+        child: GetBuilder<AuthController>(builder: (controller) {
           return Form(
             key: formKey,
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-
                 // SizedBox(
                 //   height: 75.h,
                 // ),
@@ -65,7 +65,14 @@ class SignInScreen extends StatelessWidget {
                   fontSize: 16,
                 ),
 
-                const CustomTextField(
+                CustomTextField(
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return AppStaticStrings.fieldCantNotBeEmpty;
+                    }
+                    return null;
+                  },
+                  textEditingController: authController.signInEmailController,
                   hintText: AppStaticStrings.enterYourEmail,
                   fillColor: AppColors.blueLight,
                 ),
@@ -80,7 +87,19 @@ class SignInScreen extends StatelessWidget {
                   top: 16.h,
                 ),
 
-                const CustomTextField(
+                CustomTextField(
+                  
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return AppStaticStrings.passWordMustBeAtLeast;
+                    } else if (value.length < 8 ||
+                        !AppStaticStrings.passRegexp.hasMatch(value)) {
+                      return AppStaticStrings.passwordLengthAndContain;
+                    } else {
+                      return null;
+                    }
+                  },
+                  textEditingController: authController.signInPassController,
                   isPassword: true,
                   hintText: AppStaticStrings.enterYourPassword,
                   fillColor: AppColors.blueLight,
@@ -141,9 +160,9 @@ class SignInScreen extends StatelessWidget {
                       ],
                     ),
                     GestureDetector(
-                       onTap: (){
-                         Get.toNamed(AppRoute.forgotPass);
-                       },
+                        onTap: () {
+                          Get.toNamed(AppRoute.forgotPass);
+                        },
                         child: const CustomText(
                             text: AppStaticStrings.forgotPassword)),
                   ],
@@ -157,7 +176,9 @@ class SignInScreen extends StatelessWidget {
 
                 CustomButton(
                   onTap: () {
-                   Get.toNamed(AppRoute.homeScreen);
+                    if (formKey.currentState!.validate()) {
+                      authController.signIn();
+                    }
                   },
                   fillColor: AppColors.yellowNormal,
                   title: AppStaticStrings.login,
@@ -172,9 +193,12 @@ class SignInScreen extends StatelessWidget {
                   children: [
                     const CustomText(
                         text: "${AppStaticStrings.dontHaveAcount}?  "),
+
+                    ///=================== Sign Up button ====================
+
                     GestureDetector(
                         onTap: () {
-                        Get.toNamed(AppRoute.signUpScreen);
+                          Get.toNamed(AppRoute.signUpScreen);
                         },
                         child: const CustomText(
                           text: AppStaticStrings.signUp,

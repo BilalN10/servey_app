@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 
-class CustomTextField extends StatefulWidget{
+class CustomTextField extends StatefulWidget {
   static void _defaultOnTap() {}
   const CustomTextField({
     this.textEditingController,
@@ -47,7 +47,6 @@ class CustomTextField extends StatefulWidget{
   final int? maxLines;
   final int? maxLength;
 
-
   final FormFieldValidator? validator;
   final String? hintText;
   final String labelText;
@@ -60,8 +59,8 @@ class CustomTextField extends StatefulWidget{
   final Color fieldBorderColor;
   final Color focusBorderColor;
   final void Function(String)? onChanged;
- // final  void Function(String)? onSubmited;
-  final  Function(String)? onSubmit;
+  // final  void Function(String)? onSubmited;
+  final Function(String)? onSubmit;
   final bool isPassword;
   final bool isPrefixIcon;
   final VoidCallback onTapClick;
@@ -109,7 +108,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           validator: widget.validator,
           decoration: InputDecoration(
             isDense: true,
-            errorMaxLines: 2,
+            errorMaxLines: 3,
             hintText: widget.hintText,
             hintStyle: widget
                 .hintStyle, // TextStyle(color: AppColors.blueLightActive),
@@ -122,7 +121,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         horizontal: 0, vertical: 0),
                     child: Icon(
                       Icons.search,
-                      color:widget.prefixIconColor,
+                      color: widget.prefixIconColor,
                       size: 24.h,
                     ),
                   )

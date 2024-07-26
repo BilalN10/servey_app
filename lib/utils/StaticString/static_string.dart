@@ -3,7 +3,8 @@ class AppStaticStrings {
   static RegExp emailRegexp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
-  static RegExp passRegexp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.{8,}$)');
+  static RegExp passRegexp =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
   static const matchPettern = "Password must have 8 and one capital latter";
   static const wellComeMarkus = "Welcome!      Markus";
@@ -33,6 +34,8 @@ class AppStaticStrings {
   static const searchHere = "Search here";
   static const password = "Password";
 
+  static const fieldCantNotBeEmpty = "Field can't be empty";
+
   static const oldPass = "Old password";
   static const newPass = "New password";
 
@@ -47,6 +50,12 @@ class AppStaticStrings {
   static const resend = "Resend ";
   static const dontWorry =
       "Don’t worry! It Occurs. Please enter the email address linked with your account.";
+
+  static const String passWordMustBeAtLeast =
+      "Password must contain at least one uppercase letter, one lowercase letter, one number";
+
+  static const String passwordLengthAndContain =
+      "Password must be at least 8 characters long and at least one uppercase letter, one lowercase letter, one number";
 
   ///============================= Home Screen ================================
 
@@ -63,6 +72,8 @@ class AppStaticStrings {
   static const editProfile = "Edit Profile";
   static const privacyPolicy = "Privacy Policy";
   static const termsAndCondition = "Terms & Condition";
+  static const logOut = "Log Out";
+
 
   ///|<========================== Survey section ====================>
 

@@ -5,6 +5,7 @@ import 'package:survey_markus/View/widgets/DeletePopup/delete.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
+import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
@@ -106,11 +107,17 @@ class SideDrawer extends StatelessWidget {
                 ),
                 const Divider(),
 
+                ///============================ Log Out ====================
+
                 customRow(
                   onTap: () {
+                    SharePrefsHelper.remove(SharedPreferenceValue.token);
+                    SharePrefsHelper.setBool(
+                        SharedPreferenceValue.isRemember, false);
+
                     Get.offNamed(AppRoute.signInScreen);
                   },
-                  title: "Log out",
+                  title: AppStaticStrings.logOut,
                   icon: AppIcons.logoutIcon,
                 ),
 
