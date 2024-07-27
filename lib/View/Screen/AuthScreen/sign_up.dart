@@ -30,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 54.h,
+                    height: 24.h,
                   ),
 
                   ///<============== This is logo section =====================>
@@ -243,7 +243,9 @@ class SignUpScreen extends StatelessWidget {
 
                   CustomButton(
                     onTap: () {
-                      Get.toNamed(AppRoute.otpVerifiedScreen);
+                      if (formKey.currentState!.validate()) {
+                        authController.signUp();
+                      }
                     },
                     fillColor: AppColors.yellowNormal,
                     title: AppStaticStrings.signUp,
@@ -266,10 +268,6 @@ class SignUpScreen extends StatelessWidget {
                             color: AppColors.yellowDark,
                           )),
                     ],
-                  ),
-
-                  SizedBox(
-                    height: 16.h,
                   ),
 
                   SizedBox(

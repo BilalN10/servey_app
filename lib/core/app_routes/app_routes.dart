@@ -23,71 +23,62 @@ import 'package:survey_markus/View/Screen/terms_and_condition_screen/terms_and_c
 class AppRoute {
   ///==================== Initial Routes ====================
 
-  static const String splashScreen ="/splash_screen";
+  static const String splashScreen = "/splash_screen";
 
   ///<======================== Auth section ========================>
-  static const String signInScreen="/signIn";
-  static const String signUpScreen="/signUp";
-  static const String otpVerifiedScreen="/otpVerifiedScreen";
-  static const String forgotOTP="/forgotOTP";
+  static const String signInScreen = "/signIn";
+  static const String signUpScreen = "/signUp";
+  static const String otpVerifiedScreen = "/otpVerifiedScreen";
+  static const String forgotOTP = "/forgotOTP";
 
   ///=========================Profile==================
-  static const String editProfileScreen="/EditProfileScreen";
-  static const String profileScreen="/ProfileScreen";
-  static const String scanQrCodeScreen="/ScanQrCodeScreen";
-  static const String privacyPolicyScreen="/PrivacyPolicyScreen";
-  static const String termsAndConditionScreen="/TermsAndConditionScreen";
+  static const String editProfileScreen = "/EditProfileScreen";
+  static const String profileScreen = "/ProfileScreen";
+  static const String scanQrCodeScreen = "/ScanQrCodeScreen";
+  static const String privacyPolicyScreen = "/PrivacyPolicyScreen";
+  static const String termsAndConditionScreen = "/TermsAndConditionScreen";
 
   ///<================================== This is for forgot pass ========================>
-  static const String forgotPass ="/forgotPass";
-  static const String resetPassScreen ="/resetPassScreen";
+  static const String forgotPass = "/forgotPass";
+  static const String resetPassScreen = "/resetPassScreen";
 
- ///<=============================== All project  section ========================>
+  ///<=============================== All project  section ========================>
 
- static const String allProjectScreen="/allProjectScreen";
+  static const String allProjectScreen = "/allProjectScreen";
 
- ///<========================== This is the all survey section =====================>
+  ///<========================== This is the all survey section =====================>
 
- static const String allSurvey="/allSurvey";
+  static const String allSurvey = "/allSurvey";
 
- ///<==================== This is the main survey  ===============================>
+  ///<==================== This is the main survey  ===============================>
 
- static const String mainSurvey="/mainSurvey";
+  static const String mainSurvey = "/mainSurvey";
 
- ///<======================= All result screen ====================================>
+  ///<======================= All result screen ====================================>
 
- static const String allResultScreeen="/allResultScreeen";
+  static const String allResultScreeen = "/allResultScreeen";
 
- ///<====================== This is for  survey history =========================>
+  ///<====================== This is for  survey history =========================>
 
- static const String surveyHistoryScreen="/surveyHistoryScreen";
+  static const String surveyHistoryScreen = "/surveyHistoryScreen";
 
- static const String historyScreen="/historyScreen";
- static const String resultScreen="/resultScreen";
-
-
-
-
+  static const String historyScreen = "/historyScreen";
+  static const String resultScreen = "/resultScreen";
 
   static const String homeScreen = "/homeScreen";
 
   static List<GetPage> routes = [
-
     GetPage(name: splashScreen, page: () => const SplashScreen()),
 
-///<=============================== Auth Section ============================>
+    ///<=============================== Auth Section ============================>
 
-    GetPage(name: signInScreen, page: () =>  SignInScreen()),
-    GetPage(name: signUpScreen, page: () =>  SignUpScreen()),
-    GetPage(name: otpVerifiedScreen, page: () =>  const OtpVerifiedScreen()),
-    GetPage(name: forgotOTP, page: () =>  const ForgotOtp()),
+    GetPage(name: signInScreen, page: () => SignInScreen()),
+    GetPage(name: signUpScreen, page: () => SignUpScreen()),
+    GetPage(name: otpVerifiedScreen, page: () => const OtpVerifiedScreen()),
+    GetPage(name: forgotOTP, page: () => const ForgotOtp()),
 
-
-
-///<========================= Home section ====================>
-    GetPage(name: homeScreen, page: () =>  HomeScreen()),
-
-
+    ///<========================= Home section ====================>
+    GetPage(name: homeScreen, page: () => HomeScreen()),
 
     ///<======================== This is the all survey section =====================>
     GetPage(name: allProjectScreen, page: () => const AllProjectScreen()),
@@ -97,17 +88,18 @@ class AppRoute {
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
     GetPage(name: privacyPolicyScreen, page: () => const PrivacyPolicyScreen()),
-    GetPage(name: termsAndConditionScreen, page: () => const TermsAndConditionScreen()),
-
+    GetPage(
+        name: termsAndConditionScreen,
+        page: () => const TermsAndConditionScreen()),
 
     ///<========================= Forgot pass section ====================>
-    GetPage(name: forgotPass, page: () =>  ForgotPassScreen()),
+    GetPage(name: forgotPass, page: () => ForgotPassScreen()),
 
-    GetPage(name: resetPassScreen, page: () =>const ResetPassScreen()),
+    GetPage(name: resetPassScreen, page: () => ResetPassScreen()),
 
     ///<======================== this is for  all survey section ===================>
 
-    GetPage(name: allSurvey, page: () =>const AllSurveyScreen()),
+    GetPage(name: allSurvey, page: () => const AllSurveyScreen()),
 
     ///<====================== This is for main Survey ===========================>
     GetPage(name: mainSurvey, page: () => MainSurveySCreen()),
@@ -120,13 +112,8 @@ class AppRoute {
 
     GetPage(name: surveyHistoryScreen, page: () => const SurveyHistory()),
 
-
     GetPage(name: historyScreen, page: () => const HistoryScreen()),
 
     GetPage(name: resultScreen, page: () => const ResultScreen()),
-
-
-
-
   ];
 }

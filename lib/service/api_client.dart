@@ -46,16 +46,21 @@ class ApiClient extends GetxService {
   }
 
   static Future<Response> postData(String uri, dynamic body,
-      {Map<String, String>? headers}) async {
+      {Map<String, String>? headers, bool contentType = true}) async {
     bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
 
-    var mainHeaders = {
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $bearerToken'
-    };
+    var mainHeaders = contentType
+        ? {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $bearerToken'
+          }
+        : {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $bearerToken'
+          };
     try {
-      debugPrint('====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
+      debugPrint(
+          '====> API Call: ${ApiUrl.baseUrl}$uri\nHeader: ${headers ?? mainHeaders}');
       debugPrint('====> API Body: $body');
 
       http.Response response = await client
@@ -67,7 +72,7 @@ class ApiClient extends GetxService {
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
-      debugPrint('------------${e.toString()}');
+      debugPrint('Error------------${e.toString()}');
 
       return const Response(statusCode: 1, statusText: noInternetMessage);
     }

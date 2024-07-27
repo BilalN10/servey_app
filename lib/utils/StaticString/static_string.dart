@@ -50,6 +50,8 @@ class AppStaticStrings {
   static const enterVerificationCode = "Enter verification code";
   static const ifYouDidntAnyCode = "If you didn't any code!";
   static const resend = "Resend ";
+  static const enterAValidOTP = "Enter a valid OTP";
+
   static const dontWorry =
       "Don’t worry! It Occurs. Please enter the email address linked with your account.";
 

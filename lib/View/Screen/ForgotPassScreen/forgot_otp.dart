@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
+import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
-class ForgotOtp extends StatefulWidget{
+class ForgotOtp extends StatefulWidget {
   const ForgotOtp({super.key});
 
   @override
@@ -25,9 +26,7 @@ class _ForgotOtpState extends State<ForgotOtp> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_secondsRemaining > 0) {
-
           _secondsRemaining--;
-
         } else {
           _timer.cancel();
         }
@@ -36,23 +35,29 @@ class _ForgotOtpState extends State<ForgotOtp> {
   }
 
   @override
-  void initState(){
-    //startTimer();
+  void initState() {
+    startTimer();
     super.initState();
   }
 
+  final formKey = GlobalKey<FormState>();
+
+  final AuthController authController = Get.find<AuthController>();
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const CustomText(
-          text: AppStaticStrings.verification,fontWeight: FontWeight.w500,fontSize: 24,
+          text: AppStaticStrings.verification,
+          fontWeight: FontWeight.w500,
+          fontSize: 24,
         ),
       ),
       body: Center(
         child: Padding(
-          padding:  EdgeInsets.symmetric(vertical: 24.h,horizontal: 20.w),
+          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,11 +65,14 @@ class _ForgotOtpState extends State<ForgotOtp> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 98.h,),
+                  SizedBox(
+                    height: 98.h,
+                  ),
+
                   ///==============================Enter 4 digit code ===========================
                   CustomText(
                     textAlign: TextAlign.start,
-                    text:"Enter 4 digits code",
+                    text: "Enter 4 digits code",
                     fontSize: 24.w,
                     fontWeight: FontWeight.w500,
                     bottom: 12.h,
@@ -86,22 +94,20 @@ class _ForgotOtpState extends State<ForgotOtp> {
                   ///<====================== otp field =======================>
 
                   PinCodeTextField(
-                    // controller:controller.otpController,
-                    length: 4,
+                    key: formKey,
+                    controller: authController.otpController,
+                    length: 6,
                     cursorColor: AppColors.yellowNormal,
                     keyboardType: TextInputType.text,
                     enablePinAutofill: true,
                     appContext: (context),
                     onCompleted: (value) {
-                      // controller.otp = value.toString();
-                      //controller.update();
-
-                      //  print("=-=-==-=-=--==-=-=-=-=-=-=-=-This is an otp ${controller.otp}");
-
+                      authController.otpController.text = value;
+                      authController.update();
                     },
                     autoFocus: true,
-                    textStyle:
-                    const TextStyle(color: AppColors.whiteNormal, fontSize: 24),
+                    textStyle: const TextStyle(
+                        color: AppColors.whiteNormal, fontSize: 24),
                     pinTheme: PinTheme(
                       disabledColor: Colors.transparent,
                       shape: PinCodeFieldShape.box,
@@ -112,8 +118,8 @@ class _ForgotOtpState extends State<ForgotOtp> {
                       selectedFillColor: AppColors.yellowNormal,
                       inactiveFillColor: AppColors.grayDark,
                       borderWidth: 0.5,
-                      errorBorderColor:Colors.red,
-                      activeBorderWidth:0,
+                      errorBorderColor: Colors.red,
+                      activeBorderWidth: 0,
                       selectedColor: AppColors.whiteNormal,
                       inactiveColor: const Color(0xFFCCCCCC),
                       activeColor: AppColors.whiteNormal,
@@ -136,18 +142,16 @@ class _ForgotOtpState extends State<ForgotOtp> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // if (_secondsRemaining == 0) {
-                          //   _secondsRemaining = 120;
-                          //   startTimer();
-                          //   controller.handleForgetPassword().then((value) {
-                          //     if (value == false) {
-                          //       setState(() {
-                          //         _timer.cancel();
-                          //         _secondsRemaining = 0;
-                          //       });
-                          //     }
-                          //   });
-                          // }
+                          if (_secondsRemaining == 0) {
+                            authController
+                                .forgetPass(navigate: false)
+                                .then((value) {
+                              if (value) {
+                                _secondsRemaining = 120;
+                                startTimer();
+                              }
+                            });
+                          }
                         },
                         child: CustomText(
                             text: _secondsRemaining == 0
@@ -169,10 +173,14 @@ class _ForgotOtpState extends State<ForgotOtp> {
 
               CustomButton(
                 fillColor: AppColors.yellowNormal,
-                onTap: (){
-                  Get.offNamed(AppRoute.resetPassScreen);
+                onTap: () {
+                  if (authController.otpController.text.length >= 6) {
+                    authController.verifyOTP();
+                  } else {
+                    toastMessage(message: AppStaticStrings.enterAValidOTP);
+                  }
                 },
-                title:"Verify code",
+                title: "Verify code",
               ),
             ],
           ),
