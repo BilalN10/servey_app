@@ -84,8 +84,8 @@ class AppRoute {
     GetPage(name: allProjectScreen, page: () => const AllProjectScreen()),
 
     ///========================Profile=======================
-    GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
-    GetPage(name: profileScreen, page: () => const ProfileScreen()),
+    GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
+    GetPage(name: profileScreen, page: () => ProfileScreen()),
     GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
     GetPage(name: privacyPolicyScreen, page: () => const PrivacyPolicyScreen()),
     GetPage(

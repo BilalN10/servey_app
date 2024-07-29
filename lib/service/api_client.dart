@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:survey_markus/global/Model/error_response.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
-import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'api_url.dart';
 import 'package:mime/mime.dart';
 
@@ -21,7 +20,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> getData(String uri,
       {Map<String, dynamic>? query, Map<String, String>? headers}) async {
-    bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+    bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = {
       //'Content-Type': 'application/x-www-form-urlencoded',
@@ -47,7 +46,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> postData(String uri, dynamic body,
       {Map<String, String>? headers, bool contentType = true}) async {
-    bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+    bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = contentType
         ? {
@@ -80,7 +79,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> patchData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
-    bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+    bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = {
       // 'Content-Type': 'application/x-www-form-urlencoded',
@@ -111,7 +110,8 @@ class ApiClient extends GetxService {
       {List<MultipartBody>? multipartBody,
       Map<String, String>? headers}) async {
     try {
-      bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+      bearerToken =
+          await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
       var mainHeaders = {
         'Accept': 'multipart/form-data',
@@ -176,7 +176,8 @@ class ApiClient extends GetxService {
       {List<MultipartBody>? multipartBody,
       Map<String, String>? headers}) async {
     try {
-      bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+      bearerToken =
+          await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
       var mainHeaders = {
         'Accept': 'multipart/form-data',
@@ -238,7 +239,7 @@ class ApiClient extends GetxService {
 
   Future<Response> putData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
-    bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+    bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -266,7 +267,8 @@ class ApiClient extends GetxService {
       List<MultipartListBody>? multipartListBody,
       Map<String, String>? headers}) async {
     try {
-      bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+      bearerToken =
+          await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
       var mainHeaders = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -338,7 +340,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> deleteData(String uri,
       {Map<String, String>? headers, dynamic body}) async {
-    bearerToken = await SharePrefsHelper.getString(AppConstants.bearerToken);
+    bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded',

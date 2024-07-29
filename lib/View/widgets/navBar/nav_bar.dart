@@ -42,13 +42,13 @@ class _NavBarState extends State<NavBar> {
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       height: 80.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
         color: AppColors.greenLight,
-        boxShadow: const[
+        boxShadow: const [
           BoxShadow(
             color: Colors.grey,
             offset: Offset(0.0, 1.0), //(x,y)
@@ -57,7 +57,8 @@ class _NavBarState extends State<NavBar> {
         ],
       ),
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w, vertical: 20.h),
+      padding:
+          EdgeInsetsDirectional.symmetric(horizontal: 24.w, vertical: 20.h),
       alignment: Alignment.center,
       // color: AppColors.greenNormalGreen4,
       child: Row(
@@ -70,9 +71,13 @@ class _NavBarState extends State<NavBar> {
             child: Padding(
               padding: const EdgeInsetsDirectional.all(2),
 
-              child: CustomImage(imageSrc:
-              bottomNavIndex==index?selectedIcon[index]:
-              unselectedIcon[index],imageType: ImageType.svg,size: 24.r,),
+              child: CustomImage(
+                imageSrc: bottomNavIndex == index
+                    ? selectedIcon[index]
+                    : unselectedIcon[index],
+                imageType: ImageType.svg,
+                size: 24.r,
+              ),
               // child: Container(
               //   decoration: BoxDecoration(
               //     borderRadius: BorderRadius.circular(8),
@@ -109,22 +114,21 @@ class _NavBarState extends State<NavBar> {
   void onTap(int index) {
     if (index == 0) {
       if (!(widget.currentIndex == 0)) {
-       Get.offAll(() =>  HomeScreen());
+        Get.offAll(() => HomeScreen());
       }
     } else if (index == 1) {
       if (!(widget.currentIndex == 1)) {
-        Get.to(() =>  const AllSurveyCompany());
-
+        Get.to(() => const AllSurveyCompany());
       }
     } else if (index == 2) {
       if (!(widget.currentIndex == 2)) {
-        Get.to(() =>  const NotificationScreen());
+        Get.to(() => const NotificationScreen());
       }
     }
     //
     else if (index == 3) {
-      if (!(widget.currentIndex == 3)){
-        Get.to(() => const ProfileScreen());
+      if (!(widget.currentIndex == 3)) {
+        Get.to(() => ProfileScreen());
       }
     }
   }

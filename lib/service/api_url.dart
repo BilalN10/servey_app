@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const baseUrl = "http://103.43.151.135:6000"; //This is Local url
+  static const baseUrl = "http://192.168.10.64:6000"; //This is Local url
 
   ///<======================= For Auth part ====================>
   static const login = "/api/login";
@@ -7,4 +7,9 @@ class ApiUrl {
   static const forgetPass = "/api/forget-pass";
   static const emailVarify = "/api/email-verified";
   static const resetPass = "/api/reset-pass";
+
+  ///<======================= Profile ====================>
+
+  static const getProfile = "/api/profile";
+  static const updateProfile = "/api/update-profile";
 }

@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/profile_screen/controller/profilecontroller.dart';
+import 'package:survey_markus/View/Screen/profile_screen/model/profile_model.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
+import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
+import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
-import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+  EditProfileScreen({super.key});
 
+  final UserDatum data = Get.arguments;
+  final ProfileController profileController = Get.find<ProfileController>();
+  final GeneralController generalController = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+
       ///===========================Edit Profile Appbar===============
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
-
         centerTitle: true,
         title: CustomText(
           text: AppStaticStrings.editProfile,
@@ -34,12 +40,28 @@ class EditProfileScreen extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            Center(
-              child: CustomNetworkImage(
-                boxShape: BoxShape.circle,
-                imageUrl: AppConstants.onlineImage,
-                height: 102.h,
-                width: 102.w,
+            GestureDetector(
+              onTap: () {
+                generalController.selectImage();
+              },
+              child: Center(
+                child: generalController.imagePath.isEmpty
+                    ? CustomNetworkImage(
+                        boxShape: BoxShape.circle,
+                        imageUrl: "${ApiUrl.baseUrl}/${data.image ?? ""}",
+                        height: 102.h,
+                        width: 102.w,
+                      )
+                    : Container(
+                        height: 102.h,
+                        width: 102.w,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    generalController.imagePath.value))),
+                      ),
               ),
             ),
             SizedBox(
@@ -51,31 +73,34 @@ class EditProfileScreen extends StatelessWidget {
                 children: [
                   ///=====================Company Name==================
                   customEditProfile(
-                    title: AppStaticStrings.companyName,
-                    controller: TextEditingController(),
+                    readOnly: false,
+                    title: AppStaticStrings.name,
+                    controller: profileController.nameController.value,
                   ),
 
                   ///======================company id============
                   customEditProfile(
-                    title: AppStaticStrings.companyID,
-                    controller: TextEditingController(),
+                    title: AppStaticStrings.userId,
+                    controller:
+                        TextEditingController(text: data.companyId ?? ""),
                   ),
 
                   ///========================Email===============
                   customEditProfile(
                     title: AppStaticStrings.email,
-                    controller: TextEditingController(),
+                    controller: TextEditingController(text: data.email ?? ""),
                   ),
                   SizedBox(
                     height: 50.h,
                   ),
+
                   ///=======================Update Button===========
                   CustomButton(
                     onTap: () {
-                      Get.back();
+                      profileController.updateProfile();
                     },
                     fillColor: AppColors.grayDarkActive,
-                    title: 'Update',
+                    title: AppStaticStrings.update,
                   ),
                 ],
               ),
@@ -87,11 +112,11 @@ class EditProfileScreen extends StatelessWidget {
   }
 
   ///================================Custom EditProfile===================
-  Widget customEditProfile({
-    required String title,
-    required TextEditingController controller,
-    bool isPassword = false,
-  }) {
+  Widget customEditProfile(
+      {required String title,
+      required TextEditingController controller,
+      bool isPassword = false,
+      bool readOnly = true}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -103,6 +128,7 @@ class EditProfileScreen extends StatelessWidget {
           bottom: 8.h, // Use h for vertical spacing
         ),
         CustomTextField(
+          readOnly: readOnly,
           isPassword: isPassword,
           textEditingController: controller,
           inputTextStyle: const TextStyle(color: AppColors.grayDarkActive),

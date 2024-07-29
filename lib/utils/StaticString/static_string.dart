@@ -95,6 +95,10 @@ class AppStaticStrings {
 
   static const allResult = "All Results";
   static const companyName = "Company Name";
+  static const name = "Name";
+  static const update = "Update";
+  static const userId = "User Id";
+
   static const projectName = "Project Name:";
   static const surveyName = "Survey Name:";
   static const totalQuestionWithColon = "Total Question:";
