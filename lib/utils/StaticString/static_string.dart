@@ -90,6 +90,9 @@ class AppStaticStrings {
   static const writeYourQuestion = "Write your comment here";
   static const next = "Next";
   static const quit = "Quit";
+  static const joinCompany = "Join Company";
+  static const joinReqSended = "Join request sended";
+  static const pending = "pending";
 
   ///<============================== All result section ======================>
 

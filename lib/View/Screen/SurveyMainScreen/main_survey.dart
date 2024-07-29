@@ -14,14 +14,18 @@ import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class MainSurveySCreen extends StatelessWidget {
-   MainSurveySCreen({super.key});
+  MainSurveySCreen({super.key});
 
-  final List<String> emojiList=[AppImages.rattingOneEmoji,AppImages.rattingTwoEmoji,AppImages.rattingThreeEmoji,AppImages.rattingFourEmoji,AppImages.rattingFiveEmoji,];
+  final List<String> emojiList = [
+    AppImages.rattingOneEmoji,
+    AppImages.rattingTwoEmoji,
+    AppImages.rattingThreeEmoji,
+    AppImages.rattingFourEmoji,
+    AppImages.rattingFiveEmoji,
+  ];
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       appBar: AppBar(
         centerTitle: true,
         title: Row(
@@ -30,7 +34,7 @@ class MainSurveySCreen extends StatelessWidget {
 
             CustomNetworkImage(
               imageUrl:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2SGUn4hUElhp9PuU1US_9R6Fp9l7QJNsMw&s",
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2SGUn4hUElhp9PuU1US_9R6Fp9l7QJNsMw&s",
               height: 40.h,
               width: 58.w,
               boxShape: BoxShape.circle,
@@ -51,45 +55,51 @@ class MainSurveySCreen extends StatelessWidget {
           ],
         ),
       ),
-
-      body:  GetBuilder<SurveController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            child: Padding(
-              padding:EdgeInsets.symmetric(horizontal: 24.w),
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: GetBuilder<ServeyController>(builder: (controller) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 ///<====================== This is the survey text =========================>
 
-               Center(child: CustomText(text:AppStaticStrings.survey,fontSize: 24,fontWeight: FontWeight.w500,top: 24.h,bottom: 24.h,)),
+                Center(
+                    child: CustomText(
+                  text: AppStaticStrings.survey,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  top: 24.h,
+                  bottom: 24.h,
+                )),
 
                 ///<========================= This is language button ====================>
 
-                 Align(
+                Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: Padding(
-                      padding: EdgeInsets.only(left:150.w ),
+                      padding: EdgeInsets.only(left: 150.w),
                       child: const CustomToggleButton(),
                     )),
 
-                 ///<=========================== This is the survey question ================>
+                ///<=========================== This is the survey question ================>
 
                 SizedBox(
-                  height:100.h,
+                  height: 100.h,
                   child: PageView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     //itemCount:controller.qustionList.length,
                     controller: controller.pageController,
                     itemBuilder: (BuildContext context, int itemIndex) {
-                      return  CustomText(text:controller.qustionList[controller.qustionIndex],fontSize: 16,fontWeight: FontWeight.w500,
+                      return CustomText(
+                        text: controller.qustionList[controller.qustionIndex],
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
                         maxLines: 10,
                         top: 24.h,
                         bottom: 24.h,
                       );
-                        //_buildCarouselItem(context, selectedIndex, itemIndex);
+                      //_buildCarouselItem(context, selectedIndex, itemIndex);
                     },
                   ),
                 ),
@@ -119,7 +129,9 @@ class MainSurveySCreen extends StatelessWidget {
                 //   ),
                 // ),
 
-                SizedBox(height: 12.h,),
+                SizedBox(
+                  height: 12.h,
+                ),
 
                 ///<=========================== This is the ratting bar ====================>
 
@@ -128,148 +140,175 @@ class MainSurveySCreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:List.generate(5,(index){
-
-                      return
-                         IconButton(onPressed: (){
-                           controller.rattingTabIndex=index;
-                           controller.update();
-                         }, icon:Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,
-                           size:controller.rattingTabIndex==index?55:45,
-                         ));
-                        //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
-                    },),
+                      children: List.generate(
+                        5,
+                        (index) {
+                          return IconButton(
+                              onPressed: () {
+                                controller.rattingTabIndex = index;
+                                controller.update();
+                              },
+                              icon: Icon(
+                                Icons.star,
+                                color: controller.rattingTabIndex >= index
+                                    ? AppColors.yellowNormal
+                                    : AppColors.grayNormal,
+                                size: controller.rattingTabIndex == index
+                                    ? 55
+                                    : 45,
+                              ));
+                          //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
+                        },
+                      ),
                     ),
                   ),
                 ),
 
-                SizedBox(height: 60.h,),
+                SizedBox(
+                  height: 60.h,
+                ),
 
+                CustomText(
+                  text:
+                      "${AppStaticStrings.totalQuestion}${controller.qustionList.length}",
+                  bottom: 12.h,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                ),
 
-                 CustomText(text:"${AppStaticStrings.totalQuestion}${controller.qustionList.length}",bottom: 12.h,fontWeight: FontWeight.w500,fontSize: 12,),
-
-               ///<========================================= This is the progressbar ==================>
+                ///<========================================= This is the progressbar ==================>
 
                 LinearProgressBar(
                   maxSteps: controller.qustionList.length,
-                  progressType: LinearProgressBar.progressTypeLinear, // Use Linear progress
-                  currentStep:controller.qustionIndex,
-                  progressColor:AppColors.yellowNormal,
+                  progressType: LinearProgressBar
+                      .progressTypeLinear, // Use Linear progress
+                  currentStep: controller.qustionIndex,
+                  progressColor: AppColors.yellowNormal,
                   backgroundColor: Colors.grey,
                   minHeight: 12,
-
                 ),
 
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 12.w),
-                  child:  Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  CustomText(text:"${controller.qustionIndex}")  ,
-
-                  CustomText(text:"${controller.qustionList.length-controller.qustionIndex}")
-                  ],
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(text: "${controller.qustionIndex}"),
+                      CustomText(
+                          text:
+                              "${controller.qustionList.length - controller.qustionIndex}")
+                    ],
                   ),
                 ),
 
-                 SizedBox(height: 24.h,),
-
-              ///<=========================== This is the comment box ==================>
-
-              Container(
-              padding: const EdgeInsets.all(0),
-              margin: EdgeInsets.symmetric(horizontal:20.w),
-              decoration: BoxDecoration(
-              border:Border.all(width: 1.w,color:AppColors.grayLight),
-              borderRadius: BorderRadius.only(topRight:Radius.circular(16.r),bottomRight:Radius.circular(16.r),topLeft:Radius.circular(8.r),bottomLeft: Radius.circular(8.r) ),
-              ),
-              child:Row(
-              children: [
-              ///<========================== This is the comment icon =================>
-
-              Container(
-              height:40.h,
-              width: 40.w,
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.r),
-              color: AppColors.blueDarker
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CustomImage(
-                imageSrc: AppImages.commentIcon,imageType: ImageType.png,
-                size: 20,
+                SizedBox(
+                  height: 24.h,
                 ),
-              ),
-              ),
 
-              ///<================================ This is text field ==================>
+                ///<=========================== This is the comment box ==================>
 
-                SizedBox(width: 16.w,),
+                Container(
+                  padding: const EdgeInsets.all(0),
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1.w, color: AppColors.grayLight),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(16.r),
+                        bottomRight: Radius.circular(16.r),
+                        topLeft: Radius.circular(8.r),
+                        bottomLeft: Radius.circular(8.r)),
+                  ),
+                  child: Row(
+                    children: [
+                      ///<========================== This is the comment icon =================>
 
-                 Expanded(
-                  child:TextFormField(
-                    decoration: const InputDecoration(
-                    hintText: "Write your comment here",
-                    hintStyle: TextStyle(color: AppColors.grayNormalHover),
-                    border: InputBorder.none
-                    ),
-                  )
+                      Container(
+                        height: 40.h,
+                        width: 40.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            color: AppColors.blueDarker),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: CustomImage(
+                            imageSrc: AppImages.commentIcon,
+                            imageType: ImageType.png,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+
+                      ///<================================ This is text field ==================>
+
+                      SizedBox(
+                        width: 16.w,
+                      ),
+
+                      Expanded(
+                          child: TextFormField(
+                        decoration: const InputDecoration(
+                            hintText: "Write your comment here",
+                            hintStyle:
+                                TextStyle(color: AppColors.grayNormalHover),
+                            border: InputBorder.none),
+                      )),
+                    ],
+                  ),
                 ),
-              ],
-              ),
-              ),
 
+                SizedBox(
+                  height: 24.h,
+                ),
 
-              SizedBox(height: 24.h,),
+                ///<============================= This is the next button ==================>
 
-              ///<============================= This is the next button ==================>
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 97.w),
+                  child: CustomButton(
+                    onTap: () {
+                      if (controller.qustionList.length - 1 !=
+                          controller.qustionIndex) {
+                        controller.qustionIndex++;
+                        controller.update();
+                      } else {
+                        Get.offNamed(AppRoute.allResultScreeen);
+                      }
+                    },
+                    fillColor: AppColors.yellowNormal,
+                    title: AppStaticStrings.next,
+                  ),
+                ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal:97.w),
-                child: CustomButton(onTap:(){
-
-                  if(controller.qustionList.length-1!=controller.qustionIndex){
-                    controller.qustionIndex++;
-                    controller.update();
-                  }else{
-                    Get.offNamed(AppRoute.allResultScreeen);
-                  }
-                },fillColor:AppColors.yellowNormal,title: AppStaticStrings.next,),
-              ),
-
-                SizedBox(height: 16.h,),
-
-
+                SizedBox(
+                  height: 16.h,
+                ),
 
                 ///<============================= Quit button ========================>
 
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
-                  margin: EdgeInsets.symmetric(horizontal:97.w),
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 10.h),
-                  decoration: BoxDecoration(
-                  border: Border.all(
-                  width: 1.w ,
-                  color:AppColors.yellowNormal,
-                  ),
-                  borderRadius: BorderRadius.circular(8.r),
-
-                  ),
-                  child: const CustomText(text:AppStaticStrings.quit,fontWeight: FontWeight.w400,fontSize: 16,color:AppColors.yellowNormal)
-                  ),
+                      margin: EdgeInsets.symmetric(horizontal: 97.w),
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1.w,
+                          color: AppColors.yellowNormal,
+                        ),
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: const CustomText(
+                          text: AppStaticStrings.quit,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: AppColors.yellowNormal)),
                 ),
               ],
-              ),
             ),
-          );
-        }
-      ),
+          ),
+        );
+      }),
     );
-
   }
 }
