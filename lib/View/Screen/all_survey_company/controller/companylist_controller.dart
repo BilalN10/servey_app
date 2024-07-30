@@ -70,6 +70,8 @@ class CompanyListController extends GetxController {
     }
   }
 
+
+
   @override
   void onInit() {
     getCompanyList();
