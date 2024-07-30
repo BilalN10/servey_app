@@ -13,8 +13,13 @@ class ApiUrl {
   static const getProfile = "/api/profile";
   static const updateProfile = "/api/update-profile";
 
-  ///<============================ Company ======================>
+  ///<============================ Company ========================>
   static const getCompanies = "/api/show-company";
   static const joinCompany = "/api/join-company";
   static const joinedCompanyList = "/api/show-joined-company";
+
+  ///<============================ Project =========================>
+
+  static getProject({required String companyId}) =>
+      "/api/company-wise-projects?company_id=$companyId";
 }

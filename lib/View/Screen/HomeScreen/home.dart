@@ -134,7 +134,12 @@ class HomeScreen extends StatelessWidget {
                                   homeController.jointedCompanyList[index];
                               return CustomCompanyCard(
                                 onTap: () {
-                                  Get.toNamed(AppRoute.allProjectScreen);
+                                  Get.toNamed(AppRoute.allProjectScreen,
+                                      arguments: [
+                                        "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
+                                        data.user?.name ?? "",
+                                        data.user?.id ?? ""
+                                      ]);
                                 },
                                 companyName: data.user?.name ?? "",
                                 image:
