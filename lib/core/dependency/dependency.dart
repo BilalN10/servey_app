@@ -22,7 +22,7 @@ class DependancyInjection extends Bindings {
 
     ///================ Servey Controller =================
 
-    Get.lazyPut(() => ServeyController(), fenix: true);
+    Get.lazyPut(() => SurveyController(), fenix: true);
 
     ///================ Company Controller =================
 

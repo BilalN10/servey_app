@@ -13,8 +13,15 @@ import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
-class MainSurveySCreen extends StatelessWidget {
-  MainSurveySCreen({super.key});
+class MainSurveySCreen extends StatefulWidget {
+  const MainSurveySCreen({super.key});
+
+  @override
+  State<MainSurveySCreen> createState() => _MainSurveySCreenState();
+}
+
+class _MainSurveySCreenState extends State<MainSurveySCreen> {
+  final SurveyController surveyController = Get.find<SurveyController>();
 
   final List<String> emojiList = [
     AppImages.rattingOneEmoji,
@@ -23,6 +30,21 @@ class MainSurveySCreen extends StatelessWidget {
     AppImages.rattingFourEmoji,
     AppImages.rattingFiveEmoji,
   ];
+
+  final String companyImg = Get.arguments[0];
+
+  final String companyName = Get.arguments[1];
+
+  final String surveyId = Get.arguments[2];
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      surveyController.getQuestions(surveyId: surveyId);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +55,7 @@ class MainSurveySCreen extends StatelessWidget {
             ///<======================= This is company logo ===============================>
 
             CustomNetworkImage(
-              imageUrl:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2SGUn4hUElhp9PuU1US_9R6Fp9l7QJNsMw&s",
+              imageUrl: companyImg,
               height: 40.h,
               width: 58.w,
               boxShape: BoxShape.circle,
@@ -46,8 +67,8 @@ class MainSurveySCreen extends StatelessWidget {
 
             ///<======================== This is the company name ===============================>
 
-            const CustomText(
-              text: "bdCalling IT ltd",
+            CustomText(
+              text: companyName,
               fontSize: 20,
               fontWeight: FontWeight.w400,
               color: AppColors.yellowNormal,
@@ -55,7 +76,7 @@ class MainSurveySCreen extends StatelessWidget {
           ],
         ),
       ),
-      body: GetBuilder<ServeyController>(builder: (controller) {
+      body: GetBuilder<SurveyController>(builder: (controller) {
         return SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),

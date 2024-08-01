@@ -83,7 +83,7 @@ class _SurveyHistoryState extends State<SurveyHistory> {
           ],
         ),
       ),
-      body: GetBuilder<ServeyController>(builder: (controller) {
+      body: GetBuilder<SurveyController>(builder: (controller) {
         return SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),

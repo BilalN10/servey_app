@@ -140,24 +140,24 @@ class _AllSurveyScreenState extends State<AllSurveyScreen> {
                   return Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 24.w, vertical: 28.h),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: List.generate(
-                            homeController.surveyList.length, (rowIndex) {
-                          var data = homeController.surveyList[rowIndex];
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: GestureDetector(
-                              child: FeedbackCard(
-                                title: data.surveyName ?? "",
-                                onTap: () {
-                                  Get.toNamed(AppRoute.allSurvey);
-                                },
-                              ),
+                    child: Column(
+                      children: List.generate(homeController.surveyList.length,
+                          (rowIndex) {
+                        var data = homeController.surveyList[rowIndex];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: FeedbackCard(
+                              title: data.surveyName ?? "",
+                              onTap: () {
+                                Get.toNamed(AppRoute.mainSurvey,
+                                    arguments: [companyImg, companyName , data.id]);
+                              },
                             ),
-                          );
-                        }),
-                      ),
+                          ),
+                        );
+                      }),
                     ),
                   );
               }

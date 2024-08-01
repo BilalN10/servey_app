@@ -11,7 +11,7 @@ class CustomToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ServeyController>(builder: (controller) {
+    return GetBuilder<SurveyController>(builder: (controller) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
         decoration: BoxDecoration(

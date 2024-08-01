@@ -27,4 +27,7 @@ class ApiUrl {
   ///<============================ Survey =========================>
   static getSurvey({required String projectId}) =>
       "/api/project-based-survey?project_id=$projectId";
+
+  static surveyQue({required String surveyId}) =>
+      "/show-questions?survey_id=$surveyId";
 }

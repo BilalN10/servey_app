@@ -102,7 +102,7 @@ class AppRoute {
     GetPage(name: allSurvey, page: () => const AllSurveyScreen()),
 
     ///<====================== This is for main Survey ===========================>
-    GetPage(name: mainSurvey, page: () => MainSurveySCreen()),
+    GetPage(name: mainSurvey, page: () => const MainSurveySCreen()),
 
     ///<============================== All result screen ==========================>
 
