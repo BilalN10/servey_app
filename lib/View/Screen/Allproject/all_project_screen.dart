@@ -32,7 +32,9 @@ class _AllProjectScreenState extends State<AllProjectScreen> {
 
   @override
   void initState() {
-    homeController.getProject(companyId: companyId);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      homeController.getProject(companyId: companyId);
+    });
     super.initState();
   }
 
@@ -120,7 +122,7 @@ class _AllProjectScreenState extends State<AllProjectScreen> {
             ///<=========================== This is the all feed back ====================>
 
             Obx(() {
-              switch (homeController.rxRequestStatus.value) {
+              switch (homeController.getProjectLoading.value) {
                 case Status.loading:
                   return const CustomLoader();
                 case Status.internetError:
@@ -142,36 +144,22 @@ class _AllProjectScreenState extends State<AllProjectScreen> {
                         EdgeInsets.symmetric(horizontal: 24.w, vertical: 28.h),
                     child: SingleChildScrollView(
                       child: Column(
-                        children: List.generate(50, (rowIndex) {
+                        children: List.generate(
+                            homeController.projectList.length, (rowIndex) {
+                          var data = homeController.projectList[rowIndex];
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: List.generate(2, (columnIndex) {
-                                int index = rowIndex * 2 + columnIndex;
-                                if (index < 100) {
-                                  // Ensure the index is within the itemCount
-                                  return Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                        right: columnIndex == 0 ? 8.0 : 0.0,
-                                      ),
-                                      child: GestureDetector(
-                                        child: FeedbackCard(
-                                          title: "Employee Feedback",
-                                          onTap: () {
-                                            Get.toNamed(AppRoute.allSurvey);
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return Expanded(
-                                      child:
-                                          Container()); // Empty container for remaining cells
-                                }
-                              }),
+                            child: GestureDetector(
+                              child: FeedbackCard(
+                                title: data.projectName ?? "",
+                                onTap: () {
+                                  Get.toNamed(AppRoute.allSurvey, arguments: [
+                                    companyImg,
+                                    companyName,
+                                    data.id.toString()
+                                  ]);
+                                },
+                              ),
                             ),
                           );
                         }),

@@ -1,5 +1,6 @@
 class ApiUrl {
-  static const baseUrl = "http://103.43.151.135:6000"; //This is Local url
+  // static const baseUrl = "http://103.43.151.135:6000"; //This is Local url
+  static const baseUrl = "http://192.168.10.64:6000"; //This is Local url
 
   ///<======================= For Auth part ====================>
   static const login = "/api/login";
@@ -22,4 +23,8 @@ class ApiUrl {
 
   static getProject({required String companyId}) =>
       "/api/company-wise-projects?company_id=$companyId";
+
+  ///<============================ Survey =========================>
+  static getSurvey({required String projectId}) =>
+      "/api/project-based-survey?project_id=$projectId";
 }

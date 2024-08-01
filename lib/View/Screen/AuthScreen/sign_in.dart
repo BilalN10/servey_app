@@ -88,7 +88,6 @@ class SignInScreen extends StatelessWidget {
                 ),
 
                 CustomTextField(
-                  
                   validator: (value) {
                     if (value.isEmpty) {
                       return AppStaticStrings.passWordMustBeAtLeast;
@@ -176,9 +175,11 @@ class SignInScreen extends StatelessWidget {
 
                 CustomButton(
                   onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      authController.signIn();
-                    }
+                    // if (formKey.currentState!.validate()) {
+                    //   authController.signIn();
+                    // }
+
+                    authController.signIn();
                   },
                   fillColor: AppColors.yellowNormal,
                   title: AppStaticStrings.login,

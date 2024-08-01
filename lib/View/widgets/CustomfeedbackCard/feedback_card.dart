@@ -12,8 +12,7 @@ class FeedbackCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 155.h,
-        width: 155.w,
+        height: 100.h,
         decoration: BoxDecoration(
           color: AppColors.yellowNormal,
           borderRadius: BorderRadius.circular(8.r),

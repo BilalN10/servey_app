@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 Obx(() {
-                  switch (homeController.rxRequestStatus.value) {
+                  switch (homeController.joinedCompanyLoading.value) {
                     case Status.loading:
                       return const CustomLoader();
                     case Status.internetError:
@@ -138,7 +138,7 @@ class HomeScreen extends StatelessWidget {
                                       arguments: [
                                         "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
                                         data.user?.name ?? "",
-                                        data.user?.id ?? ""
+                                        data.companyId.toString()
                                       ]);
                                 },
                                 companyName: data.user?.name ?? "",
