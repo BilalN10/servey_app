@@ -151,8 +151,14 @@ class _AllSurveyScreenState extends State<AllSurveyScreen> {
                             child: FeedbackCard(
                               title: data.surveyName ?? "",
                               onTap: () {
-                                Get.toNamed(AppRoute.mainSurvey,
-                                    arguments: [companyImg, companyName , data.id]);
+                                Get.toNamed(AppRoute.mainSurvey, arguments: [
+                                  companyImg,
+                                  companyName,
+                                  data.id.toString(),
+                                  data.emojiOrStar == AppStaticStrings.emoji
+                                      ? true
+                                      : false
+                                ]);
                               },
                             ),
                           ),

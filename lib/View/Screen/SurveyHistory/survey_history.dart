@@ -130,7 +130,8 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                 // ),
 
                 CustomText(
-                  text: controller.qustionList[controller.qustionIndex],
+                  text: controller
+                      .dummyQustionList[controller.qustionIndex.value],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   maxLines: 10,

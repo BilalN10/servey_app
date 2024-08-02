@@ -29,5 +29,5 @@ class ApiUrl {
       "/api/project-based-survey?project_id=$projectId";
 
   static surveyQue({required String surveyId}) =>
-      "/show-questions?survey_id=$surveyId";
+      "/api/show-questions?survey_id=$surveyId";
 }

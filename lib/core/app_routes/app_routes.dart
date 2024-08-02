@@ -61,10 +61,8 @@ class AppRoute {
   ///<====================== This is for  survey history =========================>
 
   static const String surveyHistoryScreen = "/surveyHistoryScreen";
-
   static const String historyScreen = "/historyScreen";
   static const String resultScreen = "/resultScreen";
-
   static const String homeScreen = "/homeScreen";
 
   static List<GetPage> routes = [

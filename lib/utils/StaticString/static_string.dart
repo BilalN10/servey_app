@@ -93,6 +93,10 @@ class AppStaticStrings {
   static const joinCompany = "Join Company";
   static const joinReqSended = "Join request sended";
   static const pending = "pending";
+  static const emoji = "emoji";
+
+  static const noSurveyFound = "No survey found";
+
 
   ///<============================== All result section ======================>
 

@@ -18,13 +18,13 @@ class QuestionDatum {
   });
 
   factory QuestionDatum.fromJson(Map<String, dynamic> json) => QuestionDatum(
-        id: json["id"],
-        userId: json["user_id"],
-        projectId: json["project_id"],
-        surveyId: json["survey_id"],
-        questionEn: json["question_en"],
-        user: json["user"] == null ? null : User.fromJson(json["user"]),
-      );
+      id: json["id"],
+      userId: json["user_id"],
+      projectId: json["project_id"],
+      surveyId: json["survey_id"],
+      questionEn: json["question_en"],
+      user: json["user"] == null ? null : User.fromJson(json["user"]),
+      comment: json["comment"]);
 
   Map<String, dynamic> toJson() => {
         "id": id,
