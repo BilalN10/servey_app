@@ -30,4 +30,11 @@ class ApiUrl {
 
   static surveyQue({required String surveyId}) =>
       "/api/show-questions?survey_id=$surveyId";
+
+  ///<============================ Ans Que =========================>
+  static const submitAns = "/api/answer-question";
+
+  ///<============================ Show Result =========================>
+  static showResult({required String surveyId}) =>
+      "/api/show-answer-report?survey_id=$surveyId";
 }

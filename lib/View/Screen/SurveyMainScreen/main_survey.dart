@@ -8,7 +8,6 @@ import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
@@ -29,8 +28,8 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
 
   final List<String> emojiList = [
     AppImages.rattingOneEmoji,
-    AppImages.rattingTwoEmoji,
     AppImages.rattingThreeEmoji,
+    AppImages.rattingTwoEmoji,
     AppImages.rattingFourEmoji,
     AppImages.rattingFiveEmoji,
   ];
@@ -202,9 +201,10 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                     (index) {
                                       return IconButton(
                                           onPressed: () {
-                                            surveyController.rattingTabIndex =
-                                                index;
-                                            surveyController.update();
+                                            surveyController
+                                                .rattingTabIndex.value = index;
+                                            surveyController.rattingTabIndex
+                                                .refresh();
                                           },
                                           icon: Icon(
                                             Icons.star,
@@ -214,7 +214,8 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                                 ? AppColors.yellowNormal
                                                 : AppColors.grayNormal,
                                             size: surveyController
-                                                        .rattingTabIndex ==
+                                                        .rattingTabIndex
+                                                        .value ==
                                                     index
                                                 ? 55
                                                 : 45,
@@ -313,6 +314,8 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
 
                               Expanded(
                                   child: TextFormField(
+                                controller:
+                                    surveyController.commentController.value,
                                 decoration: const InputDecoration(
                                     hintText: "Write your comment here",
                                     hintStyle: TextStyle(
@@ -333,17 +336,22 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                         padding: EdgeInsets.symmetric(horizontal: 97.w),
                         child: CustomButton(
                           onTap: () {
-                            if (surveyController.isLastPage) {
-                              Get.offNamed(AppRoute.allResultScreeen);
-                            } else {
-                              surveyController.qustionIndex.value += 1;
-                              surveyController.pageController.value.nextPage(
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeIn,
-                              );
-                              surveyController.emojiTabIndex.value = 2;
-                              surveyController.qustionIndex.refresh();
-                            }
+                            surveyController.submitAns(
+                                surveyId: surveyController
+                                    .questionList[
+                                        surveyController.qustionIndex.value - 1]
+                                    .surveyId
+                                    .toString(),
+                                queId: surveyController
+                                    .questionList[
+                                        surveyController.qustionIndex.value - 1]
+                                    .id
+                                    .toString(),
+                                ans: isEmoji
+                                    ? surveyController.emojiTabIndex.value
+                                        .toString()
+                                    : surveyController.rattingTabIndex.value
+                                        .toString());
                           },
                           fillColor: AppColors.yellowNormal,
                           title: AppStaticStrings.next,

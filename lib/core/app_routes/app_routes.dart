@@ -104,7 +104,7 @@ class AppRoute {
 
     ///<============================== All result screen ==========================>
 
-    GetPage(name: allResultScreeen, page: () => const AllResultScreen()),
+    GetPage(name: allResultScreeen, page: () => AllResultScreen()),
 
     ///<========================== This is for survey screden =========================>
 
