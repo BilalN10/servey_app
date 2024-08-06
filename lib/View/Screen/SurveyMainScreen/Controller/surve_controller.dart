@@ -121,6 +121,8 @@ class SurveyController extends GetxController {
   RxList<ResultDatum> resultList = <ResultDatum>[].obs;
   RxString projectName = "".obs;
   RxString surveyName = "".obs;
+  RxString emojiOrStar = "".obs;
+
   RxInt totalQue = 0.obs;
 
   getResult({required String surveyId}) async {
@@ -134,6 +136,7 @@ class SurveyController extends GetxController {
       projectName.value = response.body["project_name"];
       surveyName.value = response.body["survey_name"];
       totalQue.value = response.body["total_questions"];
+      emojiOrStar.value = response.body["emoji_or_star"];
 
       Get.offNamed(AppRoute.allResultScreeen);
 

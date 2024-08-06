@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
+import 'package:survey_markus/utils/AppImg/app_img.dart';
 
 class GeneralController extends GetxController {
   ///========================== Show Popup Loader ========================
@@ -34,6 +35,31 @@ class GeneralController extends GetxController {
     if (getImages != null) {
       imageFile.value = File(getImages.path);
       imagePath.value = getImages.path;
+    }
+  }
+
+  //   final List<String> emojiList = [
+  //   AppImages.rattingOneEmoji,
+  //   AppImages.rattingThreeEmoji,
+  //   AppImages.rattingTwoEmoji,
+  //   AppImages.rattingFourEmoji,
+  //   AppImages.rattingFiveEmoji,
+  // ];
+
+  String findEmoji({required int index}) {
+    switch (index) {
+      case 1:
+        return AppImages.rattingOneEmoji;
+      case 2:
+        return AppImages.rattingThreeEmoji;
+      case 3:
+        return AppImages.rattingTwoEmoji;
+      case 4:
+        return AppImages.rattingFourEmoji;
+      case 5:
+        return AppImages.rattingFiveEmoji;
+      default:
+        throw ArgumentError('Invalid index: $index');
     }
   }
 }

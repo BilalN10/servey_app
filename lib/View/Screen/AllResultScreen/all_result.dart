@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
+import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
+import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
@@ -15,6 +17,7 @@ import 'package:survey_markus/utils/StaticString/static_string.dart';
 class AllResultScreen extends StatelessWidget {
   AllResultScreen({super.key});
   final SurveyController surveyController = Get.find<SurveyController>();
+  final GeneralController generalController = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -197,20 +200,29 @@ class AllResultScreen extends StatelessWidget {
                                   ),
                                   title: Row(
                                     children: [
-                                      ///<============================= This is the star section ======================>
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            size: 16,
-                                            color: AppColors.yellowNormal,
-                                          ),
-                                          CustomText(
-                                            text: "1 Star",
-                                            left: 5.w,
-                                          ),
-                                        ],
-                                      ),
+                                      ///<============================= This is the Star and Emoji section ======================>
+                                      surveyController.emojiOrStar.value ==
+                                              AppStaticStrings.emoji
+                                          ? CustomImage(
+                                              size: 30.r,
+                                              imageType: ImageType.png,
+                                              imageSrc:
+                                                  generalController.findEmoji(
+                                                      index: int.parse(
+                                                          data.answer ?? "0")))
+                                          : Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.star,
+                                                  size: 16,
+                                                  color: AppColors.yellowNormal,
+                                                ),
+                                                CustomText(
+                                                  text: "${data.answer} Star",
+                                                  left: 5.w,
+                                                ),
+                                              ],
+                                            ),
 
                                       ///<============================= This is the emoji section ======================>
 
