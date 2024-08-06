@@ -172,7 +172,12 @@ class AllResultScreen extends StatelessWidget {
                           var data = surveyController.resultList[index];
                           return GestureDetector(
                             onTap: () {
-                              Get.toNamed(AppRoute.surveyHistoryScreen);
+                              Get.toNamed(AppRoute.surveyHistoryScreen,
+                                  arguments: [
+                                    data.questionId.toString(),
+                                    data.surveyId.toString(),
+                                    surveyController.emojiOrStar.value
+                                  ]);
                             },
                             child: Column(
                               children: [

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,9 +24,9 @@ class AuthController extends GetxController {
   }
 
   TextEditingController signInEmailController =
-      TextEditingController(text: kDebugMode ? "mdh95831@gmail.com" : "");
+      TextEditingController(text: kDebugMode ? "employee@gmail.com" : "");
   TextEditingController signInPassController =
-      TextEditingController(text: kDebugMode ? "1234567RRr" : "");
+      TextEditingController(text: kDebugMode ? "1234567rr" : "");
 
   TextEditingController signUPEmailController =
       TextEditingController(text: kDebugMode ? "employee2@gmail.com" : "");
@@ -74,8 +76,10 @@ class AuthController extends GetxController {
       "password_confirmation": signUPConfiPassController.text,
     };
 
-    var response =
-        await ApiClient.postData(ApiUrl.register, body, contentType: false);
+    var response = await ApiClient.postData(
+      ApiUrl.register,
+      jsonEncode(body),
+    );
     if (response.statusCode == 200) {
       clearTxtFields();
       navigator!.pop();

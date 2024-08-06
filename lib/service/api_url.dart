@@ -37,4 +37,10 @@ class ApiUrl {
   ///<============================ Show Result =========================>
   static showResult({required String surveyId}) =>
       "/api/show-answer-report?survey_id=$surveyId";
+
+  static queSurvey(
+          {required String queID,
+          required String surveyID,
+          required String query}) =>
+      "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID";
 }

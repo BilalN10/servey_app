@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/controller/home_controller.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/controller/que_report_controller.dart';
 import 'package:survey_markus/View/Screen/all_survey_company/controller/companylist_controller.dart';
 import 'package:survey_markus/View/Screen/profile_screen/controller/profilecontroller.dart';
 import 'package:survey_markus/global/controller/generel_controller.dart';
@@ -31,5 +32,9 @@ class DependancyInjection extends Bindings {
     // ///================ Home Controller =================
 
     Get.lazyPut(() => HomeController(), fenix: true);
+
+    ///================ Question Report Controller =================
+
+    Get.lazyPut(() => QuestionReportController(), fenix: true);
   }
 }
