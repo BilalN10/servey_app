@@ -1,6 +1,6 @@
 class ApiUrl {
   // static const baseUrl = "http://103.43.151.135:6000"; //This is Local url
-  static const baseUrl = "http://192.168.10.64:6000"; //This is Local url
+  static const baseUrl = "http://94.130.57.216:80"; //This is Live url
 
   ///<======================= For Auth part ====================>
   static const login = "/api/login";
@@ -42,5 +42,5 @@ class ApiUrl {
           {required String queID,
           required String surveyID,
           required String query}) =>
-      "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID";
+      "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID&date_range=$query";
 }

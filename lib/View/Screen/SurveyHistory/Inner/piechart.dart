@@ -96,13 +96,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/model/que_report_model.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 
 class PieChartScreen extends StatelessWidget {
-  PieChartScreen({super.key, this.index = 0});
+  PieChartScreen(
+      {super.key,
+    
+      required this.questionModel,
+      required this.isEmoji});
 
-  final int index;
+
+  final QuestionSurveyModel questionModel;
+  final bool isEmoji;
 
   final List<String> emojiList = [
     AppImages.rattingOneEmoji,
@@ -110,84 +117,32 @@ class PieChartScreen extends StatelessWidget {
     AppImages.rattingThreeEmoji
   ];
 
-  //   Map<String,double> dataMap={
-  //   "Very satisfied":40,
-  //   "Good":30,
-  //   "Bad":20,
-  //   "Angry":10,
-  // };
-  //
-  final List<Map<String, double>> dataMap = [
-    // {
-    //   "😍 5 Star ":40,
-    //   "😀 4 Star ":30,
-    //   "😊 3 Star ":20,
-    //   "😳 2 Star ":10,
-    //   "😡 1 Star ":10,
-    // },
-    // {
-    //   "😍 5 Star ":10,
-    //   "😀 4 Star ":20,
-    //   "😊 3 Star ":30,
-    //   "😳 2 Star ":40,
-    //   "😡1 Star ":40,
-    // },
-    // {
-    //   "😍 5 Star ":40,
-    //   "😀 4 Star ":30,
-    //   "😊 3 Star ":20,
-    //   "😳 2 Star ":10,
-    //   "😡 1 Star ":10,
-    // },
-    //
-    // {
-    //   "😍 5 Star ":10,
-    //   "😀 4 Star ":20,
-    //   "😊 3 Star ":30,
-    //   "😳 2 Star ":40,
-    //   "😡1 Star ":40,
-    // },
-
-    {
-      "⭐ 5 Star ": 40,
-      "⭐ 4 Star ": 30,
-      "⭐ 3 Star ": 20,
-      "⭐ 2 Star ": 10,
-      "⭐ 1 Star ": 10,
-    },
-    {
-      "⭐ 5 Star ": 10,
-      "⭐ 4 Star ": 20,
-      "⭐ 3 Star ": 30,
-      "⭐ 2 Star ": 40,
-      "⭐ 1 Star ": 40,
-    },
-    {
-      "⭐ 5 Star": 40,
-      "⭐ 4 Star": 30,
-      "⭐ 3 Star": 20,
-      "⭐ 2 Star": 10,
-      "⭐ 1 Star": 10,
-    },
-    {
-      "⭐ 5 Star ": 10,
-      "⭐ 4 Star ": 20,
-      "⭐ 3 Star": 30,
-      "⭐ 2 Star ": 40,
-      "⭐ 1 Star ": 40,
-    },
-  ];
   final List<Color> colorsList = [
-    AppColors.yellowNormal,
-    AppColors.blueNormal,
-    AppColors.yellowLightActive,
-    AppColors.greenNormal,
-    AppColors.yellowDarker,
+    const Color.fromARGB(255, 38, 135, 14),
+    const Color.fromARGB(255, 156, 241, 139),
+    const Color.fromARGB(255, 225, 244, 17),
+    const Color.fromARGB(255, 193, 98, 100),
+    AppColors.redColor,
   ];
   @override
   Widget build(BuildContext context) {
+    final Map<String, double> emojiMap = {
+      "😍 5 Star ": questionModel.optionPercentages!.five!.toDouble(),
+      "😀 4 Star ": questionModel.optionPercentages!.four!.toDouble(),
+      "😊 3 Star ": questionModel.optionPercentages!.three!.toDouble(),
+      "😳 2 Star ": questionModel.optionPercentages!.two!.toDouble(),
+      "😡 1 Star ": questionModel.optionPercentages!.one!.toDouble(),
+    };
+
+    final Map<String, double> starMap = {
+      "⭐ 5 Star ": questionModel.optionPercentages!.five!.toDouble(),
+      "⭐ 4 Star ": questionModel.optionPercentages!.four!.toDouble(),
+      "⭐ 3 Star": questionModel.optionPercentages!.three!.toDouble(),
+      "⭐ 2 Star ": questionModel.optionPercentages!.two!.toDouble(),
+      "⭐ 1 Star ": questionModel.optionPercentages!.one!.toDouble(),
+    };
     return PieChart(
-      dataMap: dataMap[index],
+      dataMap: isEmoji ? emojiMap : starMap,
       animationDuration: const Duration(milliseconds: 800),
       chartLegendSpacing: 32,
       chartRadius: MediaQuery.of(context).size.width / 3.2,

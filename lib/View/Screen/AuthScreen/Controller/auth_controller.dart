@@ -24,9 +24,9 @@ class AuthController extends GetxController {
   }
 
   TextEditingController signInEmailController =
-      TextEditingController(text: kDebugMode ? "employee@gmail.com" : "");
+      TextEditingController(text: kDebugMode ? "employee2@gmail.com" : "");
   TextEditingController signInPassController =
-      TextEditingController(text: kDebugMode ? "1234567rr" : "");
+      TextEditingController(text: kDebugMode ? "1234567Rr" : "");
 
   TextEditingController signUPEmailController =
       TextEditingController(text: kDebugMode ? "employee2@gmail.com" : "");

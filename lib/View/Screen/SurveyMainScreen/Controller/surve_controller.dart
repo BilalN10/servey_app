@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/model/result_model.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/model/survey_que_model.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
@@ -92,29 +91,43 @@ class SurveyController extends GetxController {
       "comment": commentController.value.text,
     };
 
-    // var response =
-    //     await ApiClient.postData(ApiUrl.submitAns, body, contentType: false);
-    // if (response.statusCode == 200) {
-    //   toastMessage(message: response.body["message"], color: Colors.green);
-    //   navigator!.pop();
-    //   if (isLastPage) {
-    //     getResult(surveyId: surveyId);
-    //   } else {
-    //     qustionIndex.value += 1;
-    //     pageController.value.nextPage(
-    //       duration: const Duration(seconds: 1),
-    //       curve: Curves.easeIn,
-    //     );
-    //     emojiTabIndex.value = 2;
-    //     rattingTabIndex.value = 2;
-    //     qustionIndex.refresh();
-    //   }
-    //   refresh();
-    // } else {
-    //   ApiChecker.checkApi(response);
-    //   navigator!.pop();
-    // }
-    getResult(surveyId: surveyId);
+    var response =
+        await ApiClient.postData(ApiUrl.submitAns, body, contentType: false);
+    if (response.statusCode == 200) {
+      toastMessage(message: response.body["message"], color: Colors.green);
+      navigator!.pop();
+      if (isLastPage) {
+        getResult(surveyId: surveyId);
+      } else {
+        qustionIndex.value += 1;
+        pageController.value.nextPage(
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeIn,
+        );
+        emojiTabIndex.value = 2;
+        rattingTabIndex.value = 2;
+        qustionIndex.refresh();
+      }
+      refresh();
+    } else if (response.statusCode == 409) {
+      if (isLastPage) {
+        getResult(surveyId: surveyId);
+      } else {
+        qustionIndex.value += 1;
+        pageController.value.nextPage(
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeIn,
+        );
+        emojiTabIndex.value = 2;
+        rattingTabIndex.value = 2;
+        qustionIndex.refresh();
+      }
+      refresh();
+    } else {
+      ApiChecker.checkApi(response);
+      navigator!.pop();
+    }
+    // getResult(surveyId: surveyId);
   }
 
   ///========================== Result ==============================

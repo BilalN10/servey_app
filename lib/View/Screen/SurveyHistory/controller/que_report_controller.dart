@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/model/que_report_model.dart';
 import 'package:survey_markus/service/api_check.dart';
 import 'package:survey_markus/service/api_client.dart';
@@ -9,9 +8,10 @@ import 'package:survey_markus/utils/AppConst/app_const.dart';
 class QuestionReportController extends GetxController {
   final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
-  RxInt chartCategoryIndex = 0.obs;
+  RxInt chartCategoryIndex = 1.obs;
   RxInt periodicGraphTabIndex = 0.obs;
 
+  ///========================== Question Survey Chart =========================
   RxList<QuestionSurveyModel> questionSurvey = <QuestionSurveyModel>[].obs;
 
   getQuestionSurvey(
@@ -35,6 +35,29 @@ class QuestionReportController extends GetxController {
         setRxRequestStatus(Status.error);
       }
       ApiChecker.checkApi(response);
+    }
+  }
+
+  ///========================== Update Question Survey Chart =========================
+  updateChart({
+    required int index,
+    required String queID,
+    required String surveyID,
+  }) {
+    periodicGraphTabIndex.value = index;
+
+    switch (index) {
+      case 0:
+        return getQuestionSurvey(
+            queID: queID, surveyID: surveyID, query: "today");
+
+      case 1:
+        return getQuestionSurvey(
+            queID: queID, surveyID: surveyID, query: "weekly");
+
+      case 2:
+        return getQuestionSurvey(
+            queID: queID, surveyID: surveyID, query: "monthly");
     }
   }
 }

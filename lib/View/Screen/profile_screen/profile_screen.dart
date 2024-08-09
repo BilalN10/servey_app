@@ -58,13 +58,13 @@ class ProfileScreen extends StatelessWidget {
             case Status.internetError:
               return NoInternetScreen(
                 onTap: () {
-                  // controller.getFaq();
+                  profileController.getProfile();
                 },
               );
             case Status.error:
               return GeneralErrorScreen(
                 onTap: () {
-                  // controller.getFaq();
+                  profileController.getProfile();
                 },
               );
 

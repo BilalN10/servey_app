@@ -1,6 +1,6 @@
 class QuestionSurveyModel {
   Question? question;
-  Map<String, int>? optionPercentages;
+  OptionPercentage? optionPercentages;
 
   QuestionSurveyModel({
     this.question,
@@ -12,16 +12,10 @@ class QuestionSurveyModel {
         question: json["question"] == null
             ? null
             : Question.fromJson(json["question"]),
-        // optionPercentages: json["option_percentages"] == null
-        //     ? null
-        //     : OptionPercentage.fromJson(json["option_percentages"]),
+        optionPercentages: json["option_percentages"] == null
+            ? null
+            : OptionPercentage.fromJson(json["option_percentages"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "question": question?.toJson(),
-        "option_percentages": Map.from(optionPercentages!)
-            .map((k, v) => MapEntry<String, dynamic>(k, v)),
-      };
 }
 
 class Question {
@@ -34,7 +28,7 @@ class Question {
   int? comment;
   DateTime? createdAt;
   DateTime? updatedAt;
-  User? user;
+  //User? user;
 
   Question({
     this.id,
@@ -46,7 +40,7 @@ class Question {
     this.comment,
     this.createdAt,
     this.updatedAt,
-    this.user,
+    // this.user,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) => Question(
@@ -63,7 +57,7 @@ class Question {
         updatedAt: json["updated_at"] == null
             ? null
             : DateTime.parse(json["updated_at"]),
-        user: json["user"] == null ? null : User.fromJson(json["user"]),
+        //user: json["user"] == null ? null : User.fromJson(json["user"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,79 +70,79 @@ class Question {
         "comment": comment,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
-        "user": user?.toJson(),
+        //"user": user?.toJson(),
       };
 }
 
-class User {
-  int? id;
-  String? name;
-  String? email;
-  String? companyId;
-  dynamic image;
-  String? otp;
-  dynamic address;
-  dynamic phoneNumber;
-  DateTime? emailVerifiedAt;
-  String? roleType;
-  dynamic deletedAt;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+// class User {
+//   int? id;
+//   String? name;
+//   String? email;
+//   String? companyId;
+//   dynamic image;
+//   String? otp;
+//   dynamic address;
+//   dynamic phoneNumber;
+//   DateTime? emailVerifiedAt;
+//   String? roleType;
+//   dynamic deletedAt;
+//   DateTime? createdAt;
+//   DateTime? updatedAt;
 
-  User({
-    this.id,
-    this.name,
-    this.email,
-    this.companyId,
-    this.image,
-    this.otp,
-    this.address,
-    this.phoneNumber,
-    this.emailVerifiedAt,
-    this.roleType,
-    this.deletedAt,
-    this.createdAt,
-    this.updatedAt,
-  });
+//   User({
+//     this.id,
+//     this.name,
+//     this.email,
+//     this.companyId,
+//     this.image,
+//     this.otp,
+//     this.address,
+//     this.phoneNumber,
+//     this.emailVerifiedAt,
+//     this.roleType,
+//     this.deletedAt,
+//     this.createdAt,
+//     this.updatedAt,
+//   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        companyId: json["company_id"],
-        image: json["image"],
-        otp: json["otp"],
-        address: json["address"],
-        phoneNumber: json["phone_number"],
-        emailVerifiedAt: json["email_verified_at"] == null
-            ? null
-            : DateTime.parse(json["email_verified_at"]),
-        roleType: json["role_type"],
-        deletedAt: json["deleted_at"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-      );
+//   factory User.fromJson(Map<String, dynamic> json) => User(
+//         id: json["id"],
+//         name: json["name"],
+//         email: json["email"],
+//         companyId: json["company_id"],
+//         image: json["image"],
+//         otp: json["otp"],
+//         address: json["address"],
+//         phoneNumber: json["phone_number"],
+//         emailVerifiedAt: json["email_verified_at"] == null
+//             ? null
+//             : DateTime.parse(json["email_verified_at"]),
+//         roleType: json["role_type"],
+//         deletedAt: json["deleted_at"],
+//         createdAt: json["created_at"] == null
+//             ? null
+//             : DateTime.parse(json["created_at"]),
+//         updatedAt: json["updated_at"] == null
+//             ? null
+//             : DateTime.parse(json["updated_at"]),
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "email": email,
-        "company_id": companyId,
-        "image": image,
-        "otp": otp,
-        "address": address,
-        "phone_number": phoneNumber,
-        "email_verified_at": emailVerifiedAt?.toIso8601String(),
-        "role_type": roleType,
-        "deleted_at": deletedAt,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "id": id,
+//         "name": name,
+//         "email": email,
+//         "company_id": companyId,
+//         "image": image,
+//         "otp": otp,
+//         "address": address,
+//         "phone_number": phoneNumber,
+//         "email_verified_at": emailVerifiedAt?.toIso8601String(),
+//         "role_type": roleType,
+//         "deleted_at": deletedAt,
+//         "created_at": createdAt?.toIso8601String(),
+//         "updated_at": updatedAt?.toIso8601String(),
+//       };
+// }
 
 class OptionPercentage {
   int? one;

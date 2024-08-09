@@ -29,7 +29,6 @@ class _SurveyHistoryState extends State<SurveyHistory> {
     AppStaticStrings.today,
     AppStaticStrings.thisWeek,
     AppStaticStrings.thisMonth,
-    AppStaticStrings.lastMonth
   ];
   late bool isShowingMainData;
 
@@ -144,23 +143,6 @@ class _SurveyHistoryState extends State<SurveyHistory> {
 
                       ///<=========================== This is the survey question ================>
 
-                      // SizedBox(
-                      //   height:100.h,
-                      //   child: PageView.builder(
-                      //     physics: const NeverScrollableScrollPhysics(),
-                      //     //itemCount:controller.qustionList.length,
-                      //     controller: controller.pageController,
-                      //     itemBuilder: (BuildContext context, int itemIndex) {
-                      //       return  CustomText(text:controller.qustionList[controller.qustionIndex],fontSize: 16,fontWeight: FontWeight.w500,
-                      //         maxLines: 10,
-                      //         top: 24.h,
-                      //         bottom: 24.h,
-                      //       );
-                      //       //_buildCarouselItem(context, selectedIndex, itemIndex);
-                      //     },
-                      //   ),
-                      // ),
-
                       CustomText(
                         text:
                             controller.questionSurvey[0].question?.questionEn ??
@@ -259,17 +241,17 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: List.generate(
-                            4,
+                            3,
                             (index) {
                               return Padding(
                                 padding: EdgeInsets.only(right: 29.w),
                                 child: GestureDetector(
                                   onTap: () {
-                                    controller.periodicGraphTabIndex.value =
-                                        index;
-                                    controller.update();
-                                    print(
-                                        "This is table value${controller.periodicGraphTabIndex}");
+                                    controller.updateChart(
+                                      index: index,
+                                      queID: queID,
+                                      surveyID: surveyID,
+                                    );
                                   },
                                   child: Column(
                                     children: [
@@ -355,10 +337,18 @@ class _SurveyHistoryState extends State<SurveyHistory> {
 
                       controller.chartCategoryIndex.value == 1
                           ? PieChartScreen(
-                              index: controller.periodicGraphTabIndex.value)
+                              isEmoji: emojiOrStar == AppStaticStrings.emoji
+                                  ? true
+                                  : false,
+                              questionModel: controller.questionSurvey[0],
+                            )
                           //:LineChart(indeex:controller.periodicGraphTabIndex),
 
-                          : const LineChartScreen(),
+                          : LineChartScreen(
+                              isEmoji: emojiOrStar == AppStaticStrings.emoji
+                                  ? true
+                                  : false,
+                              questionModel: controller.questionSurvey[0]),
 
                       SizedBox(
                         height: 5.h,
