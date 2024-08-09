@@ -65,6 +65,8 @@ dependencies:
   flutter_rating_bar: ^4.0.1
 
   http_parser: any
+  translator: ^1.0.0
+  language_picker: ^0.4.4+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
