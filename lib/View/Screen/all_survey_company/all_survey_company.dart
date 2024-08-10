@@ -79,14 +79,17 @@ class AllSurveyCompany extends StatelessWidget {
                           return CustomSurveyCard(
                             image: "${ApiUrl.baseUrl}/${data.image ?? ""}",
                             buttonText: data.status == "accepted"
-                                ? ""
+                                ? "Joined"
                                 : data.status == "pending"
                                     ? AppStaticStrings.joinReqSended
                                     : AppStaticStrings.joinCompany,
                             companyName: data.name ?? "no",
                             onTap: () {
-                              companyListController.sendJoinReq(
-                                  companyID: data.id.toString(), index: index);
+                              if (data.status == "default") {
+                                companyListController.sendJoinReq(
+                                    companyID: data.id.toString(),
+                                    index: index);
+                              }
                             },
                           );
                         },

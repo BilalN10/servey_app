@@ -26,7 +26,6 @@ class CustomSurveyCard extends StatelessWidget {
           color: AppColors.yellowNormal),
       child: Column(
         children: [
-          //  CustomImage(imageSrc:image,imageType: ImageType.png,size: 78.r,),
           ///<=================== This is the company image section ==================>
 
           CustomNetworkImage(
@@ -54,7 +53,6 @@ class CustomSurveyCard extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              // margin: EdgeInsets.symmetric(horizontal: 113.w),
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 11.h),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4.r),

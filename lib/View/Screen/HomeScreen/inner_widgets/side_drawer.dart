@@ -107,22 +107,6 @@ class SideDrawer extends StatelessWidget {
                 ),
                 const Divider(),
 
-                ///============================ Log Out ====================
-
-                customRow(
-                  onTap: () {
-                    SharePrefsHelper.remove(SharedPreferenceValue.token);
-                    SharePrefsHelper.setBool(
-                        SharedPreferenceValue.isRemember, false);
-
-                    Get.offNamed(AppRoute.signInScreen);
-                  },
-                  title: AppStaticStrings.logOut,
-                  icon: AppIcons.logoutIcon,
-                ),
-
-                const Divider(),
-
                 customRow(
                     title: "Delete Account",
                     icon: AppIcons.deleteIcon,
@@ -148,6 +132,21 @@ class SideDrawer extends StatelessWidget {
                         },
                       );
                     }),
+                const Divider(),
+
+                ///============================ Log Out ====================
+
+                customRow(
+                  onTap: () {
+                    SharePrefsHelper.remove(SharedPreferenceValue.token);
+                    SharePrefsHelper.setBool(
+                        SharedPreferenceValue.isRemember, false);
+
+                    Get.offNamed(AppRoute.signInScreen);
+                  },
+                  title: AppStaticStrings.logOut,
+                  icon: AppIcons.logoutIcon,
+                ),
 
                 const Divider(),
               ],

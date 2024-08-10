@@ -12,47 +12,43 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         appBar: AppBar(
-         centerTitle: true,
-         title:const CustomText(
-         text: AppStaticStrings.history,
-         fontSize: 24,
-         fontWeight: FontWeight.w500,
-
-         ),
-         ),
-
-        body:Padding(
-         padding: EdgeInsets.symmetric(vertical: 24.h),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const CustomText(
+            text: AppStaticStrings.history,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(vertical: 24.h),
           child: ListView.builder(
             itemCount: 10,
-            itemBuilder:(context, index){
-            return GestureDetector(
-              onTap: (){
-              Get.toNamed(AppRoute.resultScreen);
-              },
-              child: Container(
-               margin: EdgeInsets.symmetric(horizontal: 24.w,vertical:5.h),
-               padding: EdgeInsets.symmetric(
-                horizontal: 100.w,
-                vertical: 20.h,
-               ),
-                decoration: BoxDecoration(
-                color: AppColors.yellowNormal,
-                 borderRadius: BorderRadius.circular(8.r),
-
-
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoute.resultScreen);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 5.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 100.w,
+                    vertical: 20.h,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.yellowNormal,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: const CustomText(
+                    text: "Project 1",
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.whiteNormal,
+                    fontSize: 20,
+                  ),
                 ),
-               child: const CustomText(
-               text: "Project 1",
-               fontWeight: FontWeight.w500,
-               color:AppColors.whiteNormal,
-               fontSize: 20,
-               ),
-              ),
-            );
-          },),
-        )
-    );
+              );
+            },
+          ),
+        ));
   }
 }
