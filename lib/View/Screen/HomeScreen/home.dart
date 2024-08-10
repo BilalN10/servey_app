@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:language_picker/language_picker.dart';
-import 'package:language_picker/languages.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/controller/home_controller.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/inner_widgets/side_drawer.dart';
 import 'package:survey_markus/View/widgets/custom_company_card/custom_company_card.dart';
@@ -95,12 +93,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                LanguagePickerDropdown(
-                    initialValue: Languages.korean,
-                    onValuePicked: (Language language) {
-                      print(language.isoCode);
-                    }),
 
                 const CustomText(
                   text: "Joined Company",

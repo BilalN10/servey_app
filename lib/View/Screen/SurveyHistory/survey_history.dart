@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/Inner/line_chart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/Inner/piechart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/controller/que_report_controller.dart';
+import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Inner/custom_toggle_button.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
@@ -24,6 +25,8 @@ class SurveyHistory extends StatefulWidget {
 class _SurveyHistoryState extends State<SurveyHistory> {
   final QuestionReportController controller =
       Get.find<QuestionReportController>();
+
+  final SurveyController surveyController = Get.find<SurveyController>();
 
   List<String> periodicName = [
     AppStaticStrings.today,
@@ -136,16 +139,16 @@ class _SurveyHistoryState extends State<SurveyHistory> {
 
                       Align(
                           alignment: AlignmentDirectional.centerEnd,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 150.w),
-                            child: const CustomToggleButton(),
-                          )),
+                          child: CustomToggleButton()),
 
                       ///<=========================== This is the survey question ================>
 
                       CustomText(
-                        text:
-                            controller.questionSurvey[0].question?.questionEn ??
+                        textAlign: TextAlign.center,
+                        text: surveyController.lenguageTab.value == 0
+                            ? controller.translatedNative.value
+                            : controller
+                                    .questionSurvey[0].question?.questionEn ??
                                 "",
                         fontSize: 16,
                         fontWeight: FontWeight.w500,

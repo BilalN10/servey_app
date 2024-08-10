@@ -64,6 +64,9 @@ class AppStaticStrings {
   ///============================= Home Screen ================================
 
   static const searchhere = "Search here";
+  static const pleaseChoosYour =
+      "Please choose your native language for translating the question";
+
   static const allProjects = "All Projects";
   static const joinedCompany = "Joined Company";
   static const joinedSurvey = "Joined Survey";
@@ -94,9 +97,9 @@ class AppStaticStrings {
   static const joinReqSended = "Join request sended";
   static const pending = "pending";
   static const emoji = "emoji";
+  static const noQuesFound = "No Question Found";
 
   static const noSurveyFound = "No survey found";
-
 
   ///<============================== All result section ======================>
 

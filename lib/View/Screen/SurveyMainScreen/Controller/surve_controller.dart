@@ -10,6 +10,7 @@ import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
+import 'package:translator/translator.dart';
 
 class SurveyController extends GetxController {
   final rxRequestStatus = Status.loading.obs;
@@ -18,7 +19,7 @@ class SurveyController extends GetxController {
   final resultLoading = Status.loading.obs;
   void resultLoadingStatus(Status value) => resultLoading.value = value;
   GeneralController generalController = Get.find<GeneralController>();
-  int lenguageTab = 1;
+  RxInt lenguageTab = 1.obs;
 
   RxInt rattingTabIndex = 2.obs;
 
@@ -61,6 +62,8 @@ class SurveyController extends GetxController {
           response.body["data"].map((x) => QuestionDatum.fromJson(x)));
 
       totalQuePages.value = questionList.length;
+      getQuestionEngLishAndNative();
+      //getQuestionNative();
       setRxRequestStatus(Status.completed);
       refresh();
     } else if (response.statusCode == 404) {
@@ -167,4 +170,40 @@ class SurveyController extends GetxController {
       ApiChecker.checkApi(response);
     }
   }
+
+//=================================== Get Question List Eng and Native ==================================
+  RxList<String> queEng = <String>[].obs;
+  RxList<String> queNative = <String>[].obs;
+
+  getQuestionEngLishAndNative() {
+    queEng.value = [];
+    queNative.value = [];
+    refresh();
+    final translator = GoogleTranslator();
+
+    for (int i = 0; i < questionList.length; i++) {
+      //========= Add to EngLish ==========
+      queEng.add(questionList[i].questionEn ?? "");
+      debugPrint("Que English $queEng");
+
+      //========= Translate to Native ==========
+
+      translator
+          .translate(questionList[i].questionEn ?? "",
+              to: generalController.transLangu.value)
+          .then((value) {
+        queNative.add(value.text);
+
+        debugPrint("Que Native $queNative");
+        refresh();
+      });
+    }
+  }
+
+//=================================== Get Question List Native ==================================
+  // getQuestionNative() {
+  //   queNative.refresh();
+
+  //   for (int i = 0; i < questionList.length; i++) {}
+  // }
 }

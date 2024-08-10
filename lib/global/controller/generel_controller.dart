@@ -1,10 +1,16 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:language_picker/language_picker_dropdown.dart';
+import 'package:language_picker/languages.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
+import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
+import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
+import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
+import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class GeneralController extends GetxController {
   ///========================== Show Popup Loader ========================
@@ -38,13 +44,59 @@ class GeneralController extends GetxController {
     }
   }
 
-  //   final List<String> emojiList = [
-  //   AppImages.rattingOneEmoji,
-  //   AppImages.rattingThreeEmoji,
-  //   AppImages.rattingTwoEmoji,
-  //   AppImages.rattingFourEmoji,
-  //   AppImages.rattingFiveEmoji,
-  // ];
+  ///==================== Select the Translated Language ======================
+
+  selectLanguage() async {
+    String tranLan = await SharePrefsHelper.getString(AppConstants.transLan);
+    getTranLangua();
+
+    if (tranLan.isEmpty || tranLan == "null") {
+      Get.dialog(
+        barrierDismissible: false,
+        Dialog(
+          // Wrap with Dialog widget to enforce size constraints
+          child: Container(
+            height: 150.h,
+            width: 300.w,
+            padding: EdgeInsets.all(30.r),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomText(
+                  text: AppStaticStrings.pleaseChoosYour,
+                  bottom: 10.h,
+                  maxLines: 3,
+                ),
+                LanguagePickerDropdown(
+                  initialValue: Languages.korean,
+                  onValuePicked: (Language language) {
+                    SharePrefsHelper.setString(
+                        AppConstants.transLan, language.isoCode);
+                    debugPrint(language.isoCode);
+                    getTranLangua();
+                    Future.delayed(const Duration(seconds: 1), () {
+                      navigator!.pop();
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  ///==================== Get the Translated Language ======================
+
+  RxString transLangu = "".obs;
+
+  getTranLangua() async {
+    transLangu.value = await SharePrefsHelper.getString(AppConstants.transLan);
+    transLangu.refresh();
+  }
+
+  ///======= Find The Emoji Based on index  1=Angry,2=Bad,3= Satisfied,4=Good, 5 = Very satisfied =======
 
   String findEmoji({required int index}) {
     switch (index) {
