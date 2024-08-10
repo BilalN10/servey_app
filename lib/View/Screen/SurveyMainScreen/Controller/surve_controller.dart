@@ -63,7 +63,7 @@ class SurveyController extends GetxController {
 
       totalQuePages.value = questionList.length;
       getQuestionEngLishAndNative();
-      //getQuestionNative();
+
       setRxRequestStatus(Status.completed);
       refresh();
     } else if (response.statusCode == 404) {
@@ -98,7 +98,7 @@ class SurveyController extends GetxController {
         await ApiClient.postData(ApiUrl.submitAns, body, contentType: false);
     if (response.statusCode == 200) {
       toastMessage(message: response.body["message"], color: Colors.green);
-      navigator!.pop();
+      // navigator!.pop();
       if (isLastPage) {
         getResult(surveyId: surveyId);
       } else {
@@ -125,6 +125,11 @@ class SurveyController extends GetxController {
         rattingTabIndex.value = 2;
         qustionIndex.refresh();
       }
+      toastMessage(
+          duration: 3,
+          message:
+              "You have already attented to this question. Now you can only view",
+          color: Colors.red);
       refresh();
     } else {
       ApiChecker.checkApi(response);
@@ -182,10 +187,6 @@ class SurveyController extends GetxController {
     final translator = GoogleTranslator();
 
     for (int i = 0; i < questionList.length; i++) {
-      //========= Add to EngLish ==========
-      queEng.add(questionList[i].questionEn ?? "");
-      debugPrint("Que English $queEng");
-
       //========= Translate to Native ==========
 
       translator
@@ -193,10 +194,13 @@ class SurveyController extends GetxController {
               to: generalController.transLangu.value)
           .then((value) {
         queNative.add(value.text);
-
+        //========= Add to EngLish ==========
+        queEng.add(questionList[i].questionEn ?? "");
+        debugPrint("Que English $queEng");
         debugPrint("Que Native $queNative");
-        refresh();
       });
+
+      refresh();
     }
   }
 

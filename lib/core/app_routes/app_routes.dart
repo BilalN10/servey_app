@@ -85,10 +85,9 @@ class AppRoute {
     GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
     GetPage(name: profileScreen, page: () => ProfileScreen()),
     GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
-    GetPage(name: privacyPolicyScreen, page: () => const PrivacyPolicyScreen()),
+    GetPage(name: privacyPolicyScreen, page: () => PrivacyPolicyScreen()),
     GetPage(
-        name: termsAndConditionScreen,
-        page: () => const TermsAndConditionScreen()),
+        name: termsAndConditionScreen, page: () => TermsAndConditionScreen()),
 
     ///<========================= Forgot pass section ====================>
     GetPage(name: forgotPass, page: () => ForgotPassScreen()),

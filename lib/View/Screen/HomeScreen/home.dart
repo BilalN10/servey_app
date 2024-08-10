@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: () {
-                          // scaffoldKey.currentState!.openDrawer();
+                          scaffoldKey.currentState!.openDrawer();
                         },
                         icon: const CustomImage(imageSrc: AppIcons.drawreIcon)),
                   ],

@@ -365,10 +365,13 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                           .id
                                           .toString(),
                                       ans: isEmoji
-                                          ? surveyController.emojiTabIndex.value
+                                          ? (surveyController
+                                                      .emojiTabIndex.value +
+                                                  1)
                                               .toString()
-                                          : surveyController
-                                              .rattingTabIndex.value
+                                          : (surveyController
+                                                      .rattingTabIndex.value +
+                                                  1)
                                               .toString());
                                 },
                                 fillColor: AppColors.yellowNormal,
