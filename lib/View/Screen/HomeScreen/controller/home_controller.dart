@@ -106,7 +106,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    generalController.selectLanguage();
+    generalController.selectLanguage(show: false);
     joinedCompanyList();
     super.onInit();
   }

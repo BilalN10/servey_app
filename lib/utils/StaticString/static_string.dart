@@ -79,6 +79,8 @@ class AppStaticStrings {
   static const editProfile = "Edit Profile";
   static const privacyPolicy = "Privacy Policy";
   static const termsAndCondition = "Terms & Condition";
+  static const updateTranslator = "Update Translator";
+
   static const logOut = "Log Out";
 
   ///|<========================== Survey section ====================>

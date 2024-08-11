@@ -28,4 +28,6 @@ class AppIcons {
   static const String ratingFourImoji = "$basePath/ratting_four_imoji.svg";
   static const String ratingFiveImoji = "$basePath/ratting_five_imoji.svg";
   static const String deleteIcon = "$basePath/delete_icon.svg";
+  static const String language = "$basePath/language.svg";
+
 }

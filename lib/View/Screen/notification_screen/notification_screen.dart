@@ -90,7 +90,7 @@ class NotificationScreen extends StatelessWidget {
                                   CustomText(
                                     textAlign: TextAlign.left,
                                     text: DateConverter.formatTimeAgo(
-                                        "2024-08-09T19:16:15.000000Z"),
+                                        "2024-08-10T19:16:15.000000Z"),
                                     color: AppColors.normalGray,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 12.sp,

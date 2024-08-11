@@ -5,6 +5,7 @@ import 'package:survey_markus/View/widgets/DeletePopup/delete.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
+import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
@@ -14,6 +15,8 @@ import 'package:survey_markus/utils/StaticString/static_string.dart';
 class SideDrawer extends StatelessWidget {
   SideDrawer({super.key});
   final TextEditingController controller = TextEditingController();
+  final GeneralController generalController = Get.find<GeneralController>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -107,6 +110,20 @@ class SideDrawer extends StatelessWidget {
                 ),
                 const Divider(),
 
+                ///============================ Update Language ===========================
+
+                customRow(
+                  onTap: () {
+                    navigator?.pop();
+                    generalController.selectLanguage(show: true);
+                  },
+                  title: AppStaticStrings.updateTranslator,
+                  icon: AppIcons.language,
+                ),
+                const Divider(),
+
+                ///============================ Delete Account ===========================
+
                 customRow(
                     title: "Delete Account",
                     icon: AppIcons.deleteIcon,
@@ -134,7 +151,7 @@ class SideDrawer extends StatelessWidget {
                     }),
                 const Divider(),
 
-                ///============================ Log Out ====================
+                ///============================ Log Out ===========================
 
                 customRow(
                   onTap: () {
@@ -173,7 +190,6 @@ class SideDrawer extends StatelessWidget {
                 CustomImage(
                   size: 24,
                   imageSrc: icon,
-                  // imageType: ImageType.svg,
                 ),
                 CustomText(
                   color: AppColors.grayDarkHover,

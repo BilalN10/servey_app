@@ -46,11 +46,11 @@ class GeneralController extends GetxController {
 
   ///==================== Select the Translated Language ======================
 
-  selectLanguage() async {
+  selectLanguage({required bool show}) async {
     String tranLan = await SharePrefsHelper.getString(AppConstants.transLan);
     getTranLangua();
 
-    if (tranLan.isEmpty || tranLan == "null") {
+    if (tranLan.isEmpty || tranLan == "null" || show) {
       Get.dialog(
         barrierDismissible: false,
         Dialog(
