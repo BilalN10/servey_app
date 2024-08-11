@@ -6,7 +6,6 @@ import 'package:survey_markus/View/widgets/CustomfeedbackCard/feedback_card.dart
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
@@ -84,23 +83,23 @@ class _AllSurveyScreenState extends State<AllSurveyScreen> {
               children: [
                 ///<========================== This is the search field ======================>
 
-                SizedBox(
-                  height: 16.h,
-                ),
+                // SizedBox(
+                //   height: 16.h,
+                // ),
 
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: CustomTextField(
-                    onSubmit: (value) {
-                      //    articleController.getArticleByCategory(value, false);
-                    },
-                    hintText: AppStaticStrings.searchhere,
-                    isPrefixIcon: true,
-                    hintStyle: const TextStyle(color: AppColors.yellowNormal),
-                    prefixIconColor: AppColors.yellowNormal,
-                    focusBorderColor: AppColors.yellowNormalHover,
-                  ),
-                ),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+                //   child: CustomTextField(
+                //     onSubmit: (value) {
+                //       //    articleController.getArticleByCategory(value, false);
+                //     },
+                //     hintText: AppStaticStrings.searchhere,
+                //     isPrefixIcon: true,
+                //     hintStyle: const TextStyle(color: AppColors.yellowNormal),
+                //     prefixIconColor: AppColors.yellowNormal,
+                //     focusBorderColor: AppColors.yellowNormalHover,
+                //   ),
+                // ),
 
                 ///<========================== This is the image section ========================>
                 SizedBox(

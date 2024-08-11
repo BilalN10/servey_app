@@ -13,13 +13,14 @@ class CompanyListController extends GetxController {
   final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
   GeneralController generalController = Get.find<GeneralController>();
+  RxBool showClear = false.obs;
 
   ///========================= Get Company List ==========================
   RxList<CompanyDatum> companyList = <CompanyDatum>[].obs;
-  getCompanyList() async {
+  getCompanyList({required String search}) async {
     setRxRequestStatus(Status.loading);
 
-    var response = await ApiClient.getData(ApiUrl.getCompanies);
+    var response = await ApiClient.getData(ApiUrl.getCompanies(search: search));
 
     if (response.statusCode == 200) {
       companyList.value = List<CompanyDatum>.from(
@@ -70,11 +71,9 @@ class CompanyListController extends GetxController {
     }
   }
 
-
-
   @override
   void onInit() {
-    getCompanyList();
+    getCompanyList(search: "");
     super.onInit();
   }
 }

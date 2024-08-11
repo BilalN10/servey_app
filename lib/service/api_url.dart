@@ -15,7 +15,8 @@ class ApiUrl {
   static const updateProfile = "/api/update-profile";
 
   ///<============================ Company ========================>
-  static const getCompanies = "/api/show-company";
+  static getCompanies({required String search}) =>
+      "/api/show-company?name=$search";
   static const joinCompany = "/api/join-company";
   static const joinedCompanyList = "/api/show-joined-company";
 

@@ -32,13 +32,13 @@ class AllSurveyCompany extends StatelessWidget {
             case Status.internetError:
               return NoInternetScreen(
                 onTap: () {
-                  // controller.getFaq();
+                  companyListController.getCompanyList(search: "");
                 },
               );
             case Status.error:
               return GeneralErrorScreen(
                 onTap: () {
-                  // controller.getFaq();
+                  companyListController.getCompanyList(search: "");
                 },
               );
 
@@ -60,14 +60,30 @@ class AllSurveyCompany extends StatelessWidget {
 
                     CustomTextField(
                       onSubmit: (value) {
-                        //    articleController.getArticleByCategory(value, false);
+                        companyListController.getCompanyList(search: value);
+                        companyListController.showClear.value = true;
                       },
                       hintText: AppStaticStrings.searchhere,
                       isPrefixIcon: true,
                       hintStyle: const TextStyle(color: AppColors.yellowNormal),
                       prefixIconColor: AppColors.yellowNormal,
                       focusBorderColor: AppColors.yellowNormalHover,
+                      textInputAction: TextInputAction.search,
                     ),
+
+                    if (companyListController.showClear.value)
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                            onPressed: () {
+                              companyListController.getCompanyList(search: "");
+                              companyListController.showClear.value = false;
+                            },
+                            child: CustomText(
+                              text: AppStaticStrings.clear,
+                              fontSize: 14.sp,
+                            )),
+                      ),
 
                     ///<============================ This is the survey company list =======================>
 

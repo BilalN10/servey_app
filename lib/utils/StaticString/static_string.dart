@@ -66,6 +66,7 @@ class AppStaticStrings {
   static const searchhere = "Search here";
   static const pleaseChoosYour =
       "Please choose your native language for translating the question";
+  static const clear = "Clear";
 
   static const allProjects = "All Projects";
   static const joinedCompany = "Joined Company";
