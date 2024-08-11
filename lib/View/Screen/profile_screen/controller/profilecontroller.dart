@@ -43,7 +43,8 @@ class ProfileController extends GetxController {
 
     var body = {"name": nameController.value.text, "_method": "PUT"};
     var response = generalController.imagePath.value.isEmpty
-        ? await ApiClient.postData(ApiUrl.updateProfile, body)
+        ? await ApiClient.postData(ApiUrl.updateProfile, body,
+            contentType: false)
         : await ApiClient.postMultipartData(ApiUrl.updateProfile, body,
             multipartBody: [
                 MultipartBody("image", generalController.imageFile.value)
