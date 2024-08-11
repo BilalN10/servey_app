@@ -1,11 +1,10 @@
 import 'dart:ui';
 
 class AppColors {
-
-
-  static const Color greenLight=Color(0xffF3F1ED);
-  static const Color greenNormal=Color(0xff85714D);
+  static const Color greenLight = Color(0xffF3F1ED);
+  static const Color greenNormal = Color(0xff85714D);
   static const Color redColor = Color(0xffF16365);
+
   ///======================== Yellow Series ===========================
 
   static const Color yellowLight = Color(0xffFDF7E6);
@@ -20,7 +19,6 @@ class AppColors {
   static const Color yellowDarkActive = Color(0xff6a5003);
   static const Color yellowDarker = Color(0xff533e02);
 
-
   ///<=========================== Blue Series ============================>
 
   static const Color blueLight = Color(0xffe9eaec);
@@ -34,7 +32,6 @@ class AppColors {
   static const Color blueDarkActive = Color(0xff0d161e);
   static const Color blueDarker = Color(0xff0b1117);
 
-
   ///<=========================== white Series ============================>
 
   static const Color whiteLight = Color(0xfffefefe);
@@ -47,7 +44,6 @@ class AppColors {
   static const Color whiteDarkHover = Color(0xff959595);
   static const Color whiteDarkActive = Color(0xff707070);
   static const Color whiteDarker = Color(0xff575757);
-
 
   ///<=========================== white Series ============================>
 
@@ -66,7 +62,4 @@ class AppColors {
   static const Color blackNew = Color(0xff0A0A0A);
   static const Color normalGray = Color(0xffB4B4B4);
   static const Color normalBlack = Color(0xff2C2C2C);
-
-
-
 }

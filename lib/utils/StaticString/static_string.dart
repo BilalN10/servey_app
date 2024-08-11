@@ -97,6 +97,8 @@ class AppStaticStrings {
   static const joinReqSended = "Join request sended";
   static const pending = "pending";
   static const emoji = "emoji";
+  static const readAll = "Real All";
+
   static const noQuesFound = "No Question Found";
 
   static const noSurveyFound = "No survey found";
