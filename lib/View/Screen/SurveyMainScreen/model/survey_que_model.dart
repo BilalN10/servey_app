@@ -5,7 +5,7 @@ class QuestionDatum {
   int? surveyId;
   String? questionEn;
   int? comment;
-  User? user;
+  // User? user;
 
   QuestionDatum({
     this.id,
@@ -14,7 +14,7 @@ class QuestionDatum {
     this.surveyId,
     this.questionEn,
     this.comment,
-    this.user,
+    // this.user,
   });
 
   factory QuestionDatum.fromJson(Map<String, dynamic> json) => QuestionDatum(
@@ -23,7 +23,7 @@ class QuestionDatum {
       projectId: json["project_id"],
       surveyId: json["survey_id"],
       questionEn: json["question_en"],
-      user: json["user"] == null ? null : User.fromJson(json["user"]),
+      // user: json["user"] == null ? null : User.fromJson(json["user"]),
       comment: json["comment"]);
 
   Map<String, dynamic> toJson() => {
@@ -33,7 +33,7 @@ class QuestionDatum {
         "survey_id": surveyId,
         "question_en": questionEn,
         "comment": comment,
-        "user": user?.toJson(),
+        //  "user": user?.toJson(),
       };
 }
 

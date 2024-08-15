@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const baseUrl = "http://192.168.10.232:6000"; //This is Local url
+  static const baseUrl = "http://115.127.156.13:6000"; //This is Local url
   // static const baseUrl = "http://94.130.57.216:80"; //This is Live url
 
   ///<======================= For Auth part ====================>

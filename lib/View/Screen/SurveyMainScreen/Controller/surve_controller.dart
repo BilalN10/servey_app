@@ -180,7 +180,7 @@ class SurveyController extends GetxController {
   RxList<String> queEng = <String>[].obs;
   RxList<String> queNative = <String>[].obs;
 
-  getQuestionEngLishAndNative() {
+  getQuestionEngLishAndNative() async {
     queEng.value = [];
     queNative.value = [];
     refresh();
@@ -191,7 +191,7 @@ class SurveyController extends GetxController {
 
       translator
           .translate(questionList[i].questionEn ?? "",
-              to: generalController.transLangu.value)
+              to: await generalController.getTranLangua())
           .then((value) {
         queNative.add(value.text);
         //========= Add to EngLish ==========
@@ -199,6 +199,7 @@ class SurveyController extends GetxController {
         debugPrint("Que English $queEng");
         debugPrint("Que Native $queNative");
       });
+      //
 
       refresh();
     }

@@ -91,12 +91,12 @@ class GeneralController extends GetxController {
 
   RxString transLangu = "".obs;
 
-  getTranLangua() async {
-    transLangu.value = await SharePrefsHelper.getString(AppConstants.transLan);
-    transLangu.refresh();
+  Future<String> getTranLangua() async {
+    return transLangu.value =
+        await SharePrefsHelper.getString(AppConstants.transLan);
   }
 
-  ///======= Find The Emoji Based on index  1=Angry,2=Bad,3= Satisfied,4=Good, 5 = Very satisfied =======
+  ///======= Find The Emoji Based on index  1=Angry, 2=Bad, 3=Satisfied, 4=Good, 5=Very-satisfied =======
 
   String findEmoji({required int index}) {
     switch (index) {
