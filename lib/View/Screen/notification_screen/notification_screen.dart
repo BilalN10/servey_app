@@ -76,7 +76,8 @@ class NotificationScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 20.w, vertical: 24.h),
+                        horizontal: 20.w,
+                      ),
                       itemCount: controller.notificationList
                           .length, // Assuming 5 notifications for the example
                       itemBuilder: (context, index) {

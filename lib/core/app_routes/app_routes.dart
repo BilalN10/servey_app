@@ -72,7 +72,7 @@ class AppRoute {
 
     GetPage(name: signInScreen, page: () => SignInScreen()),
     GetPage(name: signUpScreen, page: () => SignUpScreen()),
-    GetPage(name: otpVerifiedScreen, page: () => const OtpVerifiedScreen()),
+    GetPage(name: otpVerifiedScreen, page: () => OtpVerifiedScreen()),
     GetPage(name: forgotOTP, page: () => const ForgotOtp()),
 
     ///<========================= Home section ====================>

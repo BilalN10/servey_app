@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -81,8 +82,8 @@ class AuthController extends GetxController {
       jsonEncode(body),
     );
     if (response.statusCode == 200) {
-      clearTxtFields();
       navigator!.pop();
+      startTimer();
       Get.toNamed(AppRoute.otpVerifiedScreen);
     } else if (response.statusCode == 400) {
       navigator!.pop();
@@ -132,7 +133,7 @@ class AuthController extends GetxController {
     }
   }
 
-  ///=============================== Verify OTP =============================
+  ///=============================== Verify OTP Forget =============================
 
   Future<void> verifyOTP() async {
     generalController.showPopUpLoader();
@@ -168,6 +169,52 @@ class AuthController extends GetxController {
     } else {
       navigator?.pop();
       toastMessage(message: response.body["message"]);
+    }
+  }
+
+  ///=============================== Verify OTP Sign Up =============================
+  RxInt secondsRemaining = 3.obs;
+  late Timer timer;
+
+  void startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (secondsRemaining > 0) {
+        secondsRemaining--;
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  Future<void> verifyOTPSignUp() async {
+    generalController.showPopUpLoader();
+    var body = {
+      "otp": otpController.text,
+    };
+    var response =
+        await ApiClient.postData(ApiUrl.emailVarify, body, contentType: false);
+
+    if (response.statusCode == 200) {
+      navigator?.pop();
+      Get.offNamed(AppRoute.resetPassScreen);
+    } else {
+      navigator?.pop();
+      toastMessage(message: response.body["message"]);
+    }
+  }
+
+  ///=============================== Resend OTP =============================
+  Future<bool> resendOTP() async {
+    var response = await ApiClient.postData(
+        ApiUrl.resendOTP, {"email": signUPEmailController.text},
+        contentType: false);
+
+    if (response.statusCode == 200) {
+      toastMessage(message: response.body["message"], color: Colors.green);
+      return true;
+    } else {
+      toastMessage(message: response.body["message"]);
+      return false;
     }
   }
 }

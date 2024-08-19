@@ -8,6 +8,7 @@ class ApiUrl {
   static const forgetPass = "/api/forget-pass";
   static const emailVarify = "/api/email-verified";
   static const resetPass = "/api/reset-pass";
+  static const resendOTP = "/api/resend-otp";
 
   ///<=========================== Profile =========================>
 
