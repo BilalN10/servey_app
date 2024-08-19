@@ -9,7 +9,7 @@ import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
-class CompanyListController extends GetxController {
+class CompanyListController extends GetxController with GetxServiceMixin {
   final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
   GeneralController generalController = Get.find<GeneralController>();

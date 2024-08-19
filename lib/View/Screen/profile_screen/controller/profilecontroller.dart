@@ -7,7 +7,7 @@ import 'package:survey_markus/service/api_client.dart';
 import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
 
-class ProfileController extends GetxController {
+class ProfileController extends GetxController with GetxServiceMixin {
   final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
   GeneralController generalController = Get.find<GeneralController>();

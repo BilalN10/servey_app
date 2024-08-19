@@ -33,7 +33,6 @@ class _AllResultScreenState extends State<AllResultScreen> {
     if (surveyId != 00) {
       surveyController.getResult(surveyId: surveyId.toString());
     }
-
     super.initState();
   }
 

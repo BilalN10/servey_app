@@ -22,9 +22,6 @@ class SideDrawer extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(
-            height: 30.h,
-          ),
           Container(
             padding: const EdgeInsets.only(top: 35, right: 20, bottom: 5),
             width: MediaQuery.of(context).size.width / 1.3,
