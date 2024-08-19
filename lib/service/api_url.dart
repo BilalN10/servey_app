@@ -51,9 +51,12 @@ class ApiUrl {
   static submittedSurvey({required String projectID}) =>
       "/api/project-based-survey?project_id=$projectID&auth_user=1";
 
-  ///<============================ Privacy ===========================>
+  ///<============================ Content ===========================>
   static const privacy = "/api/privacy-policy";
 
-  ///<============================ Terms ===========================>
   static const terms = "/api/terms-condition";
+
+  ///<============================ Notification ===========================>
+  static const notification = "/api/notifications";
+  static const readNotification = "/api/mark-as-read";
 }

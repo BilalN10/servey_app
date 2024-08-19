@@ -122,7 +122,7 @@ class _NavBarState extends State<NavBar> {
       }
     } else if (index == 2) {
       if (!(widget.currentIndex == 2)) {
-        Get.to(() => const NotificationScreen());
+        Get.to(() => NotificationScreen());
       }
     }
     //

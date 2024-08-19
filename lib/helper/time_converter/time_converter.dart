@@ -46,29 +46,27 @@ class DateConverter {
     final now = DateTime.now();
     final difference = now.difference(dateTime);
 
-    if (difference.inDays >= 1) {
-      // If the time is more than 48 hours ago, return the date in "dd MMM yyyy" format
+    if (difference.inDays > 1) {
+      // If the time is more than 1 day ago, return the date in "dd MMM yyyy" format
       return '${dateTime.day} ${_getMonthName(dateTime.month)} ${dateTime.year}';
     } else if (difference.inDays == 1) {
       // If the time is 1 day ago, return "Yesterday"
       return 'Yesterday';
-    } else if (difference.inDays == 0 && difference.inHours >= 1) {
+    } else if (difference.inHours >= 1) {
       // If the time is today but more than an hour ago, return in hours ago format
       return '${difference.inHours}h ago';
-    } else if (difference.inHours < 1 && difference.inMinutes >= 1) {
+    } else if (difference.inMinutes >= 1) {
       // If the time is less than an hour ago, return in minutes ago format
       return '${difference.inMinutes}m ago';
-    } else if (difference.inMinutes < 1) {
+    } else {
       // If the time is less than a minute ago, return "Just now"
       return 'Just now';
-    } else {
-      // If the time is today, return "Today"
-      return 'Today';
     }
   }
 
+// Helper method to get month name
   static String _getMonthName(int month) {
-    const monthNames = [
+    const months = [
       'Jan',
       'Feb',
       'Mar',
@@ -82,6 +80,6 @@ class DateConverter {
       'Nov',
       'Dec'
     ];
-    return monthNames[month - 1];
+    return months[month - 1];
   }
 }

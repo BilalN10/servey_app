@@ -4,6 +4,7 @@ import 'package:survey_markus/View/Screen/HistoryScreen/controller/history_contr
 import 'package:survey_markus/View/Screen/HomeScreen/controller/home_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/controller/que_report_controller.dart';
 import 'package:survey_markus/View/Screen/all_survey_company/controller/companylist_controller.dart';
+import 'package:survey_markus/View/Screen/notification_screen/controller/notification_controller.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/controller/privacy_controller.dart';
 import 'package:survey_markus/View/Screen/profile_screen/controller/profilecontroller.dart';
 import 'package:survey_markus/View/Screen/terms_and_condition_screen/controller/terms_controller.dart';
@@ -51,5 +52,9 @@ class DependancyInjection extends Bindings {
     ///================ History Controller =================
 
     Get.lazyPut(() => HistoryController(), fenix: true);
+
+    ///================ Notification Controller =================
+
+    Get.lazyPut(() => MyNotificationController(), fenix: true);
   }
 }

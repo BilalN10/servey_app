@@ -340,6 +340,7 @@ class LineChartScreen extends StatelessWidget {
       SalesData('4 ⭐️', questionModel.optionPercentages!.four!.toDouble()),
       SalesData('5 ⭐️', questionModel.optionPercentages!.five!.toDouble()),
     ];
+
     return SfCartesianChart(
 
         // Initialize category axis
