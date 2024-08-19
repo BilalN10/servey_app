@@ -45,7 +45,7 @@ class SurveyDatum {
   String? surveyName;
   String? emojiOrStar;
   String? repeatStatus;
-  dynamic archiveStatus;
+ 
   User? user;
 
   SurveyDatum({
@@ -55,7 +55,7 @@ class SurveyDatum {
     this.surveyName,
     this.emojiOrStar,
     this.repeatStatus,
-    this.archiveStatus,
+   
     this.user,
   });
 
@@ -66,7 +66,7 @@ class SurveyDatum {
         surveyName: json["survey_name"],
         emojiOrStar: json["emoji_or_star"],
         repeatStatus: json["repeat_status"],
-        archiveStatus: json["archive_status"],
+       
         user: json["user"] == null ? null : User.fromJson(json["user"]),
       );
 
@@ -77,7 +77,7 @@ class SurveyDatum {
         "survey_name": surveyName,
         "emoji_or_star": emojiOrStar,
         "repeat_status": repeatStatus,
-        "archive_status": archiveStatus,
+      
         "user": user?.toJson(),
       };
 }
@@ -86,28 +86,23 @@ class User {
   int? id;
   String? name;
   String? email;
-
-  dynamic image;
-
-  dynamic address;
-  dynamic phoneNumber;
+  String? image;
+  
 
   User({
     this.id,
     this.name,
     this.email,
     this.image,
-    this.address,
-    this.phoneNumber,
+   
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        image: json["image"],
-        address: json["address"],
-        phoneNumber: json["phone_number"],
+        id: json["id"]??0,
+        name: json["name"]??"",
+        email: json["email"]??"",
+        image: json["image"]??"",
+       
       );
 
   Map<String, dynamic> toJson() => {
@@ -115,7 +110,6 @@ class User {
         "name": name,
         "email": email,
         "image": image,
-        "address": address,
-        "phone_number": phoneNumber,
+       
       };
 }

@@ -45,6 +45,12 @@ class ApiUrl {
           required String query}) =>
       "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID&date_range=$query";
 
+  ///<============================ History ===========================>
+
+  static const submittedProject = "/api/my-survey";
+  static submittedSurvey({required String projectID}) =>
+      "/api/project-based-survey?project_id=$projectID&auth_user=1";
+
   ///<============================ Privacy ===========================>
   static const privacy = "/api/privacy-policy";
 

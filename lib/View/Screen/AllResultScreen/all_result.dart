@@ -14,10 +14,29 @@ import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
-class AllResultScreen extends StatelessWidget {
-  AllResultScreen({super.key});
+class AllResultScreen extends StatefulWidget {
+  const AllResultScreen({super.key});
+
+  @override
+  State<AllResultScreen> createState() => _AllResultScreenState();
+}
+
+class _AllResultScreenState extends State<AllResultScreen> {
   final SurveyController surveyController = Get.find<SurveyController>();
+
   final GeneralController generalController = Get.find<GeneralController>();
+
+  int surveyId = Get.arguments;
+
+  @override
+  void initState() {
+    if (surveyId != 00) {
+      surveyController.getResult(surveyId: surveyId.toString());
+    }
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

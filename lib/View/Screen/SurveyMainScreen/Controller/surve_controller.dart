@@ -159,7 +159,7 @@ class SurveyController extends GetxController {
       totalQue.value = response.body["total_questions"];
       emojiOrStar.value = response.body["emoji_or_star"];
 
-      Get.offNamed(AppRoute.allResultScreeen);
+      Get.offNamed(AppRoute.allResultScreeen, arguments: 00);
 
       resultLoadingStatus(Status.completed);
       refresh();
