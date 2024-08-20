@@ -178,16 +178,6 @@ class SignUpScreen extends StatelessWidget {
                         width: 10.w,
                       ),
 
-                      //
-                      //  const Expanded(
-                      //   child: CustomText(
-                      //     left: 10,
-                      //     textAlign: TextAlign.start,
-                      //     maxLines: 10,
-                      //     text: AppStaticStrings.byRegister,
-                      //     fontSize: 12,
-                      //   ),
-                      // )
                       Expanded(
                         child: RichText(
                           maxLines: 2,

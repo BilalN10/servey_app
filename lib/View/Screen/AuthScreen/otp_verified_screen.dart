@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,6 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:survey_markus/View/Screen/AuthScreen/Controller/auth_controller.dart';
 import 'package:survey_markus/View/widgets/custom_button/custom_button.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
@@ -79,10 +77,11 @@ class OtpVerifiedScreen extends StatelessWidget {
                         enablePinAutofill: true,
                         appContext: (context),
                         onCompleted: (value) {
-                          // controller.otp = value.toString();
-                          //controller.update();
+                          controller.otp.value = value;
+                          controller.otp.refresh();
 
-                          //  print("=-=-==-=-=--==-=-=-=-=-=-=-=-This is an otp ${controller.otp}");
+                          debugPrint(
+                              "=-=-==-=-=--==-=-=-=-=-=-=-=-This is an otp ${controller.otp}");
                         },
                         autoFocus: true,
                         textStyle: const TextStyle(
@@ -122,8 +121,8 @@ class OtpVerifiedScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (controller.secondsRemaining.value == 0) {
-                                controller.secondsRemaining.value = 3;
-                                controller.startTimer();
+                                //controller.secondsRemaining.value = 3;
+                                // controller.startTimer();
                                 controller.resendOTP().then((value) {
                                   if (value == false) {
                                     controller.timer.cancel();
@@ -153,7 +152,7 @@ class OtpVerifiedScreen extends StatelessWidget {
                   CustomButton(
                     fillColor: AppColors.yellowNormal,
                     onTap: () {
-                      Get.toNamed(AppRoute.homeScreen);
+                      controller.verifyOTPSignUp();
                     },
                     title: "Verify code",
                   ),

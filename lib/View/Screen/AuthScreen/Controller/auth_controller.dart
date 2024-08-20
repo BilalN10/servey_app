@@ -83,11 +83,11 @@ class AuthController extends GetxController {
     );
     if (response.statusCode == 200) {
       navigator!.pop();
+
       startTimer();
       Get.toNamed(AppRoute.otpVerifiedScreen);
     } else if (response.statusCode == 400) {
       navigator!.pop();
-
       toastMessage(
         message: response.body["message"]["email"][0] ??
             AppStaticStrings.somethingWentWrong,
@@ -186,17 +186,19 @@ class AuthController extends GetxController {
     });
   }
 
+  RxString otp = "".obs;
   Future<void> verifyOTPSignUp() async {
     generalController.showPopUpLoader();
     var body = {
-      "otp": otpController.text,
+      "otp": otp.value,
     };
     var response =
         await ApiClient.postData(ApiUrl.emailVarify, body, contentType: false);
 
     if (response.statusCode == 200) {
-      navigator?.pop();
-      Get.offNamed(AppRoute.resetPassScreen);
+      SharePrefsHelper.setString(SharedPreferenceValue.token,
+          response.body["token"]["original"]["access_token"]);
+      Get.offAllNamed(AppRoute.homeScreen);
     } else {
       navigator?.pop();
       toastMessage(message: response.body["message"]);
@@ -204,16 +206,22 @@ class AuthController extends GetxController {
   }
 
   ///=============================== Resend OTP =============================
+
   Future<bool> resendOTP() async {
+    generalController.showPopUpLoader();
     var response = await ApiClient.postData(
         ApiUrl.resendOTP, {"email": signUPEmailController.text},
         contentType: false);
 
     if (response.statusCode == 200) {
+      secondsRemaining.value = 3;
+      startTimer();
       toastMessage(message: response.body["message"], color: Colors.green);
+      navigator?.pop();
       return true;
     } else {
       toastMessage(message: response.body["message"]);
+      navigator?.pop();
       return false;
     }
   }

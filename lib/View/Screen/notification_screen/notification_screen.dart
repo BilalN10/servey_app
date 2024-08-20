@@ -83,6 +83,7 @@ class NotificationScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var data = controller.notificationList[index];
                         return Container(
+                          margin: EdgeInsets.only(bottom: 10.h),
                           padding: EdgeInsets.symmetric(
                               horizontal: 14.w, vertical: 8.h),
                           decoration: BoxDecoration(
@@ -128,7 +129,7 @@ class NotificationScreen extends StatelessWidget {
                                           textAlign: TextAlign.left,
                                           text: DateConverter.formatTimeAgo(
                                               data.data?.time ?? ""),
-                                          color: AppColors.normalGray,
+                                          color: AppColors.grayDarkActive,
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12.sp,
                                         ),
@@ -146,7 +147,6 @@ class NotificationScreen extends StatelessWidget {
                                       fontSize: 12.sp,
                                       color: AppColors.normalBlack,
                                     ),
-                                    SizedBox(height: 10.h),
                                   ],
                                 ),
                               ),
