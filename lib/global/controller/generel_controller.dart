@@ -136,8 +136,10 @@ class GeneralController extends GetxController {
     if (response.statusCode == 200) {
       navigator?.pop();
       navigator?.pop();
+      navigator?.pop();
       toastMessage(message: response.body["message"]);
     } else {
+      navigator?.pop();
       navigator?.pop();
       navigator?.pop();
       ApiChecker.checkApi(response);
