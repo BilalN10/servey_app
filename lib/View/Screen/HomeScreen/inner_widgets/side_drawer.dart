@@ -132,15 +132,17 @@ class SideDrawer extends StatelessWidget {
                             contentPadding: EdgeInsets.zero,
                             backgroundColor: Colors.white,
                             title: DeletePopup(
-                              controller: controller,
-                              onTap: () {
-                                // if(controller.passControllers.text.isEmpty==true){
-                                //   toastMessage(message:"Password field is required") ;
-                                // }else{
-                                //   controller.deleteAccount();
-                                //   controller.update();
-                                // }
-                              },
+                             // controller: controller,
+                              // onTap: () {
+                              //   // if(controller.passControllers.text.isEmpty==true){
+                              //   //   toastMessage(message:"Password field is required") ;
+                              //   // }else{
+                              //   //   controller.deleteAccount();
+                              //   //   controller.update();
+                              //   // }
+
+                               
+                              // },
                             ),
                           );
                         },

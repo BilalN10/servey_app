@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const baseUrl = "http://115.127.156.13:6000"; //This is Local url
+  static const baseUrl = "http://115.127.156.13:7000"; //This is Local url
   // static const baseUrl = "http://94.130.57.216:80"; //This is Live url
 
   ///<======================= For Auth part ====================>
@@ -60,4 +60,7 @@ class ApiUrl {
   ///<============================ Notification ===========================>
   static const notification = "/api/notifications";
   static const readNotification = "/api/mark-as-read";
+
+  ///<============================ Delete Account ===========================>
+  static const deleteEmployee = "/api/delete-employee";
 }

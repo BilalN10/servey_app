@@ -76,7 +76,7 @@ class NotificationScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 20.w,
+                        horizontal: 10.w,
                       ),
                       itemCount: controller.notificationList
                           .length, // Assuming 5 notifications for the example
@@ -92,7 +92,7 @@ class NotificationScreen extends StatelessWidget {
                                   : Colors.transparent,
                               borderRadius: BorderRadius.circular(8.r)),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               //===================== Image ====================
 
@@ -103,7 +103,7 @@ class NotificationScreen extends StatelessWidget {
                                   height: 50.w,
                                   width: 50.w),
 
-                              SizedBox(width: 18.w),
+                              SizedBox(width: 10.w),
 
                               Expanded(
                                 child: Column(
@@ -114,12 +114,15 @@ class NotificationScreen extends StatelessWidget {
                                       children: [
                                         ///========================= Title ===========================
 
-                                        CustomText(
-                                          textAlign: TextAlign.left,
-                                          text: data.data?.name ?? "",
-                                          color: AppColors.blackNew,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16.sp,
+                                        Expanded(
+                                          child: CustomText(
+                                            maxLines: 2,
+                                            textAlign: TextAlign.left,
+                                            text: data.data?.name ?? "",
+                                            color: AppColors.blackNew,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12.w,
+                                          ),
                                         ),
                                         const Spacer(),
 
@@ -131,7 +134,7 @@ class NotificationScreen extends StatelessWidget {
                                               data.data?.time ?? ""),
                                           color: AppColors.grayDarkActive,
                                           fontWeight: FontWeight.w400,
-                                          fontSize: 12.sp,
+                                          fontSize: 8.sp,
                                         ),
                                       ],
                                     ),

@@ -8,9 +8,13 @@ import 'package:language_picker/languages.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
+import 'package:survey_markus/service/api_check.dart';
+import 'package:survey_markus/service/api_client.dart';
+import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
+import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class GeneralController extends GetxController {
   ///========================== Show Popup Loader ========================
@@ -112,6 +116,31 @@ class GeneralController extends GetxController {
         return AppImages.rattingFiveEmoji;
       default:
         throw ArgumentError('Invalid index: $index');
+    }
+  }
+
+  ///==================== Delete Account =====================
+  deleteAccount(
+      {required TextEditingController passController,
+      required TextEditingController confPassController}) async {
+    showPopUpLoader();
+
+    var body = {
+      "password": passController.text,
+      "password_confirmation": confPassController.text
+    };
+
+    var response = await ApiClient.postData(ApiUrl.deleteEmployee, body,
+        contentType: false);
+
+    if (response.statusCode == 200) {
+      navigator?.pop();
+      navigator?.pop();
+      toastMessage(message: response.body["message"]);
+    } else {
+      navigator?.pop();
+      navigator?.pop();
+      ApiChecker.checkApi(response);
     }
   }
 }
