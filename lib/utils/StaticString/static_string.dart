@@ -120,6 +120,8 @@ class AppStaticStrings {
   static const qN = "QN.";
   static const ans = "Ans:";
   static const export = "Export";
+  static const done = "Done";
+
   static const today = "Today";
   static const thisWeek = "This week";
   static const thisMonth = "This Month";

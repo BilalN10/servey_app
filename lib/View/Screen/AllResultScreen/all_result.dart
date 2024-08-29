@@ -263,8 +263,10 @@ class _AllResultScreenState extends State<AllResultScreen> {
                     ///<========================= This is the export button =======================>
 
                     CustomButton(
-                      onTap: () {},
-                      title: AppStaticStrings.export,
+                      onTap: () {
+                        Get.offAllNamed(AppRoute.homeScreen);
+                      },
+                      title: AppStaticStrings.done,
                       fillColor: AppColors.yellowNormal,
                     ),
                   ],

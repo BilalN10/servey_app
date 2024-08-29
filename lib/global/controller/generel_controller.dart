@@ -137,7 +137,7 @@ class GeneralController extends GetxController {
       navigator?.pop();
       navigator?.pop();
       navigator?.pop();
-      toastMessage(message: response.body["message"]);
+      toastMessage(message: response.body["message"], color: Colors.green);
     } else {
       navigator?.pop();
       navigator?.pop();
