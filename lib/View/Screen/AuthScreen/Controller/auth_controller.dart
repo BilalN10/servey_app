@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -77,10 +76,8 @@ class AuthController extends GetxController {
       "password_confirmation": signUPConfiPassController.text,
     };
 
-    var response = await ApiClient.postData(
-      ApiUrl.register,
-      jsonEncode(body),
-    );
+    var response =
+        await ApiClient.postData(ApiUrl.register, body, contentType: false);
     if (response.statusCode == 200) {
       navigator!.pop();
 

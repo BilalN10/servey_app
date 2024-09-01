@@ -7,7 +7,7 @@ class AppStaticStrings {
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
 
   static const matchPettern = "Password must have 8 and one capital latter";
-  static const wellComeMarkus = "Welcome!      Markus";
+  static const wellComeMarkus = "Welcome";
   static const signUp = "Sign Up";
   static const signIn = "Sign In ";
   static const welcomeBack = "WellCome Back";
