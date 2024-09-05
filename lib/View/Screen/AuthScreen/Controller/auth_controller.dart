@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,9 @@ class AuthController extends GetxController {
 
   ///<============================== Sign Up User =============================>
   signUp() async {
+    var client = http.Client();
+    String bearerToken =
+        await SharePrefsHelper.getString(SharedPreferenceValue.token);
     generalController.showPopUpLoader();
 
     Map<String, String> body = {
@@ -76,8 +80,38 @@ class AuthController extends GetxController {
       "password_confirmation": signUPConfiPassController.text,
     };
 
-    var response =
-        await ApiClient.postData(ApiUrl.register, body, contentType: false);
+    // var response =
+    //     await ApiClient.postData(ApiUrl.register, body, contentType: false);
+    // if (response.statusCode == 200) {
+    //   navigator!.pop();
+
+    //   startTimer();
+    //   Get.toNamed(AppRoute.otpVerifiedScreen);
+    // } else if (response.statusCode == 400) {
+    //   navigator!.pop();
+    //   toastMessage(
+    //     message: response.body["message"]["email"][0] ??
+    //         AppStaticStrings.somethingWentWrong,
+    //   );
+    // } else {
+    //   navigator!.pop();
+    //   toastMessage(
+    //     message: AppStaticStrings.somethingWentWrong,
+    //   );
+    // }
+
+    http.Response response = await client.post(
+      Uri.parse(ApiUrl.baseUrl + ApiUrl.register),
+      body: body,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $bearerToken'
+      },
+    );
+    debugPrint('====> API Call: ${ApiUrl.baseUrl}${ApiUrl.register}');
+    debugPrint('====> API Body: $body');
+    debugPrint('====> API Response: ${response.body}');
+
     if (response.statusCode == 200) {
       navigator!.pop();
 
@@ -86,8 +120,7 @@ class AuthController extends GetxController {
     } else if (response.statusCode == 400) {
       navigator!.pop();
       toastMessage(
-        message: response.body["message"]["email"][0] ??
-            AppStaticStrings.somethingWentWrong,
+        message: "Email already taken. Please use a different email address.",
       );
     } else {
       navigator!.pop();
