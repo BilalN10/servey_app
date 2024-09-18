@@ -8,6 +8,8 @@ class AppStaticStrings {
 
   static const matchPettern = "Password must have 8 and one capital latter";
   static const wellComeMarkus = "Welcome";
+  static const tools = "Tools";
+
   static const signUp = "Sign Up";
   static const signIn = "Sign In ";
   static const welcomeBack = "WellCome Back";
@@ -67,19 +69,23 @@ class AppStaticStrings {
   static const pleaseChoosYour =
       "Please choose your native language for translating the question";
   static const clear = "Clear";
+  static const joinedUpSurveyCompany = "Joined up survey company";
 
   static const allProjects = "All Projects";
   static const joinedCompany = "Joined Company";
   static const joinedSurvey = "Joined Survey";
+  static const yellow = "yellow";
+  static const gray = "gray";
+  static const green = "green";
 
   ///==================== Side Drawer ======================
 
   static const profile = "Profile";
   static const gotQRCode = "Got QR Code";
-  static const yourSurvey = "Your Survey";
+  static const yourSurvey = "Your Surveys";
   static const editProfile = "Edit Profile";
   static const privacyPolicy = "Privacy Policy";
-  static const termsAndCondition = "Terms & Condition";
+  static const termsAndCondition = "Terms & Conditions";
   static const updateTranslator = "Update Translator";
 
   static const logOut = "Log Out";

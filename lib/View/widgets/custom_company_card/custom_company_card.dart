@@ -9,8 +9,10 @@ class CustomCompanyCard extends StatelessWidget {
       {super.key,
       required this.image,
       required this.companyName,
-      required this.onTap});
+      required this.onTap,
+      this.size = 40});
   final String image;
+  final double size;
   final String companyName;
   final VoidCallback onTap;
   @override
@@ -21,7 +23,7 @@ class CustomCompanyCard extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.all(10.r),
-        padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 40.h),
+        padding: EdgeInsets.symmetric(horizontal: size.w, vertical: size.h),
         width: double.maxFinite,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.r),

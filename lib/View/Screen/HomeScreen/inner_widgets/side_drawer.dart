@@ -9,7 +9,6 @@ import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
-import 'package:survey_markus/utils/AppImg/app_img.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 
 class SideDrawer extends StatelessWidget {
@@ -36,7 +35,7 @@ class SideDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ///=========================Profile=================
+                ///==================== Profile =================
                 customRow(
                   onTap: () {
                     Get.toNamed(AppRoute.profileScreen);
@@ -45,37 +44,37 @@ class SideDrawer extends StatelessWidget {
                   icon: AppIcons.profile,
                 ),
                 const Divider(),
-                SizedBox(
-                  height: 15.h,
-                ),
 
-                ///=======================Got Qr Code===============================
+                ///======================= Got Qr Code ===============================
+                // SizedBox(
+                //   height: 15.h,
+                // ),
 
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(AppRoute.scanQrCodeScreen);
-                  },
-                  child: Row(
-                    children: [
-                      const CustomImage(
-                        imageSrc: AppImages.code,
-                        imageType: ImageType.png,
-                        // imageType: ImageType.svg,
-                      ),
-                      CustomText(
-                        color: AppColors.grayDarkHover,
-                        left: 16.w,
-                        text: AppStaticStrings.gotQRCode,
-                        fontSize: 14.w,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                const Divider(),
+                // GestureDetector(
+                //   onTap: () {
+                //     Get.toNamed(AppRoute.scanQrCodeScreen);
+                //   },
+                //   child: Row(
+                //     children: [
+                //       const CustomImage(
+                //         imageSrc: AppImages.code,
+                //         imageType: ImageType.png,
+                //         // imageType: ImageType.svg,
+                //       ),
+                //       CustomText(
+                //         color: AppColors.grayDarkHover,
+                //         left: 16.w,
+                //         text: AppStaticStrings.gotQRCode,
+                //         fontSize: 14.w,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 15.h,
+                // ),
+                // const Divider(),
 
                 ///============================Your Survey====================
                 customRow(
@@ -132,18 +131,17 @@ class SideDrawer extends StatelessWidget {
                             contentPadding: EdgeInsets.zero,
                             backgroundColor: Colors.white,
                             title: DeletePopup(
-                             // controller: controller,
-                              // onTap: () {
-                              //   // if(controller.passControllers.text.isEmpty==true){
-                              //   //   toastMessage(message:"Password field is required") ;
-                              //   // }else{
-                              //   //   controller.deleteAccount();
-                              //   //   controller.update();
-                              //   // }
+                                // controller: controller,
+                                // onTap: () {
+                                //   // if(controller.passControllers.text.isEmpty==true){
+                                //   //   toastMessage(message:"Password field is required") ;
+                                //   // }else{
+                                //   //   controller.deleteAccount();
+                                //   //   controller.update();
+                                //   // }
 
-                               
-                              // },
-                            ),
+                                // },
+                                ),
                           );
                         },
                       );

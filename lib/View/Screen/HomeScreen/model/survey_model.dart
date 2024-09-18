@@ -7,8 +7,6 @@ import 'dart:convert';
 ServeyModel serveyModelFromJson(String str) =>
     ServeyModel.fromJson(json.decode(str));
 
-String serveyModelToJson(ServeyModel data) => json.encode(data.toJson());
-
 class ServeyModel {
   int? currentPage;
   List<SurveyDatum>? data;
@@ -25,17 +23,10 @@ class ServeyModel {
         currentPage: json["current_page"],
         data: json["data"] == null
             ? []
-            : List<SurveyDatum>.from(json["data"]!.map((x) => SurveyDatum.fromJson(x))),
+            : List<SurveyDatum>.from(
+                json["data"]!.map((x) => SurveyDatum.fromJson(x))),
         lastPage: json["last_page"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "current_page": currentPage,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
-        "last_page": lastPage,
-      };
 }
 
 class SurveyDatum {
@@ -45,7 +36,8 @@ class SurveyDatum {
   String? surveyName;
   String? emojiOrStar;
   String? repeatStatus;
- 
+  String? color;
+
   User? user;
 
   SurveyDatum({
@@ -55,7 +47,7 @@ class SurveyDatum {
     this.surveyName,
     this.emojiOrStar,
     this.repeatStatus,
-   
+    this.color,
     this.user,
   });
 
@@ -66,20 +58,9 @@ class SurveyDatum {
         surveyName: json["survey_name"],
         emojiOrStar: json["emoji_or_star"],
         repeatStatus: json["repeat_status"],
-       
+        color: json["color"],
         user: json["user"] == null ? null : User.fromJson(json["user"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "user_id": userId,
-        "project_id": projectId,
-        "survey_name": surveyName,
-        "emoji_or_star": emojiOrStar,
-        "repeat_status": repeatStatus,
-      
-        "user": user?.toJson(),
-      };
 }
 
 class User {
@@ -87,29 +68,18 @@ class User {
   String? name;
   String? email;
   String? image;
-  
 
   User({
     this.id,
     this.name,
     this.email,
     this.image,
-   
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["id"]??0,
-        name: json["name"]??"",
-        email: json["email"]??"",
-        image: json["image"]??"",
-       
+        id: json["id"] ?? 0,
+        name: json["name"] ?? "",
+        email: json["email"] ?? "",
+        image: json["image"] ?? "",
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "email": email,
-        "image": image,
-       
-      };
 }

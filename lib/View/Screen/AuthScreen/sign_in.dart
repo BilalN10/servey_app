@@ -175,11 +175,12 @@ class SignInScreen extends StatelessWidget {
 
                 CustomButton(
                   onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      authController.signIn();
-                    }
+                    ///========== TODO............Fix Validation
+                    // if (formKey.currentState!.validate()) {
+                    //   authController.signIn();
+                    // }
 
-                    //authController.signIn();
+                    authController.signIn();
                   },
                   fillColor: AppColors.yellowNormal,
                   title: AppStaticStrings.login,

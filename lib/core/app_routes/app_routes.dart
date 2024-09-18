@@ -14,6 +14,7 @@ import 'package:survey_markus/View/Screen/Result/result.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/survey_history.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
+import 'package:survey_markus/View/Screen/joined_company/joined_company.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
@@ -64,6 +65,7 @@ class AppRoute {
   static const String historyScreen = "/historyScreen";
   static const String resultScreen = "/resultScreen";
   static const String homeScreen = "/homeScreen";
+  static const String joinCompany = "/joinCompany";
 
   static List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -77,6 +79,7 @@ class AppRoute {
 
     ///<========================= Home section ====================>
     GetPage(name: homeScreen, page: () => HomeScreen()),
+    GetPage(name: joinCompany, page: () => JoinedCompany()),
 
     ///<======================== This is the all survey section =====================>
     GetPage(name: allProjectScreen, page: () => const AllProjectScreen()),

@@ -80,26 +80,6 @@ class AuthController extends GetxController {
       "password_confirmation": signUPConfiPassController.text,
     };
 
-    // var response =
-    //     await ApiClient.postData(ApiUrl.register, body, contentType: false);
-    // if (response.statusCode == 200) {
-    //   navigator!.pop();
-
-    //   startTimer();
-    //   Get.toNamed(AppRoute.otpVerifiedScreen);
-    // } else if (response.statusCode == 400) {
-    //   navigator!.pop();
-    //   toastMessage(
-    //     message: response.body["message"]["email"][0] ??
-    //         AppStaticStrings.somethingWentWrong,
-    //   );
-    // } else {
-    //   navigator!.pop();
-    //   toastMessage(
-    //     message: AppStaticStrings.somethingWentWrong,
-    //   );
-    // }
-
     http.Response response = await client.post(
       Uri.parse(ApiUrl.baseUrl + ApiUrl.register),
       body: body,
