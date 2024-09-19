@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/Inner/line_chart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/Inner/piechart.dart';
 import 'package:survey_markus/View/Screen/SurveyHistory/controller/que_report_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
@@ -346,19 +347,15 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                             )
                           //:LineChart(indeex:controller.periodicGraphTabIndex),
 
-                          :
+                          : LineChartScreen(
+                              isEmoji: emojiOrStar == AppStaticStrings.emoji
+                                  ? true
+                                  : false,
+                              questionModel: controller.questionSurvey[0]),
 
-                          ///=============== TODO Uncomment This ===============
-
-                          // LineChartScreen(
-                          //     isEmoji: emojiOrStar == AppStaticStrings.emoji
-                          //         ? true
-                          //         : false,
-                          //     questionModel: controller.questionSurvey[0]),
-
-                          SizedBox(
-                              height: 5.h,
-                            ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
 
                       // Row(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,

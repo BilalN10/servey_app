@@ -69,7 +69,7 @@ class AppStaticStrings {
   static const pleaseChoosYour =
       "Please choose your native language for translating the question";
   static const clear = "Clear";
-  static const joinedUpSurveyCompany = "Joined up survey company";
+  static const joinedUpSurveyCompany = "Joined up survey companies";
 
   static const allProjects = "All Projects";
   static const joinedCompany = "Joined Company";

@@ -34,7 +34,7 @@ class _ResultScreenState extends State<ResultScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: const CustomText(
-            text: AppStaticStrings.allResult,
+            text: AppStaticStrings.allSurvey,
             fontSize: 24,
             fontWeight: FontWeight.w500,
           ),

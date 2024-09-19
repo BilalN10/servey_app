@@ -96,7 +96,7 @@ class ProfileScreen extends StatelessWidget {
                     ///==================================Company Name===================
                     _customProfile(
                       title: AppStaticStrings.userId,
-                      name: data.companyId ?? "",
+                      name: "${data.id}",
                     ),
 
                     ///==================================Email===================
