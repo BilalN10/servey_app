@@ -76,29 +76,6 @@ class _AllResultScreenState extends State<AllResultScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Row(
-                        //   children: [
-                        //     const CustomText(
-                        //       textAlign: TextAlign.start,
-                        //       text: "${AppStaticStrings.companyName}:  ",
-                        //       fontWeight: FontWeight.w500,
-                        //       fontSize: 14,
-                        //     ),
-                        //     Expanded(
-                        //         child: CustomText(
-                        //             text: surveyController.projectName.value,
-                        //             fontWeight: FontWeight.w500,
-                        //             fontSize: 12,
-                        //             color: AppColors.yellowNormal,
-                        //             maxLines: 2,
-                        //             textAlign: TextAlign.start)),
-                        //   ],
-                        // ),
-
-                        // SizedBox(
-                        //   height: 16.h,
-                        // ),
-
                         ///<======================== This is the project name section ==================>
 
                         Row(
@@ -112,8 +89,7 @@ class _AllResultScreenState extends State<AllResultScreen> {
                             ),
                             Expanded(
                                 child: CustomText(
-                                    text:
-                                        "  ${surveyController.projectName.value}",
+                                    text: surveyController.projectName.value,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
                                     color: AppColors.yellowNormal,

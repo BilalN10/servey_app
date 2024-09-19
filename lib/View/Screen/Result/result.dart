@@ -66,10 +66,11 @@ class _ResultScreenState extends State<ResultScreen> {
                         crossAxisCount: 2, // Number of columns
                         crossAxisSpacing: 5.w, // Spacing between columns
                         mainAxisSpacing: 5.h, // Spacing between rows
-                        childAspectRatio: 0.8, // Adjusted aspect ratio
+                        childAspectRatio: 1, // Adjusted aspect ratio
                       ),
                       itemCount: historyController.surveyList.length,
                       itemBuilder: (context, index) {
+                        var data = historyController.surveyList[index];
                         return Padding(
                           padding:
                               EdgeInsets.all(15.w), // Adjusted for ScreenUtil
@@ -82,15 +83,18 @@ class _ResultScreenState extends State<ResultScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: AppColors.yellowNormal,
+                                  color: data.color == AppStaticStrings.yellow
+                                      ? AppColors.yellowNormal
+                                      : data.color == AppStaticStrings.gray
+                                          ? AppColors.whiteDark
+                                          : AppColors.blueNormal,
                                   borderRadius: BorderRadius.circular(8.r)),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 20.w, vertical: 30.h),
                               child: Center(
                                 child: CustomText(
-                                  text: historyController
-                                          .surveyList[index].surveyName ??
-                                      "",
+                                  maxLines: 2,
+                                  text: data.surveyName ?? "",
                                   color: AppColors.whiteNormal,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,

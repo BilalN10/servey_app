@@ -6,6 +6,7 @@ import 'package:survey_markus/View/widgets/CustomfeedbackCard/feedback_card.dart
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
+import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
@@ -155,14 +156,14 @@ class _AllSurveyScreenState extends State<AllSurveyScreen> {
                                           : AppColors.blueNormal,
                               title: data.surveyName ?? "",
                               onTap: () {
-                                // Get.toNamed(AppRoute.mainSurvey, arguments: [
-                                //   companyImg,
-                                //   companyName,
-                                //   data.id.toString(),
-                                //   data.emojiOrStar == AppStaticStrings.emoji
-                                //       ? true
-                                //       : false
-                                // ]);
+                                Get.toNamed(AppRoute.mainSurvey, arguments: [
+                                  companyImg,
+                                  companyName,
+                                  data.id.toString(),
+                                  data.emojiOrStar == AppStaticStrings.emoji
+                                      ? true
+                                      : false
+                                ]);
                               },
                             ),
                           ),

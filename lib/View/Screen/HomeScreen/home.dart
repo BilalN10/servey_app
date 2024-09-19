@@ -75,13 +75,14 @@ class HomeScreen extends StatelessWidget {
                     Get.toNamed(AppRoute.joinCompany);
                   },
                   child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 140.w, vertical: 40.h),
+                    width: double.maxFinite,
+                    padding: EdgeInsets.symmetric(vertical: 30.h),
                     decoration: BoxDecoration(
                       color: AppColors.yellowNormal,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const CustomText(
+                    child: CustomText(
+                      fontSize: 16.r,
                       text: AppStaticStrings.survey,
                       color: AppColors.whiteNormal,
                     ),

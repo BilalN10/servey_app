@@ -58,7 +58,7 @@ class JoinedCompany extends StatelessWidget {
                     (index) {
                       var data = homeController.jointedCompanyList[index];
                       return CustomCompanyCard(
-                        size: 30,
+                        size: 20,
                         onTap: () {
                           Get.toNamed(AppRoute.allProjectScreen, arguments: [
                             "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",

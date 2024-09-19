@@ -20,7 +20,7 @@ class HistoryScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const CustomText(
-            text: AppStaticStrings.history,
+            text: AppStaticStrings.allProjects,
             fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
@@ -66,6 +66,7 @@ class HistoryScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: CustomText(
+                          maxLines: 2,
                           text: historyController
                                   .projectList[index].projectName ??
                               "",
