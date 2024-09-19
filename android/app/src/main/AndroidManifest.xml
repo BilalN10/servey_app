@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.servey.markus">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="surve_markus"
         android:name="${applicationName}"
