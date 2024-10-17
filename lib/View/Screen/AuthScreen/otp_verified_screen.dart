@@ -48,9 +48,18 @@ class OtpVerifiedScreen extends StatelessWidget {
                       ///==============================Enter 4 digit code ===========================
                       CustomText(
                         textAlign: TextAlign.start,
-                        text: "Enter 6 digits code",
-                        fontSize: 24.w,
+                        text: "Please Check your Mails",
+                        fontSize: 20.w,
                         fontWeight: FontWeight.w500,
+                        bottom: 12.h,
+                      ),
+
+                      ///==============================Enter 4 digit code ===========================
+                      CustomText(
+                        textAlign: TextAlign.start,
+                        text: "Enter 6 digits code",
+                        fontSize: 18.w,
+                        // fontWeight: FontWeight.w500,
                         bottom: 12.h,
                       ),
 

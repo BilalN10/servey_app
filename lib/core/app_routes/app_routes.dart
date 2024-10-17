@@ -18,7 +18,6 @@ import 'package:survey_markus/View/Screen/joined_company/joined_company.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
-import 'package:survey_markus/View/Screen/scan_qr_code_screen/scan_qr_code_screen.dart';
 import 'package:survey_markus/View/Screen/terms_and_condition_screen/terms_and_condition_screen.dart';
 
 class AppRoute {
@@ -87,7 +86,8 @@ class AppRoute {
     ///========================Profile=======================
     GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
     GetPage(name: profileScreen, page: () => ProfileScreen()),
-    GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
+    //TODO Uncomment
+    // GetPage(name: scanQrCodeScreen, page: () => const ScanQrCodeScreen()),
     GetPage(name: privacyPolicyScreen, page: () => PrivacyPolicyScreen()),
     GetPage(
         name: termsAndConditionScreen, page: () => TermsAndConditionScreen()),

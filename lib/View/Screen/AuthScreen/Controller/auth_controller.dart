@@ -25,7 +25,7 @@ class AuthController extends GetxController {
   }
 
   TextEditingController signInEmailController =
-      TextEditingController(text: kDebugMode ? "employee2@gmail.com" : "");
+      TextEditingController(text: kDebugMode ? "mdh95831@gmail.com" : "");
   TextEditingController signInPassController =
       TextEditingController(text: kDebugMode ? "1234567Rr" : "");
 
@@ -183,7 +183,7 @@ class AuthController extends GetxController {
   }
 
   ///=============================== Verify OTP Sign Up =============================
-  RxInt secondsRemaining = 3.obs;
+  RxInt secondsRemaining = 60.obs;
   late Timer timer;
 
   void startTimer() {
@@ -224,7 +224,7 @@ class AuthController extends GetxController {
         contentType: false);
 
     if (response.statusCode == 200) {
-      secondsRemaining.value = 3;
+      secondsRemaining.value = 60;
       startTimer();
       toastMessage(message: response.body["message"], color: Colors.green);
       navigator?.pop();

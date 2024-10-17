@@ -27,6 +27,8 @@ class JoinedCompany extends StatelessWidget {
         ),
       ),
       body: RefreshIndicator(
+        edgeOffset: double.maxFinite,
+        triggerMode: RefreshIndicatorTriggerMode.onEdge,
         color: AppColors.yellowNormalHover,
         onRefresh: () {
           return homeController.joinedCompanyList();
@@ -49,30 +51,33 @@ class JoinedCompany extends StatelessWidget {
               );
 
             case Status.completed:
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                child: Column(
-                  children: List.generate(
-                    homeController.jointedCompanyList.length,
-                    (index) {
-                      var data = homeController.jointedCompanyList[index];
-                      return CustomCompanyCard(
-                        size: 20,
-                        onTap: () {
-                          Get.toNamed(AppRoute.allProjectScreen, arguments: [
-                            "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
-                            data.user?.name ?? "",
-                            data.companyId.toString()
-                          ]);
+              return homeController.jointedCompanyList.isEmpty
+                  ? Center(
+                      child: IconButton(
+                        onPressed: () {
+                          homeController.joinedCompanyList();
                         },
-                        companyName: data.user?.name ?? "",
-                        image: "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
-                      );
-                    },
-                  ),
-                ),
-              );
+                        icon: const CustomText(text: "Refresh for update"),
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: homeController.jointedCompanyList.length,
+                      itemBuilder: (context, index) {
+                        var data = homeController.jointedCompanyList[index];
+                        return CustomCompanyCard(
+                          size: 20,
+                          onTap: () {
+                            Get.toNamed(AppRoute.allProjectScreen, arguments: [
+                              "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
+                              data.user?.name ?? "",
+                              data.companyId.toString()
+                            ]);
+                          },
+                          companyName: data.user?.name ?? "",
+                          image: "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
+                        );
+                      },
+                    );
           }
         }),
       ),
