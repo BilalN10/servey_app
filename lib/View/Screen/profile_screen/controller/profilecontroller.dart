@@ -6,6 +6,7 @@ import 'package:survey_markus/service/api_check.dart';
 import 'package:survey_markus/service/api_client.dart';
 import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
+import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class ProfileController extends GetxController with GetxServiceMixin {
   final rxRequestStatus = Status.loading.obs;
@@ -39,6 +40,9 @@ class ProfileController extends GetxController with GetxServiceMixin {
 
   ///======================= Update Profile =========================
   updateProfile() async {
+    if (nameController.value.text.isEmpty) {
+      return toastMessage(message: "Please also update the name");
+    }
     generalController.showPopUpLoader();
 
     var body = {"name": nameController.value.text, "_method": "PUT"};

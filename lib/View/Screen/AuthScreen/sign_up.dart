@@ -142,7 +142,7 @@ class SignUpScreen extends StatelessWidget {
 
                       GestureDetector(
                         onTap: () {
-                          controller.updateRememberMe();
+                          controller.updateAgree();
                         },
                         child: Container(
                           alignment: Alignment.center,
@@ -159,7 +159,7 @@ class SignUpScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Center(
-                            child: controller.isRemember
+                            child: controller.isAgree
                                 ? const Icon(
                                     Icons.check,
                                     color: AppColors.blueNormal,
@@ -222,8 +222,6 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                  
-                  
                     ],
                   ),
 

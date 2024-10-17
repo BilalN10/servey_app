@@ -31,142 +31,140 @@ class OtpVerifiedScreen extends StatelessWidget {
           ),
         ),
         body: Obx(() {
-          return Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 98.h,
+          return SingleChildScrollView(
+            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 98.h,
+                    ),
+
+                    ///==============================Enter 4 digit code ===========================
+                    CustomText(
+                      textAlign: TextAlign.start,
+                      text: "Please Check your Mails",
+                      fontSize: 20.w,
+                      fontWeight: FontWeight.w500,
+                      bottom: 12.h,
+                    ),
+
+                    ///==============================Enter 4 digit code ===========================
+                    CustomText(
+                      textAlign: TextAlign.start,
+                      text: "Enter 6 digits code",
+                      fontSize: 18.w,
+                      // fontWeight: FontWeight.w500,
+                      bottom: 12.h,
+                    ),
+
+                    // ///==============================email verification Text===========================
+                    // CustomText(
+                    //   textAlign: TextAlign.start,
+                    //   maxLines: 2,
+                    //   text:"Enter the 6 digits code that you received on your email",
+                    //   fontSize: 14.w,
+                    // ),
+                    //
+
+                    SizedBox(
+                      height: 40.h,
+                    ),
+
+                    ///<====================== otp field =======================>
+
+                    PinCodeTextField(
+                      // controller:controller.otpController,
+                      length: 6,
+                      cursorColor: AppColors.yellowNormal,
+                      keyboardType: TextInputType.text,
+                      enablePinAutofill: true,
+                      appContext: (context),
+                      onCompleted: (value) {
+                        controller.otp.value = value;
+                        controller.otp.refresh();
+
+                        debugPrint(
+                            "=-=-==-=-=--==-=-=-=-=-=-=-=-This is an otp ${controller.otp}");
+                      },
+                      autoFocus: true,
+                      textStyle: const TextStyle(
+                          color: AppColors.whiteNormal, fontSize: 24),
+                      pinTheme: PinTheme(
+                        disabledColor: Colors.transparent,
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(8),
+                        fieldHeight: 54.h,
+                        fieldWidth: 44,
+                        activeFillColor: AppColors.yellowNormal,
+                        selectedFillColor: AppColors.yellowNormal,
+                        inactiveFillColor: AppColors.grayDark,
+                        borderWidth: 0.5,
+                        errorBorderColor: Colors.red,
+                        activeBorderWidth: 0,
+                        selectedColor: AppColors.whiteNormal,
+                        inactiveColor: const Color(0xFFCCCCCC),
+                        activeColor: AppColors.whiteNormal,
                       ),
+                      enableActiveFill: true,
+                    ),
 
-                      ///==============================Enter 4 digit code ===========================
-                      CustomText(
-                        textAlign: TextAlign.start,
-                        text: "Please Check your Mails",
-                        fontSize: 20.w,
-                        fontWeight: FontWeight.w500,
-                        bottom: 12.h,
-                      ),
+                    SizedBox(
+                      height: 24.h,
+                    ),
 
-                      ///==============================Enter 4 digit code ===========================
-                      CustomText(
-                        textAlign: TextAlign.start,
-                        text: "Enter 6 digits code",
-                        fontSize: 18.w,
-                        // fontWeight: FontWeight.w500,
-                        bottom: 12.h,
-                      ),
+                    /// <================= send again =======================>
 
-                      // ///==============================email verification Text===========================
-                      // CustomText(
-                      //   textAlign: TextAlign.start,
-                      //   maxLines: 2,
-                      //   text:"Enter the 6 digits code that you received on your email",
-                      //   fontSize: 14.w,
-                      // ),
-                      //
-
-                      SizedBox(
-                        height: 40.h,
-                      ),
-
-                      ///<====================== otp field =======================>
-
-                      PinCodeTextField(
-                        // controller:controller.otpController,
-                        length: 6,
-                        cursorColor: AppColors.yellowNormal,
-                        keyboardType: TextInputType.text,
-                        enablePinAutofill: true,
-                        appContext: (context),
-                        onCompleted: (value) {
-                          controller.otp.value = value;
-                          controller.otp.refresh();
-
-                          debugPrint(
-                              "=-=-==-=-=--==-=-=-=-=-=-=-=-This is an otp ${controller.otp}");
-                        },
-                        autoFocus: true,
-                        textStyle: const TextStyle(
-                            color: AppColors.whiteNormal, fontSize: 24),
-                        pinTheme: PinTheme(
-                          disabledColor: Colors.transparent,
-                          shape: PinCodeFieldShape.box,
-                          borderRadius: BorderRadius.circular(8),
-                          fieldHeight: 54.h,
-                          fieldWidth: 44,
-                          activeFillColor: AppColors.yellowNormal,
-                          selectedFillColor: AppColors.yellowNormal,
-                          inactiveFillColor: AppColors.grayDark,
-                          borderWidth: 0.5,
-                          errorBorderColor: Colors.red,
-                          activeBorderWidth: 0,
-                          selectedColor: AppColors.whiteNormal,
-                          inactiveColor: const Color(0xFFCCCCCC),
-                          activeColor: AppColors.whiteNormal,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(
+                          text: "I didn't find confirmation code",
+                          fontSize: 10.w,
                         ),
-                        enableActiveFill: true,
-                      ),
+                        GestureDetector(
+                          onTap: () {
+                            if (controller.secondsRemaining.value == 0) {
+                              //controller.secondsRemaining.value = 3;
+                              // controller.startTimer();
+                              controller.resendOTP().then((value) {
+                                if (value == false) {
+                                  controller.timer.cancel();
+                                  controller.secondsRemaining.value = 0;
+                                }
+                              });
+                            }
+                          },
+                          child: CustomText(
+                              text: controller.secondsRemaining.value == 0
+                                  ? "Resend OTP".tr
+                                  : "Resend OTP in ${controller.secondsRemaining}",
+                              color: AppColors.redColor,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
 
-                      SizedBox(
-                        height: 24.h,
-                      ),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                  ],
+                ),
 
-                      /// <================= send again =======================>
+                ///<=====================  button ========================>
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText(
-                            text: "I didn't find confirmation code",
-                            fontSize: 10.w,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              if (controller.secondsRemaining.value == 0) {
-                                //controller.secondsRemaining.value = 3;
-                                // controller.startTimer();
-                                controller.resendOTP().then((value) {
-                                  if (value == false) {
-                                    controller.timer.cancel();
-                                    controller.secondsRemaining.value = 0;
-                                  }
-                                });
-                              }
-                            },
-                            child: CustomText(
-                                text: controller.secondsRemaining.value == 0
-                                    ? "Resend OTP".tr
-                                    : "Resend OTP in ${controller.secondsRemaining}",
-                                color: AppColors.redColor,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(
-                        height: 40.h,
-                      ),
-                    ],
-                  ),
-
-                  ///<=====================  button ========================>
-
-                  CustomButton(
-                    fillColor: AppColors.yellowNormal,
-                    onTap: () {
-                      controller.verifyOTPSignUp();
-                    },
-                    title: "Verify code",
-                  ),
-                ],
-              ),
+                CustomButton(
+                  fillColor: AppColors.yellowNormal,
+                  onTap: () {
+                    controller.verifyOTPSignUp();
+                  },
+                  title: "Verify code",
+                ),
+              ],
             ),
           );
         }));

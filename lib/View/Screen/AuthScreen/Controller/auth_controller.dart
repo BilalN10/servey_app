@@ -15,6 +15,8 @@ import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class AuthController extends GetxController {
   bool isRemember = false;
+  bool isAgree = false;
+
   GeneralController generalController = Get.find<GeneralController>();
 
   ///======================= Is Remember Me =======================
@@ -22,6 +24,11 @@ class AuthController extends GetxController {
     isRemember = !isRemember;
     update();
     SharePrefsHelper.setBool(AppConstants.isRemember, isRemember);
+  }
+
+  updateAgree() async {
+    isAgree = !isAgree;
+    update();
   }
 
   TextEditingController signInEmailController =
@@ -68,6 +75,9 @@ class AuthController extends GetxController {
 
   ///<============================== Sign Up User =============================>
   signUp() async {
+    if (!isAgree) {
+      return toastMessage(message: "Please agree with our terms & privacy");
+    }
     var client = http.Client();
     String bearerToken =
         await SharePrefsHelper.getString(SharedPreferenceValue.token);

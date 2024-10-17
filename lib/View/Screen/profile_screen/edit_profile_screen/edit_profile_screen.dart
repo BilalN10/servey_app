@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -60,8 +62,8 @@ class EditProfileScreen extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      generalController.imagePath.value))),
+                                  image: FileImage(File(
+                                      generalController.imagePath.value)))),
                         ),
                 ),
               ),
