@@ -353,9 +353,9 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                                   : false,
                               questionModel: controller.questionSurvey[0]),
 
-                      SizedBox(
-                        height: 5.h,
-                      ),
+                      // SizedBox(
+                      //   height: 5.h,
+                      // ),
 
                       // Row(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -364,9 +364,9 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                       // },),
                       // ),
 
-                      SizedBox(
-                        height: 16.h,
-                      ),
+                      // SizedBox(
+                      //   height: 16.h,
+                      // ),
 
                       //  Center(child:Row(
                       //    mainAxisAlignment: MainAxisAlignment.center,

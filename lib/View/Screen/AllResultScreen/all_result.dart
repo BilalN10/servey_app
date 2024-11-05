@@ -166,6 +166,7 @@ class _AllResultScreenState extends State<AllResultScreen> {
                           var data = surveyController.resultList[index];
                           return GestureDetector(
                             onTap: () {
+                              generalController.getTranLangua();
                               Get.toNamed(AppRoute.surveyHistoryScreen,
                                   arguments: [
                                     data.questionId.toString(),

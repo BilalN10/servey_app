@@ -98,7 +98,7 @@ class SurveyController extends GetxController {
         await ApiClient.postData(ApiUrl.submitAns, body, contentType: false);
     if (response.statusCode == 200) {
       toastMessage(message: response.body["message"], color: Colors.green);
-      // navigator!.pop();
+      commentController.value.clear();
       if (isLastPage) {
         getResult(surveyId: surveyId);
       } else {

@@ -40,8 +40,8 @@ class CustomSurveyCard extends StatelessWidget {
             color: AppColors.whiteNormal,
             maxLines: 10,
             top: 8.h,
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
           ),
 
           SizedBox(
@@ -53,7 +53,7 @@ class CustomSurveyCard extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 11.h),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4.r),
                   color: AppColors.whiteNormal),
@@ -61,7 +61,7 @@ class CustomSurveyCard extends StatelessWidget {
                 text: buttonText,
                 color: AppColors.yellowNormal,
                 fontWeight: FontWeight.w400,
-                fontSize: 12,
+                fontSize: 10,
               ),
             ),
           ),

@@ -57,7 +57,7 @@ class JoinedCompany extends StatelessWidget {
                         onPressed: () {
                           homeController.joinedCompanyList();
                         },
-                        icon: const CustomText(text: "Refresh for update"),
+                        icon: const CustomText(text: "Tap to refresh"),
                       ),
                     )
                   : ListView.builder(

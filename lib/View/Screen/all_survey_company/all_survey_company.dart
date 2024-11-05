@@ -25,96 +25,107 @@ class AllSurveyCompany extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: const NavBar(currentIndex: 1),
         backgroundColor: AppColors.backgroundColor,
-        body: Obx(() {
-          switch (companyListController.rxRequestStatus.value) {
-            case Status.loading:
-              return const CustomLoader();
-            case Status.internetError:
-              return NoInternetScreen(
-                onTap: () {
-                  companyListController.getCompanyList(search: "");
-                },
-              );
-            case Status.error:
-              return GeneralErrorScreen(
-                onTap: () {
-                  companyListController.getCompanyList(search: "");
-                },
-              );
+        body: RefreshIndicator(
+          edgeOffset: double.maxFinite,
+          triggerMode: RefreshIndicatorTriggerMode.onEdge,
+          color: AppColors.yellowNormalHover,
+          onRefresh: () {
+            return companyListController.getCompanyList(search: "");
+          },
+          child: Obx(() {
+            switch (companyListController.rxRequestStatus.value) {
+              case Status.loading:
+                return const CustomLoader();
+              case Status.internetError:
+                return NoInternetScreen(
+                  onTap: () {
+                    companyListController.getCompanyList(search: "");
+                  },
+                );
+              case Status.error:
+                return GeneralErrorScreen(
+                  onTap: () {
+                    companyListController.getCompanyList(search: "");
+                  },
+                );
 
-            case Status.completed:
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-                child: Column(
-                  children: [
-                    CustomText(
-                      top: 44.h,
-                      bottom: 20.h,
-                      text: AppStaticStrings.allSurveyCompany,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.grayDarker,
-                    ),
-
-                    ///<========================== This is the search field ======================>
-
-                    CustomTextField(
-                      onSubmit: (value) {
-                        companyListController.getCompanyList(search: value);
-                        companyListController.showClear.value = true;
-                      },
-                      hintText: AppStaticStrings.searchhere,
-                      isPrefixIcon: true,
-                      hintStyle: const TextStyle(color: AppColors.yellowNormal),
-                      prefixIconColor: AppColors.yellowNormal,
-                      focusBorderColor: AppColors.yellowNormalHover,
-                      textInputAction: TextInputAction.search,
-                    ),
-
-                    if (companyListController.showClear.value)
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                            onPressed: () {
-                              companyListController.getCompanyList(search: "");
-                              companyListController.showClear.value = false;
-                            },
-                            child: CustomText(
-                              text: AppStaticStrings.clear,
-                              fontSize: 14.sp,
-                            )),
+              case Status.completed:
+                return Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+                  child: Column(
+                    children: [
+                      CustomText(
+                        top: 44.h,
+                        bottom: 20.h,
+                        text: AppStaticStrings.allSurveyCompany,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.grayDarker,
                       ),
 
-                    ///<============================ This is the survey company list =======================>
+                      ///<========================== This is the search field ======================>
 
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: companyListController.companyList.length,
-                        itemBuilder: (context, index) {
-                          var data = companyListController.companyList[index];
-                          return CustomSurveyCard(
-                            image: "${ApiUrl.baseUrl}/${data.image ?? ""}",
-                            buttonText: data.status == "accepted"
-                                ? "Joined"
-                                : data.status == "pending"
-                                    ? AppStaticStrings.joinReqSended
-                                    : AppStaticStrings.joinCompany,
-                            companyName: data.name ?? "no",
-                            onTap: () {
-                              if (data.status == "default") {
-                                companyListController.sendJoinReq(
-                                    companyID: data.id.toString(),
-                                    index: index);
-                              }
-                            },
-                          );
+                      CustomTextField(
+                        onSubmit: (value) {
+                          companyListController.getCompanyList(search: value);
+                          companyListController.showClear.value = true;
                         },
+                        hintText: AppStaticStrings.searchhere,
+                        isPrefixIcon: true,
+                        hintStyle:
+                            const TextStyle(color: AppColors.yellowNormal),
+                        prefixIconColor: AppColors.yellowNormal,
+                        focusBorderColor: AppColors.yellowNormalHover,
+                        textInputAction: TextInputAction.search,
                       ),
-                    )
-                  ],
-                ),
-              );
-          }
-        }));
+
+                      if (companyListController.showClear.value)
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                              onPressed: () {
+                                companyListController.getCompanyList(
+                                    search: "");
+                                companyListController.showClear.value = false;
+                              },
+                              child: CustomText(
+                                text: AppStaticStrings.clear,
+                                fontSize: 14.sp,
+                              )),
+                        ),
+
+                      ///<============================ This is the survey company list =======================>
+
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: companyListController.companyList.length,
+                          itemBuilder: (context, index) {
+                            var data = companyListController.companyList[index];
+                            return CustomSurveyCard(
+                              image: "${ApiUrl.baseUrl}/${data.image ?? ""}",
+                              buttonText: data.status == "accepted"
+                                  ? "Joined"
+                                  : data.status == "pending"
+                                      ? AppStaticStrings.joinReqSended
+                                      : AppStaticStrings.joinCompany,
+                              companyName: data.name ?? "no",
+                              onTap: () {
+                                if (data.status == "default") {
+                                  companyListController.sendJoinReq(
+                                      companyID: data.id.toString(),
+                                      index: index);
+                                }
+                              },
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                );
+            }
+          }),
+        ));
   }
 }

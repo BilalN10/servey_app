@@ -124,7 +124,6 @@ class NotificationScreen extends StatelessWidget {
                                             fontSize: 12.w,
                                           ),
                                         ),
-                                        const Spacer(),
 
                                         ///============================ Time ===========================
 
