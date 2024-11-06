@@ -12,6 +12,7 @@ class MyNotificationController extends GetxController {
   ///======================= Get Notification =========================
   RxList<NotificationDatum> notificationList = <NotificationDatum>[].obs;
 
+  RxInt unreadCount = 0.obs;
   getNotifications() async {
     setRxRequestStatus(Status.loading);
 
@@ -21,6 +22,8 @@ class MyNotificationController extends GetxController {
       notificationList.value = List<NotificationDatum>.from(response
           .body["notifications"]
           .map((x) => NotificationDatum.fromJson(x)));
+
+      unreadCount.value = response.body["unread_count"];
 
       setRxRequestStatus(Status.completed);
       refresh();

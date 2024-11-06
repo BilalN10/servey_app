@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/all_survey_company/all_survey_company.dart';
+import 'package:survey_markus/View/Screen/notification_screen/controller/notification_controller.dart';
 import 'package:survey_markus/View/Screen/notification_screen/notification_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
@@ -11,8 +12,10 @@ import 'package:survey_markus/utils/AppIcons/app_icons.dart';
 
 class NavBar extends StatefulWidget {
   final int currentIndex;
+  final bool isNotification;
 
-  const NavBar({required this.currentIndex, super.key});
+  const NavBar(
+      {required this.currentIndex, super.key, this.isNotification = false});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -37,9 +40,14 @@ class _NavBarState extends State<NavBar> {
 
   @override
   void initState() {
-    bottomNavIndex = widget.currentIndex;
+    setState(() {
+      bottomNavIndex = widget.currentIndex;
+    });
     super.initState();
   }
+
+  final MyNotificationController notificationController =
+      Get.find<MyNotificationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +68,6 @@ class _NavBarState extends State<NavBar> {
       padding:
           EdgeInsetsDirectional.symmetric(horizontal: 24.w, vertical: 20.h),
       alignment: Alignment.center,
-      // color: AppColors.greenNormalGreen4,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,40 +77,29 @@ class _NavBarState extends State<NavBar> {
             onTap: () => onTap(index),
             child: Padding(
               padding: const EdgeInsetsDirectional.all(2),
-
-              child: CustomImage(
-                imageSrc: bottomNavIndex == index
-                    ? selectedIcon[index]
-                    : unselectedIcon[index],
-                imageType: ImageType.svg,
-                size: 24.r,
-              ),
-              // child: Container(
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(8),
-              //     color: index == bottomNavIndex ? Colors.transparent : null,
-              //   ),
-              //   padding: const EdgeInsets.symmetric(
-              //     horizontal: 8,
-              //   ),
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       ///==================== Icon ===================
-              //
-              //       index == bottomNavIndex
-              //           ? SvgPicture.asset(
-              //               selectedIcon[index],
-              //               height: 18.w,
-              //             )
-              //           : SvgPicture.asset(
-              //               unselectedIcon[index],
-              //               height: 18.w,
-              //             ),
-              //     ],
-              //   ),
-              // ),
+              child: index == 2 // Badge specifically for the notification icon
+                  ? Obx(() {
+                      return Badge.count(
+                        textColor: AppColors.blueDark,
+                        backgroundColor: AppColors.yellowLightHover,
+                        count: notificationController.unreadCount
+                            .value, // Change this count as per your requirements
+                        child: CustomImage(
+                          imageSrc: bottomNavIndex == index
+                              ? selectedIcon[index]
+                              : unselectedIcon[index],
+                          imageType: ImageType.svg,
+                          size: 24.r,
+                        ),
+                      );
+                    })
+                  : CustomImage(
+                      imageSrc: bottomNavIndex == index
+                          ? selectedIcon[index]
+                          : unselectedIcon[index],
+                      imageType: ImageType.svg,
+                      size: 24.r,
+                    ),
             ),
           ),
         ),
@@ -124,9 +120,7 @@ class _NavBarState extends State<NavBar> {
       if (!(widget.currentIndex == 2)) {
         Get.to(() => NotificationScreen());
       }
-    }
-    //
-    else if (index == 3) {
+    } else if (index == 3) {
       if (!(widget.currentIndex == 3)) {
         Get.to(() => ProfileScreen());
       }

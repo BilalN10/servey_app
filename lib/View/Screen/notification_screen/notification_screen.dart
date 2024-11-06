@@ -21,7 +21,10 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const NavBar(currentIndex: 2),
+        bottomNavigationBar: const NavBar(
+          currentIndex: 2,
+          isNotification: true,
+        ),
         backgroundColor: AppColors.backgroundColor,
 
         ///=====================Notification Appbar================
