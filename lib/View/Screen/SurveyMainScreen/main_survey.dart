@@ -28,8 +28,8 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
 
   final List<String> emojiList = [
     AppImages.rattingOneEmoji,
-    AppImages.rattingThreeEmoji,
     AppImages.rattingTwoEmoji,
+    AppImages.rattingThreeEmoji,
     AppImages.rattingFourEmoji,
     AppImages.rattingFiveEmoji,
   ];
@@ -158,18 +158,20 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                             ///<============================ This is the emoji section ==================>
 
                             isEmoji == true
-                                ? SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: List.generate(
-                                        emojiList.length,
-                                        (index) {
-                                          return Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 15.w),
-                                            child: SizedBox(
+                                ? Center(
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: List.generate(
+                                          emojiList.length,
+                                          (index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
                                               child: IconButton(
                                                   onPressed: () {
                                                     surveyController
@@ -179,19 +181,32 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                                         .emojiTabIndex
                                                         .refresh();
                                                   },
-                                                  icon: CustomImage(
-                                                    imageSrc: emojiList[index],
-                                                    imageType: ImageType.png,
-                                                    size: surveyController
-                                                                .emojiTabIndex
-                                                                .value ==
-                                                            index
-                                                        ? 50
-                                                        : 35,
+                                                  icon: Container(
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: surveyController
+                                                                    .emojiTabIndex
+                                                                    .value ==
+                                                                index
+                                                            ? AppColors
+                                                                .yellowLightActive
+                                                            : AppColors
+                                                                .backgroundColor),
+                                                    child: CustomImage(
+                                                      imageSrc:
+                                                          emojiList[index],
+                                                      imageType: ImageType.png,
+                                                      size: surveyController
+                                                                  .emojiTabIndex
+                                                                  .value ==
+                                                              index
+                                                          ? 60
+                                                          : 35,
+                                                    ),
                                                   )),
-                                            ),
-                                          );
-                                        },
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   )

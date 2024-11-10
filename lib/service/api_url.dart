@@ -1,6 +1,6 @@
 class ApiUrl {
-  static const baseUrl = "http://103.174.189.197:7000"; //This is Local url
-  //static const baseUrl = "http://94.130.57.216:80"; //This is Live url
+  //static const baseUrl = "http://103.174.189.197:7000"; //This is Local url
+  static const baseUrl = "http://94.130.57.216:80"; //This is Live url
 
   ///<======================= For Auth part ====================>
   static const login = "/api/login";
