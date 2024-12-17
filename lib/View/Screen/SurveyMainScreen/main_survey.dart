@@ -50,6 +50,25 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
     super.initState();
   }
 
+  Color getColorForIndex(int index, int selectedIndex) {
+    if (index <= selectedIndex) {
+      switch (index) {
+        case 0:
+          return Colors.red; // Replace with your desired color for index 0
+        case 1:
+          return Colors.orange; // Replace with your desired color for index 1
+        case 2:
+          return Colors.yellow; // Replace with your desired color for index 2
+        case 3:
+          return Colors.green; // Replace with your desired color for index 3
+        default:
+          return Colors.blue; // Default color
+      }
+    } else {
+      return Colors.grey; // Color for indexes greater than selected
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,6 +150,7 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                             SizedBox(
                               height: 100.h,
                               child: PageView.builder(
+                                // reverse: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount:
                                     surveyController.lenguageTab.value == 0
@@ -224,28 +244,43 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                           5,
                                           (index) {
                                             return IconButton(
-                                                onPressed: () {
-                                                  surveyController
-                                                      .rattingTabIndex
-                                                      .value = index;
-                                                  surveyController
-                                                      .rattingTabIndex
-                                                      .refresh();
-                                                },
-                                                icon: Icon(
-                                                  Icons.star,
+                                              onPressed: () {
+                                                surveyController.rattingTabIndex
+                                                    .value = index;
+                                                surveyController.rattingTabIndex
+                                                    .refresh();
+                                              },
+                                              icon: Container(
+                                                decoration: BoxDecoration(
                                                   color: surveyController
-                                                              .rattingTabIndex >=
+                                                              .rattingTabIndex
+                                                              .value ==
                                                           index
-                                                      ? AppColors.yellowNormal
-                                                      : AppColors.grayNormal,
+                                                      ? Colors.blue.withOpacity(
+                                                          0.2) // Background color for selected index
+                                                      : Colors
+                                                          .transparent, // No background for unselected indexes
+                                                  shape: BoxShape
+                                                      .circle, // Circular background
+                                                ),
+                                                padding: const EdgeInsets.all(
+                                                    8.0), // Adjust padding for spacing
+                                                child: Icon(
+                                                  Icons.star,
+                                                  color: getColorForIndex(
+                                                      index,
+                                                      surveyController
+                                                          .rattingTabIndex
+                                                          .value),
                                                   size: surveyController
                                                               .rattingTabIndex
                                                               .value ==
                                                           index
                                                       ? 55
                                                       : 45,
-                                                ));
+                                                ),
+                                              ),
+                                            );
                                             //IconButton(child: Icon(Icons.star,color: controller.rattingTabIndex>=index? AppColors.yellowNormal:AppColors.grayNormal,size: 38,));
                                           },
                                         ),

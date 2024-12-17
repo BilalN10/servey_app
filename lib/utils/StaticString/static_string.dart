@@ -117,6 +117,8 @@ class AppStaticStrings {
   static const allResult = "All Results";
   static const companyName = "Company Name";
   static const name = "Name";
+  static const comment = "Comment";
+
   static const update = "Update";
   static const userId = "User Id";
 

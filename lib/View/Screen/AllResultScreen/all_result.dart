@@ -89,7 +89,8 @@ class _AllResultScreenState extends State<AllResultScreen> {
                             ),
                             Expanded(
                                 child: CustomText(
-                                    text: surveyController.projectName.value,
+                                    text:
+                                        "  ${surveyController.projectName.value}",
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
                                     color: AppColors.yellowNormal,
@@ -160,6 +161,7 @@ class _AllResultScreenState extends State<AllResultScreen> {
                     ///<========================== This is the all question section ================>
                     Expanded(
                       child: ListView.builder(
+                        reverse: true,
                         itemCount: surveyController.resultList.length,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
@@ -230,6 +232,22 @@ class _AllResultScreenState extends State<AllResultScreen> {
                                     ],
                                   ),
                                 ),
+
+                                /// =============================== Comments ==========================
+                                ListTile(
+                                  leading: const CustomText(
+                                    text: AppStaticStrings.comment,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  title: CustomText(
+                                    text: data.comment ?? "",
+                                    maxLines: 2,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+
+                                const Divider()
                               ],
                             ),
                           );

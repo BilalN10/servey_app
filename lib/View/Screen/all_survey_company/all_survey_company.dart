@@ -51,8 +51,9 @@ class AllSurveyCompany extends StatelessWidget {
 
               case Status.completed:
                 return Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                  ),
                   child: Column(
                     children: [
                       CustomText(
@@ -95,7 +96,7 @@ class AllSurveyCompany extends StatelessWidget {
                               )),
                         ),
 
-                      ///<============================ This is the survey company list =======================>
+                      ///<============================ This is the survey company list =========================>
 
                       Expanded(
                         child: ListView.builder(

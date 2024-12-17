@@ -102,11 +102,7 @@ import 'package:survey_markus/utils/AppImg/app_img.dart';
 
 class PieChartScreen extends StatelessWidget {
   PieChartScreen(
-      {super.key,
-    
-      required this.questionModel,
-      required this.isEmoji});
-
+      {super.key, required this.questionModel, required this.isEmoji});
 
   final QuestionSurveyModel questionModel;
   final bool isEmoji;

@@ -184,22 +184,22 @@ class SurveyController extends GetxController {
     queEng.value = [];
     queNative.value = [];
     refresh();
+
     final translator = GoogleTranslator();
 
-    for (int i = 0; i < questionList.length; i++) {
-      //========= Translate to Native ==========
+    for (var question in questionList) {
+      // Translate to Native and extract the translated text
+      Translation translation = await translator.translate(
+        question.questionEn ?? "",
+        to: await generalController.getTranLangua(),
+      );
 
-      translator
-          .translate(questionList[i].questionEn ?? "",
-              to: await generalController.getTranLangua())
-          .then((value) {
-        queNative.add(value.text);
-        //========= Add to EngLish ==========
-        queEng.add(questionList[i].questionEn ?? "");
-        debugPrint("Que English $queEng");
-        debugPrint("Que Native $queNative");
-      });
-      //
+      // Use translation.text to get the string value
+      queNative.add(translation.text);
+      queEng.add(question.questionEn ?? "");
+
+      debugPrint("Que English: $queEng");
+      debugPrint("Que Native: $queNative");
 
       refresh();
     }
