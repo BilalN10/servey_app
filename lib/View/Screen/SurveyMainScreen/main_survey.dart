@@ -60,9 +60,10 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
         case 2:
           return Colors.yellow; // Replace with your desired color for index 2
         case 3:
-          return Colors.green; // Replace with your desired color for index 3
+          return Colors
+              .lightGreenAccent; // Replace with your desired color for index 3
         default:
-          return Colors.blue; // Default color
+          return Colors.green; // Default color
       }
     } else {
       return Colors.grey; // Color for indexes greater than selected
@@ -276,8 +277,8 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                                               .rattingTabIndex
                                                               .value ==
                                                           index
-                                                      ? 55
-                                                      : 45,
+                                                      ? 40
+                                                      : 35,
                                                 ),
                                               ),
                                             );

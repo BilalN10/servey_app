@@ -161,11 +161,14 @@ class _AllResultScreenState extends State<AllResultScreen> {
                     ///<========================== This is the all question section ================>
                     Expanded(
                       child: ListView.builder(
-                        reverse: true,
                         itemCount: surveyController.resultList.length,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
-                          var data = surveyController.resultList[index];
+                          // Reverse the index
+                          int reversedIndex =
+                              surveyController.resultList.length - 1 - index;
+                          var data = surveyController.resultList[reversedIndex];
+
                           return GestureDetector(
                             onTap: () {
                               generalController.getTranLangua();
@@ -173,7 +176,7 @@ class _AllResultScreenState extends State<AllResultScreen> {
                                   arguments: [
                                     data.questionId.toString(),
                                     data.surveyId.toString(),
-                                    surveyController.emojiOrStar.value
+                                    surveyController.emojiOrStar.value,
                                   ]);
                             },
                             child: Column(
@@ -211,7 +214,8 @@ class _AllResultScreenState extends State<AllResultScreen> {
                                               imageSrc:
                                                   generalController.findEmoji(
                                                       index: int.parse(
-                                                          data.answer ?? "0")))
+                                                          data.answer ?? "0")),
+                                            )
                                           : Row(
                                               children: [
                                                 const Icon(
@@ -225,10 +229,6 @@ class _AllResultScreenState extends State<AllResultScreen> {
                                                 ),
                                               ],
                                             ),
-
-                                      ///<============================= This is the emoji section ======================>
-
-                                      // const CustomImage(imageSrc:AppImages.rattingFiveEmoji,imageType: ImageType.png,size: 16,),
                                     ],
                                   ),
                                 ),
