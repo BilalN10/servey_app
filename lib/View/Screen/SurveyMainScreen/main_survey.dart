@@ -273,12 +273,7 @@ class _MainSurveySCreenState extends State<MainSurveySCreen> {
                                                       surveyController
                                                           .rattingTabIndex
                                                           .value),
-                                                  size: surveyController
-                                                              .rattingTabIndex
-                                                              .value ==
-                                                          index
-                                                      ? 40
-                                                      : 35,
+                                                  size: 30.r,
                                                 ),
                                               ),
                                             );
