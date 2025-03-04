@@ -181,33 +181,37 @@ class SurveyController extends GetxController {
   RxList<String> queNative = <String>[].obs;
 
   getQuestionEngLishAndNative() async {
-    queEng.value = [];
-    queNative.value = [];
-    refresh();
-
-    final translator = GoogleTranslator();
-
-    for (var question in questionList) {
-      // Translate to Native and extract the translated text
-      Translation translation = await translator.translate(
-        question.questionEn ?? "",
-        to: await generalController.getTranLangua(),
-      );
-
-      // Use translation.text to get the string value
-      queNative.add(translation.text);
-      queEng.add(question.questionEn ?? "");
-
-      debugPrint("Que English: $queEng");
-      debugPrint("Que Native: $queNative");
-
+    try {
+      queEng.value = [];
+      queNative.value = [];
       refresh();
+
+      final translator = GoogleTranslator();
+
+      for (var question in questionList) {
+        // Translate to Native and extract the translated text
+        Translation translation = await translator.translate(
+          question.questionEn ?? "",
+          to: await generalController.getTranLangua(),
+        );
+
+        // Use translation.text to get the string value
+        queNative.add(translation.text);
+        queEng.add(question.questionEn ?? "");
+
+        debugPrint("Que English: $queEng");
+        debugPrint("Que Native: $queNative");
+
+        refresh();
+      }
+    } on Exception catch (e) {
+      debugPrint("SOmething went wrong =====>>>>>>>>>> $e");
     }
   }
 
 //=================================== Get Question List Native ==================================
   // getQuestionNative() {
-  //   queNative.refresh();
+  //   queNative.refresh();===
 
   //   for (int i = 0; i < questionList.length; i++) {}
   // }

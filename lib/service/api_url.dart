@@ -44,7 +44,7 @@ class ApiUrl {
           {required String queID,
           required String surveyID,
           required String query}) =>
-      "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID&date_range=$query";
+      "/api/employee-question-based-report?question_id=$queID&survey_id=$surveyID$query";
 
   ///<============================ History ===========================>
 

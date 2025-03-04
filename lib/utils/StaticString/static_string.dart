@@ -133,6 +133,8 @@ class AppStaticStrings {
   static const today = "Today";
   static const thisWeek = "This week";
   static const thisMonth = "This Month";
+  static const overall = "Over All";
+
   static const lastMonth = "Last Month";
   static const paiChart = "Pai chart";
   static const lineChart = "Line chart";

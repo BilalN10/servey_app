@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/home/rafsan/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/rafsan/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/rafsan/Desktop/Flutter/survey_app/android/app/.cxx/Debug/3wmw4m3b/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/rafsan/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/rafsan/Desktop/Flutter/survey_app/android/app/.cxx/Debug/3wmw4m3b/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

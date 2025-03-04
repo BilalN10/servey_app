@@ -33,27 +33,11 @@ class _SurveyHistoryState extends State<SurveyHistory> {
     AppStaticStrings.today,
     AppStaticStrings.thisWeek,
     AppStaticStrings.thisMonth,
+    AppStaticStrings.overall,
   ];
   late bool isShowingMainData;
 
   bool click = false;
-
-  String dropdownvalue = "Monthly";
-
-  List<String> monthName = [
-    "Jan",
-    "Fab",
-    "Mar",
-    "Apr",
-    "May",
-    "June",
-    'July',
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
 
   final String queID = Get.arguments[0];
   final String surveyID = Get.arguments[1];
@@ -229,7 +213,7 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: List.generate(
-                          3,
+                          periodicName.length,
                           (index) {
                             return Padding(
                               padding: EdgeInsets.only(right: 29.w),
@@ -245,7 +229,7 @@ class _SurveyHistoryState extends State<SurveyHistory> {
                                   children: [
                                     CustomText(
                                       text: periodicName[index],
-                                      fontSize: 14,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                       bottom: 12.h,
                                     ),

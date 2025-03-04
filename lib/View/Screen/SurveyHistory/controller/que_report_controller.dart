@@ -53,15 +53,18 @@ class QuestionReportController extends GetxController {
     switch (index) {
       case 0:
         return getQuestionSurvey(
-            queID: queID, surveyID: surveyID, query: "today");
+            queID: queID, surveyID: surveyID, query: "&date_range=today");
 
       case 1:
         return getQuestionSurvey(
-            queID: queID, surveyID: surveyID, query: "weekly");
+            queID: queID, surveyID: surveyID, query: "&date_range=weekly");
 
       case 2:
         return getQuestionSurvey(
-            queID: queID, surveyID: surveyID, query: "monthly");
+            queID: queID, surveyID: surveyID, query: "&date_range=monthly");
+
+      case 3:
+        return getQuestionSurvey(queID: queID, surveyID: surveyID, query: "");
     }
   }
 
