@@ -23,7 +23,7 @@ class AllSurveyScreen extends StatefulWidget {
 }
 
 class _AllSurveyScreenState extends State<AllSurveyScreen> {
-  final HomeController homeController = Get.find<HomeController>();
+  final HomeControl homeController = Get.find<HomeControl>();
   final String companyImg = Get.arguments[0];
   final String companyName = Get.arguments[1];
   final String projectId = Get.arguments[2];

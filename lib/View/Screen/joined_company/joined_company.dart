@@ -15,7 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JoinedCompany extends StatelessWidget {
   JoinedCompany({super.key});
-  final HomeController homeController = Get.find<HomeController>();
+  final HomeControl homeController = Get.find<HomeControl>();
 
   @override
   Widget build(BuildContext context) {

@@ -35,7 +35,7 @@ class DependancyInjection extends Bindings {
 
     // ///================ Home Controller =================
 
-    Get.lazyPut(() => HomeController(), fenix: true);
+    Get.lazyPut(() => HomeControl(), fenix: true);
 
     ///================ Question Report Controller =================
 

@@ -9,7 +9,7 @@ import 'package:survey_markus/service/api_url.dart';
 import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
-class HomeController extends GetxController with GetxServiceMixin {
+class HomeControl extends GetxController with GetxServiceMixin {
   final joinedCompanyLoading = Status.loading.obs;
   void joinedCompanyLoadingMethod(Status value) =>
       joinedCompanyLoading.value = value;

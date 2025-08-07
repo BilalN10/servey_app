@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/home/home.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
@@ -63,7 +64,9 @@ class AuthController extends GetxController {
       clearTxtFields();
       navigator!.pop();
 
-      Get.offAllNamed(AppRoute.homeScreen);
+      Get.to(() => HomePage());
+
+      // Get.offAllNamed(AppRoute.homeScreen);
     } else {
       navigator!.pop();
 

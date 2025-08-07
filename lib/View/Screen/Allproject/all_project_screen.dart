@@ -27,7 +27,7 @@ class _AllProjectScreenState extends State<AllProjectScreen> {
   final String companyName = Get.arguments[1];
   final String companyId = Get.arguments[2];
 
-  final HomeController homeController = Get.find<HomeController>();
+  final HomeControl homeController = Get.find<HomeControl>();
 
   @override
   void initState() {
