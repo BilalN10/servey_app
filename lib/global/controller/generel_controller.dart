@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +20,12 @@ import 'package:survey_markus/utils/StaticString/static_string.dart';
 import 'package:survey_markus/utils/ToastMsg/toast_message.dart';
 
 class GeneralController extends GetxController {
+  @override
+  void onInit() {
+    getTranLangua();
+    super.onInit();
+  }
+
   ///========================== Show Popup Loader ========================
   showPopUpLoader() {
     return showDialog(
@@ -72,7 +81,9 @@ class GeneralController extends GetxController {
                   maxLines: 3,
                 ),
                 LanguagePickerDropdown(
-                  initialValue: Languages.korean,
+                  initialValue: transLangu.value == 'de'
+                      ? Languages.german
+                      : Languages.english,
                   onValuePicked: (Language language) {
                     SharePrefsHelper.setString(
                         AppConstants.transLan, language.isoCode);
@@ -143,6 +154,77 @@ class GeneralController extends GetxController {
       navigator?.pop();
       navigator?.pop();
       ApiChecker.checkApi(response);
+    }
+  }
+
+  ///==================== Translation Logic =====================
+  RxMap<String, String> translationCache = <String, String>{}.obs;
+
+  Future<String> translateString(String text, {String? targetLanguage}) async {
+    String targetLang = targetLanguage ?? transLangu.value;
+
+    // If language is empty or null, assume English/Default and return original
+    if (targetLang.isEmpty || targetLang == "null" || targetLang == "en") {
+      return text;
+    }
+
+    // Check Cache
+    String cacheKey = "$text|$targetLang";
+    if (translationCache.containsKey(cacheKey)) {
+      return translationCache[cacheKey]!;
+    }
+
+    try {
+      print('debug mode ${kDebugMode}');
+      final url = Uri.parse(
+          'https://translation.googleapis.com/language/translate/v2?key=${AppConstants.googleApiClientKey}');
+
+      final headers = {
+        'X-Android-Package': 'com.servey.markus',
+        'X-Android-Cert': kDebugMode
+            ? '39:F3:7E:8A:8C:66:F9:92:CE:C9:BC:4C:14:2D:0D:81:19:D0:E7:B0'
+            : 'FE:A0:C3:77:E7:83:B6:5B:D9:78:6F:6B:8D:55:8A:B1:32:9E:8B:7E',
+      };
+
+      debugPrint("Translation Request Headers: $headers");
+
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: {
+          'q': text,
+          'target': targetLang,
+          'format': 'text',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['data'] != null &&
+            data['data']['translations'] != null &&
+            data['data']['translations'].isNotEmpty) {
+          String translatedText =
+              data['data']['translations'][0]['translatedText'];
+
+          // Fix HTML entities if any (basic ones)
+          translatedText = translatedText
+              .replaceAll('&amp;', '&')
+              .replaceAll('&quot;', '"')
+              .replaceAll('&#39;', "'")
+              .replaceAll('&lt;', '<')
+              .replaceAll('&gt;', '>');
+
+          translationCache[cacheKey] = translatedText;
+          return translatedText;
+        }
+        return text;
+      } else {
+        debugPrint("Translation API Error: ${response.body}");
+        return text;
+      }
+    } catch (e) {
+      debugPrint("Translation Error: $e");
+      return text;
     }
   }
 }

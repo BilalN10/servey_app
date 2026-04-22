@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/HomeScreen/allcompanies_page.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/inner_widgets/side_drawer.dart';
+import 'package:survey_markus/View/Screen/joined_company/joined_company.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
@@ -21,7 +22,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       drawer: SideDrawer(),
-      bottomNavigationBar: const NavBar(currentIndex: 0),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -72,7 +72,8 @@ class HomeScreen extends StatelessWidget {
 
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoute.joinCompany);
+                    // Get.toNamed(AppRoute.joinCompany);
+                    Get.to(() => JoinedCompany(isProjectIsse: false));
                   },
                   child: Container(
                     width: double.maxFinite,
@@ -84,6 +85,30 @@ class HomeScreen extends StatelessWidget {
                     child: CustomText(
                       fontSize: 16.r,
                       text: AppStaticStrings.survey,
+                      color: AppColors.whiteNormal,
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: 24.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => JoinedCompany(isProjectIsse: true));
+                    //  Get.toNamed(AppRoute.joinCompany);
+                    //  Get.to(() => AllCompaniesPage());
+                  },
+                  child: Container(
+                    width: double.maxFinite,
+                    padding: EdgeInsets.symmetric(vertical: 30.h),
+                    decoration: BoxDecoration(
+                      color: AppColors.yellowNormal,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: CustomText(
+                      fontSize: 16.r,
+                      text: AppStaticStrings.openIssue,
                       color: AppColors.whiteNormal,
                     ),
                   ),

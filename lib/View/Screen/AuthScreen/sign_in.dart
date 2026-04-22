@@ -113,57 +113,64 @@ class SignInScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        ///================ Remember me ===============
+                    Expanded(
+                      child: Row(
+                        children: [
+                          ///================ Remember me ===============
 
-                        GestureDetector(
-                          onTap: () {
-                            controller.updateRememberMe();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    offset: const Offset(0, 4),
-                                    blurRadius: 8,
-                                    color: Colors.black.withOpacity(.15))
-                              ],
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: controller.isRemember
-                                  ? const Icon(
-                                      Icons.check,
-                                      color: AppColors.blueNormal,
-                                      size: 24,
-                                    )
-                                  : const Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                      size: 24,
-                                    ),
+                          GestureDetector(
+                            onTap: () {
+                              controller.updateRememberMe();
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      offset: const Offset(0, 4),
+                                      blurRadius: 8,
+                                      color: Colors.black.withOpacity(.15))
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Center(
+                                child: controller.isRemember
+                                    ? const Icon(
+                                        Icons.check,
+                                        color: AppColors.blueNormal,
+                                        size: 24,
+                                      )
+                                    : const Icon(
+                                        Icons.check,
+                                        color: Colors.white,
+                                        size: 24,
+                                      ),
+                              ),
                             ),
                           ),
-                        ),
 
-                        const CustomText(
-                          left: 10,
-                          text: 'Remember me',
-                          fontSize: 12,
-                        )
-                      ],
+                          const Flexible(
+                            child: CustomText(
+                              left: 10,
+                              text: 'Remember me',
+                              fontSize: 12,
+                              textAlign: TextAlign.start,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     GestureDetector(
                         onTap: () {
                           Get.toNamed(AppRoute.forgotPass);
                         },
                         child: const CustomText(
-                            text: AppStaticStrings.forgotPassword)),
+                            text: AppStaticStrings.forgotPassword,
+                            fontSize: 12,
+                            textAlign: TextAlign.end)),
                   ],
                 ),
 
@@ -192,8 +199,12 @@ class SignInScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CustomText(
-                        text: "${AppStaticStrings.dontHaveAcount}?  "),
+                    const Flexible(
+                      child: CustomText(
+                          text: "${AppStaticStrings.dontHaveAcount}?  ",
+                          fontSize: 14,
+                          textAlign: TextAlign.start),
+                    ),
 
                     ///=================== Sign Up button ====================
 
@@ -204,6 +215,9 @@ class SignInScreen extends StatelessWidget {
                         child: const CustomText(
                           text: AppStaticStrings.signUp,
                           color: AppColors.yellowDark,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          textAlign: TextAlign.start,
                         )),
                   ],
                 ),

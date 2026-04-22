@@ -11,11 +11,10 @@ import 'package:survey_markus/utils/AppColors/app_colors.dart';
 import 'package:survey_markus/utils/AppIcons/app_icons.dart';
 
 class NavBar extends StatefulWidget {
-  final int currentIndex;
+  final int? initialIndex;
   final bool isNotification;
 
-  const NavBar(
-      {required this.currentIndex, super.key, this.isNotification = false});
+  const NavBar({this.initialIndex, super.key, this.isNotification = false});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -40,10 +39,8 @@ class _NavBarState extends State<NavBar> {
 
   @override
   void initState() {
-    setState(() {
-      bottomNavIndex = widget.currentIndex;
-    });
     super.initState();
+    bottomNavIndex = widget.initialIndex ?? 0;
   }
 
   final MyNotificationController notificationController =
@@ -51,79 +48,120 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
-        color: AppColors.greenLight,
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0.0, 1.0), //(x,y)
-            blurRadius: 4,
-          ),
+    return Scaffold(
+      body: IndexedStack(
+        index: bottomNavIndex,
+        children: [
+          HomeScreen(),
+          AllSurveyCompany(),
+          NotificationScreen(),
+          ProfileScreen(),
         ],
       ),
-      width: MediaQuery.of(context).size.width,
-      padding:
-          EdgeInsetsDirectional.symmetric(horizontal: 24.w, vertical: 20.h),
-      alignment: Alignment.center,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          unselectedIcon.length,
-          (index) => InkWell(
-            onTap: () => onTap(index),
-            child: Padding(
-              padding: const EdgeInsetsDirectional.all(2),
-              child: index == 2 // Badge specifically for the notification icon
-                  ? Obx(() {
-                      return Badge.count(
-                        textColor: AppColors.blueDark,
-                        backgroundColor: AppColors.yellowLightHover,
-                        count: notificationController.unreadCount
-                            .value, // Change this count as per your requirements
-                        child: CustomImage(
-                          imageSrc: bottomNavIndex == index
-                              ? selectedIcon[index]
-                              : unselectedIcon[index],
-                          imageType: ImageType.svg,
-                          size: 24.r,
-                        ),
-                      );
-                    })
-                  : CustomImage(
-                      imageSrc: bottomNavIndex == index
-                          ? selectedIcon[index]
-                          : unselectedIcon[index],
+      bottomNavigationBar: Container(
+        height: 80.h + MediaQuery.of(context).padding.bottom,
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          color: AppColors.greenLight,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: AppColors.greenLight,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            currentIndex: bottomNavIndex,
+            onTap: (index) {
+              setState(() {
+                bottomNavIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: CustomImage(
+                  imageSrc: AppIcons.homeIcon,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                activeIcon: CustomImage(
+                  imageSrc: AppIcons.homeActive,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: CustomImage(
+                  imageSrc: AppIcons.allSurvey,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                activeIcon: CustomImage(
+                  imageSrc: AppIcons.allSurveyActive,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                label: 'Survey',
+              ),
+              BottomNavigationBarItem(
+                icon: Obx(() {
+                  return Badge.count(
+                    textColor: AppColors.blueDark,
+                    backgroundColor: AppColors.yellowLightHover,
+                    count: notificationController.unreadCount.value,
+                    child: CustomImage(
+                      imageSrc: AppIcons.notification,
                       imageType: ImageType.svg,
                       size: 24.r,
                     ),
-            ),
+                  );
+                }),
+                activeIcon: Obx(() {
+                  return Badge.count(
+                    textColor: AppColors.blueDark,
+                    backgroundColor: AppColors.yellowLightHover,
+                    count: notificationController.unreadCount.value,
+                    child: CustomImage(
+                      imageSrc: AppIcons.notificationActive,
+                      imageType: ImageType.svg,
+                      size: 24.r,
+                    ),
+                  );
+                }),
+                label: 'Notification',
+              ),
+              BottomNavigationBarItem(
+                icon: CustomImage(
+                  imageSrc: AppIcons.profile,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                activeIcon: CustomImage(
+                  imageSrc: AppIcons.profileActive,
+                  imageType: ImageType.svg,
+                  size: 24.r,
+                ),
+                label: 'Profile',
+              ),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  void onTap(int index) {
-    if (index == 0) {
-      if (!(widget.currentIndex == 0)) {
-        Get.to(() => HomeScreen());
-      }
-    } else if (index == 1) {
-      if (!(widget.currentIndex == 1)) {
-        Get.to(() => AllSurveyCompany());
-      }
-    } else if (index == 2) {
-      if (!(widget.currentIndex == 2)) {
-        Get.to(() => NotificationScreen());
-      }
-    } else if (index == 3) {
-      if (!(widget.currentIndex == 3)) {
-        Get.to(() => ProfileScreen());
-      }
-    }
   }
 }

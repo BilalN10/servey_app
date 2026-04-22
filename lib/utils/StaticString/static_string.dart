@@ -25,6 +25,7 @@ class AppStaticStrings {
   static const enterYourName = "Enter your name here";
   static const dontHaveAcount = "Don’t have a account";
   static const survey = "Survey";
+  static const openIssue = "Open Issue";
   static const submit = "Submit";
   static const somethingWentWrong = "Something went wrong";
   static const String enterValidEmail = "Enter a valid email";

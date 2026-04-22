@@ -31,10 +31,16 @@ class CompanyListController extends GetxController with GetxServiceMixin {
     } else {
       if (response.statusText == ApiClient.noInternetMessage) {
         setRxRequestStatus(Status.internetError);
+      } else if (response.statusCode == 401) {
+        // Handle 401 gracefully - don't redirect to login for company list
+        print(
+            'Company list API returned 401 - setting error status without redirecting');
+        setRxRequestStatus(Status.error);
+        // Don't call ApiChecker.checkApi for 401 on company list
       } else {
         setRxRequestStatus(Status.error);
+        ApiChecker.checkApi(response);
       }
-      ApiChecker.checkApi(response);
     }
   }
 

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:survey_markus/helper/network_img/network_img.dart';
 
 class LangHeader extends StatelessWidget {
+  final String companyName;
+  final String companyImage;
+  final String projectName;
   const LangHeader({
+    required this.companyName,
+    required this.companyImage,
+    required this.projectName,
     super.key,
     required this.w,
     required this.h,
@@ -18,7 +25,7 @@ class LangHeader extends StatelessWidget {
     return Container(
       width: w,
       height: h * 0.24,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xffEBB105),
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
       ),
@@ -30,19 +37,15 @@ class LangHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
+                CustomNetworkImage(
+                  imageUrl: companyImage,
                   height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/profile.jpg'),
-                    ),
-                  ),
+                  width: 58,
+                  boxShape: BoxShape.circle,
                 ),
                 SizedBox(width: 10),
                 Text(
-                  'Creative IT Institute',
+                  companyName,
                   style: GoogleFonts.inter(
                     color: Colors.white,
                     fontSize: 18,
@@ -56,7 +59,7 @@ class LangHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Project Uprising',
+                  projectName,
                   style: GoogleFonts.inter(
                     color: Colors.white,
                     fontSize: 18,
@@ -64,19 +67,21 @@ class LangHeader extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 20),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 50,
-                    width: w * .35,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.37),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.white),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Row(children: children),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      // height: 50,
+                      // width: w * .35,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(.37),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.white),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Row(children: children),
+                      ),
                     ),
                   ),
                 ),

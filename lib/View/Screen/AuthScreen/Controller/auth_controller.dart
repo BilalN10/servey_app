@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:survey_markus/View/Screen/home/home.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/helper/shared_prefe/shared_prefe.dart';
@@ -58,15 +57,18 @@ class AuthController extends GetxController {
     };
     var response =
         await ApiClient.postData(ApiUrl.login, body, contentType: false);
+    print('body is ${response.body}');
     if (response.statusCode == 200) {
-      SharePrefsHelper.setString(
+      await SharePrefsHelper.setString(
           SharedPreferenceValue.token, response.body["access_token"]);
       clearTxtFields();
       navigator!.pop();
 
-      Get.to(() => HomePage());
+      //  Get.to(() => ProjectPage());
 
-      // Get.offAllNamed(AppRoute.homeScreen);
+      // Get.to(() => HomePage());
+
+      Get.offAllNamed(AppRoute.homeScreen);
     } else {
       navigator!.pop();
 
@@ -219,7 +221,7 @@ class AuthController extends GetxController {
         await ApiClient.postData(ApiUrl.emailVarify, body, contentType: false);
 
     if (response.statusCode == 200) {
-      SharePrefsHelper.setString(SharedPreferenceValue.token,
+      await SharePrefsHelper.setString(SharedPreferenceValue.token,
           response.body["token"]["original"]["access_token"]);
       Get.offAllNamed(AppRoute.homeScreen);
     } else {

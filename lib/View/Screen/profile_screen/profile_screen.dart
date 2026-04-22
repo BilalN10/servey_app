@@ -5,7 +5,6 @@ import 'package:survey_markus/View/Screen/profile_screen/controller/profilecontr
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
@@ -23,7 +22,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        bottomNavigationBar: const NavBar(currentIndex: 3),
 
         ///===============================Profile Appbar=====================
         appBar: AppBar(

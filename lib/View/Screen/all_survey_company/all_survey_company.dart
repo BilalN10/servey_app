@@ -6,7 +6,6 @@ import 'package:survey_markus/View/widgets/CustomSurveyCard/custom_survey_card.d
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 import 'package:survey_markus/View/widgets/custom_text_field/custom_text_field.dart';
-import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
 import 'package:survey_markus/service/api_url.dart';
@@ -23,7 +22,6 @@ class AllSurveyCompany extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const NavBar(currentIndex: 1),
         backgroundColor: AppColors.backgroundColor,
         body: RefreshIndicator(
           edgeOffset: double.maxFinite,

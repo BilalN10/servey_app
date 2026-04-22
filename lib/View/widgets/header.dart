@@ -3,15 +3,29 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:survey_markus/View/Screen/create/create_issue.dart';
+import 'package:survey_markus/View/Screen/home/home_controller.dart';
+import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key, required this.w, required this.h});
+  const Header(
+      {super.key,
+      required this.w,
+      required this.h,
+      required this.projectId,
+      required this.projectName,
+      required this.companyName,
+      required this.companyImage});
 
   final double w;
   final double h;
+  final String projectId;
+  final String projectName;
+  final String companyName;
+  final String companyImage;
 
   @override
   Widget build(BuildContext context) {
+    final HomeController homeController = Get.find<HomeController>();
     return Container(
       width: w,
       height: h * 0.24,
@@ -27,24 +41,30 @@ class Header extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/profile.jpg'),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withOpacity(.28),
+                    ),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 20,
                     ),
                   ),
                 ),
                 SizedBox(width: 10),
-                Text(
-                  'Creative IT Institute',
-                  style: GoogleFonts.inter(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
+                CustomText(
+                  text: projectName,
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ],
             ),
@@ -60,6 +80,10 @@ class Header extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: TextFormField(
+                      controller: homeController.searchController,
+                      onChanged: (value) {
+                        homeController.searchProjectIssues(value);
+                      },
                       style: GoogleFonts.inter(
                         color: Colors.white.withOpacity(.9),
                         fontSize: 12,
@@ -88,7 +112,12 @@ class Header extends StatelessWidget {
                 SizedBox(width: 20),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => CreateIssuePage());
+                    Get.to(() => CreateIssuePage(
+                          projectName: projectName,
+                          projectId: projectId,
+                          companyName: companyName,
+                          companyImage: companyImage,
+                        ));
                   },
                   child: Container(
                     height: 40,

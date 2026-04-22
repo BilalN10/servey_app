@@ -22,11 +22,15 @@ class ApiUrl {
       "/api/show-company?name=$search";
   static const joinCompany = "/api/join-company";
   static const joinedCompanyList = "/api/show-joined-company";
+  static const allCompanies = "/api/company/all-companies";
 
   ///<============================ Project =========================>
 
   static getProject({required String companyId}) =>
       "/api/company-wise-projects?company_id=$companyId";
+  static const getAllProjects = "/api/projects";
+  static getCompanyProjects({required String companyId}) =>
+      "/api/company/projects/$companyId";
 
   ///<============================ Survey =========================>
   static getSurvey({required String projectId}) =>
@@ -68,4 +72,32 @@ class ApiUrl {
 
   ///<============================ Project Issues ===========================>
   static const createProjectIssue = "/api/project-issues";
+  static getProjectIssuesByProject({required String projectId}) =>
+      "/api/project-issues/by-project/$projectId";
+  static updateProjectIssue({required String issueId}) =>
+      "/api/project-issues/$issueId";
+  static getProjectIssuesWithConfigurations({required String projectId}) =>
+      "/api/project-issues/with-configurations/$projectId";
+  static getProjectIssuesWithConfigurationsAndFilters({
+    required String projectId,
+    Map<String, String>? queryParams,
+  }) {
+    String url = "/api/project-issues/with-configurations/$projectId";
+    if (queryParams != null && queryParams.isNotEmpty) {
+      final queryString = queryParams.entries
+          .where((e) => e.value.isNotEmpty)
+          .map((e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+          .join('&');
+      if (queryString.isNotEmpty) {
+        url += '?$queryString';
+      }
+    }
+    return url;
+  }
+
+  static uploadProjectIssueImages({required String issueId}) =>
+      "/api/project-issues/$issueId/images";
+  static getProjectIssueImages({required String issueId}) =>
+      "/api/project-issues/$issueId/images";
 }

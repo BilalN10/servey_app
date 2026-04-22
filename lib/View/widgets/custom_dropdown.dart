@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
 
 class CustomDropdown extends StatelessWidget {
+  final double width;
+  final double height;
+  final String hintText;
+  final List<String> items;
+  final String? value;
+  final Function(String?)? onChanged;
+  final bool shouldTranslate;
+
   const CustomDropdown({
     super.key,
     required this.width,
@@ -11,14 +20,8 @@ class CustomDropdown extends StatelessWidget {
     required this.value,
     this.onChanged,
     this.height = 50,
+    this.shouldTranslate = false,
   });
-
-  final double width;
-  final double height;
-  final String hintText;
-  final List<String> items;
-  final String? value;
-  final Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +35,21 @@ class CustomDropdown extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border:
-              isEnabled
-                  ? Border.all(color: Color(0xffebb105))
-                  : Border.all(color: Color(0xff747474).withOpacity(.54)),
+          border: isEnabled
+              ? Border.all(color: Color(0xffebb105))
+              : Border.all(color: Color(0xff747474).withOpacity(.54)),
         ),
         child: Center(
           child: DropdownButtonHideUnderline(
             child: DropdownButton(
               padding: EdgeInsets.zero,
               isExpanded: true,
-              hint: Text(
-                hintText,
-                style: GoogleFonts.inter(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+              hint: CustomText(
+                text: hintText,
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                shouldTranslate: shouldTranslate,
               ),
               icon: Container(
                 height: 40,
@@ -66,20 +67,18 @@ class CustomDropdown extends StatelessWidget {
               ),
               value: value,
               onChanged: onChanged,
-              items:
-                  items.map((item) {
-                    return DropdownMenuItem(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: GoogleFonts.inter(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    );
-                  }).toList(),
+              items: items.map((item) {
+                return DropdownMenuItem(
+                  value: item,
+                  child: CustomText(
+                    text: item,
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400,
+                    shouldTranslate: shouldTranslate,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ),

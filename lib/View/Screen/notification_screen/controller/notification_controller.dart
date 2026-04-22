@@ -15,9 +15,12 @@ class MyNotificationController extends GetxController {
   RxInt unreadCount = 0.obs;
   getNotifications() async {
     setRxRequestStatus(Status.loading);
+    print(
+        'getNotifications called - making API request to notifications endpoint');
 
     var response = await ApiClient.getData(ApiUrl.notification);
 
+    print('Notification API response status: ${response.statusCode}');
     if (response.statusCode == 200) {
       notificationList.value = List<NotificationDatum>.from(response
           .body["notifications"]
@@ -30,10 +33,16 @@ class MyNotificationController extends GetxController {
     } else {
       if (response.statusText == ApiClient.noInternetMessage) {
         setRxRequestStatus(Status.internetError);
+      } else if (response.statusCode == 401) {
+        // Handle 401 gracefully - don't redirect to login for notifications
+        print(
+            'Notification API returned 401 - setting error status without redirecting');
+        setRxRequestStatus(Status.error);
+        // Don't call ApiChecker.checkApi for 401 on notifications
       } else {
         setRxRequestStatus(Status.error);
+        ApiChecker.checkApi(response);
       }
-      ApiChecker.checkApi(response);
     }
   }
 
@@ -55,6 +64,8 @@ class MyNotificationController extends GetxController {
 
   @override
   void onInit() {
+    print(
+        'MyNotificationController onInit called - making notification API call');
     getNotifications();
     super.onInit();
   }

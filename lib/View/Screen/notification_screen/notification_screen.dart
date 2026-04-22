@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/notification_screen/controller/notification_controller.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
-import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
 import 'package:survey_markus/global/screen/GenerelError/general_error.dart';
 import 'package:survey_markus/global/screen/no%20internet/no_internet.dart';
 import 'package:survey_markus/helper/network_img/network_img.dart';
@@ -21,10 +20,6 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const NavBar(
-          currentIndex: 2,
-          isNotification: true,
-        ),
         backgroundColor: AppColors.backgroundColor,
 
         ///=====================Notification Appbar================

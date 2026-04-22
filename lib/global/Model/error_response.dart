@@ -10,8 +10,8 @@ class ErrorResponse {
   });
 
   factory ErrorResponse.fromJson(Map<String, dynamic> json) => ErrorResponse(
-    status: json["status"],
-    statusCode: json["statusCode"],
-    message: json["message"],
-  );
+        status: json["status"]?.toString(),
+        statusCode: json["statusCode"],
+        message: json["message"]?.toString(),
+      );
 }

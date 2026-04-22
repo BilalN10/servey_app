@@ -28,6 +28,7 @@ class ApiClient extends GetxService {
 
       'Authorization': 'Bearer $bearerToken'
     };
+    print('bearerToken is $bearerToken');
     try {
       debugPrint('====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
 
@@ -40,7 +41,7 @@ class ApiClient extends GetxService {
       return handleResponse(response, uri);
     } catch (e) {
       debugPrint('------------${e.toString()}');
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -74,7 +75,7 @@ class ApiClient extends GetxService {
     } catch (e) {
       debugPrint('Error------------${e.toString()}');
 
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -102,7 +103,7 @@ class ApiClient extends GetxService {
     } catch (e) {
       debugPrint('------------${e.toString()}');
 
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -119,7 +120,8 @@ class ApiClient extends GetxService {
         'Authorization': 'Bearer $bearerToken'
       };
 
-      debugPrint('====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
+      debugPrint(
+          'upload image  ====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
       debugPrint('====> API Body: $body with ${multipartBody?.length} picture');
       //http.MultipartRequest _request = http.MultipartRequest('POST', Uri.parse("https://b936-114-130-157-130.ngrok-free.app/api/v1/user/profile/store/degree"));
       //_request.headers.addAll(headers ?? mainHeaders);
@@ -137,22 +139,36 @@ class ApiClient extends GetxService {
       request.fields.addAll(body);
 
       if (multipartBody!.isNotEmpty) {
-        // ignore: avoid_function_literals_in_foreach_calls
-        multipartBody.forEach((element) async {
-          debugPrint("path : ${element.file.path}");
+        // Use for loop to properly await async operations
+        for (var element in multipartBody) {
+          try {
+            debugPrint("path : ${element.file.path}");
 
-          var mimeType = lookupMimeType(element.file.path);
+            // Check if file exists
+            if (!await element.file.exists()) {
+              debugPrint("File does not exist: ${element.file.path}");
+              continue;
+            }
 
-          debugPrint("MimeType================$mimeType");
+            var mimeType = lookupMimeType(element.file.path);
+            debugPrint("MimeType================$mimeType");
 
-          var multipartImg = await http.MultipartFile.fromPath(
-            element.key,
-            element.file.path,
-            contentType: MediaType.parse(mimeType!),
-          );
-          request.files.add(multipartImg);
-          //request.files.add(await http.MultipartFile.fromPath(element.key, element.file.path,contentType: MediaType('video', 'mp4')));
-        });
+            // Read file bytes to avoid path issues with temporary files
+            final fileBytes = await element.file.readAsBytes();
+            final fileName = element.file.path.split('/').last;
+
+            var multipartImg = http.MultipartFile.fromBytes(
+              element.key,
+              fileBytes,
+              filename: fileName,
+              contentType: mimeType != null ? MediaType.parse(mimeType) : null,
+            );
+            request.files.add(multipartImg);
+          } catch (e) {
+            debugPrint("Error processing file ${element.file.path}: $e");
+            // Continue with other files if one fails
+          }
+        }
       }
 
       request.headers.addAll(mainHeaders);
@@ -168,7 +184,7 @@ class ApiClient extends GetxService {
     } catch (e) {
       debugPrint('------------${e.toString()}');
 
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -234,7 +250,7 @@ class ApiClient extends GetxService {
     } catch (e) {
       debugPrint('------------${e.toString()}');
 
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -243,7 +259,8 @@ class ApiClient extends GetxService {
     bearerToken = await SharePrefsHelper.getString(SharedPreferenceValue.token);
 
     var mainHeaders = {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer $bearerToken'
     };
     try {
@@ -253,13 +270,13 @@ class ApiClient extends GetxService {
       http.Response response = await http
           .put(
             Uri.parse(ApiUrl.baseUrl + uri),
-            body: jsonEncode(body),
+            body: body is String ? body : jsonEncode(body),
             headers: headers ?? mainHeaders,
           )
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -335,7 +352,7 @@ class ApiClient extends GetxService {
           statusText: noInternetMessage,
           body: content);
     } catch (e) {
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -357,7 +374,7 @@ class ApiClient extends GetxService {
           .timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
-      return const Response(statusCode: 1, statusText: noInternetMessage);
+      return const Response(statusCode: 1, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
   }
 
@@ -400,7 +417,7 @@ class ApiClient extends GetxService {
       //   body: response0.body,
       // );
     } else if (response0.statusCode != 200 && response0.body == null) {
-      response0 = const Response(statusCode: 0, statusText: noInternetMessage);
+      response0 = const Response(statusCode: 0, statusText: noInternetMessage, body: {"message": noInternetMessage});
     }
 
     debugPrint(

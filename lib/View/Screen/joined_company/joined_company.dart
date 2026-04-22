@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:survey_markus/View/Screen/HomeScreen/controller/home_controller.dart';
+import 'package:survey_markus/View/Screen/project/project_page.dart';
 import 'package:survey_markus/View/widgets/custom_company_card/custom_company_card.dart';
 import 'package:survey_markus/View/widgets/custom_loader/custom_loader.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
@@ -13,8 +14,15 @@ import 'package:survey_markus/utils/AppConst/app_const.dart';
 import 'package:survey_markus/utils/StaticString/static_string.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class JoinedCompany extends StatelessWidget {
-  JoinedCompany({super.key});
+class JoinedCompany extends StatefulWidget {
+  bool isProjectIsse;
+  JoinedCompany({super.key, required this.isProjectIsse});
+
+  @override
+  State<JoinedCompany> createState() => _JoinedCompanyState();
+}
+
+class _JoinedCompanyState extends State<JoinedCompany> {
   final HomeControl homeController = Get.find<HomeControl>();
 
   @override
@@ -67,11 +75,20 @@ class JoinedCompany extends StatelessWidget {
                         return CustomCompanyCard(
                           size: 20,
                           onTap: () {
-                            Get.toNamed(AppRoute.allProjectScreen, arguments: [
-                              "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
-                              data.user?.name ?? "",
-                              data.companyId.toString()
-                            ]);
+                            if (widget.isProjectIsse) {
+                              Get.to(() => ProjectPage(
+                                  companyId: data.companyId.toString(),
+                                  companyName: data.user?.name ?? "",
+                                  image:
+                                      "${ApiUrl.baseUrl}/${data.user?.image ?? ""}"));
+                            } else {
+                              Get.toNamed(AppRoute.allProjectScreen,
+                                  arguments: [
+                                    "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",
+                                    data.user?.name ?? "",
+                                    data.companyId.toString()
+                                  ]);
+                            }
                           },
                           companyName: data.user?.name ?? "",
                           image: "${ApiUrl.baseUrl}/${data.user?.image ?? ""}",

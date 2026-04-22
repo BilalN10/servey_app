@@ -9,16 +9,15 @@ import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_otp.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/forgot_pass.dart';
 import 'package:survey_markus/View/Screen/ForgotPassScreen/reset_pass.dart';
 import 'package:survey_markus/View/Screen/HistoryScreen/history.dart';
-import 'package:survey_markus/View/Screen/HomeScreen/home.dart';
 import 'package:survey_markus/View/Screen/Result/result.dart';
 import 'package:survey_markus/View/Screen/SplashScreen/splash.dart';
-import 'package:survey_markus/View/Screen/SurveyHistory/survey_history.dart';
-import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
-import 'package:survey_markus/View/Screen/joined_company/joined_company.dart';
 import 'package:survey_markus/View/Screen/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:survey_markus/View/Screen/profile_screen/profile_screen.dart';
+import 'package:survey_markus/View/Screen/SurveyHistory/survey_history.dart';
+import 'package:survey_markus/View/Screen/SurveyMainScreen/main_survey.dart';
 import 'package:survey_markus/View/Screen/terms_and_condition_screen/terms_and_condition_screen.dart';
+import 'package:survey_markus/View/widgets/navBar/nav_bar.dart';
 
 class AppRoute {
   ///==================== Initial Routes ====================
@@ -77,8 +76,8 @@ class AppRoute {
     GetPage(name: forgotOTP, page: () => const ForgotOtp()),
 
     ///<========================= Home section ====================>
-    GetPage(name: homeScreen, page: () => HomeScreen()),
-    GetPage(name: joinCompany, page: () => JoinedCompany()),
+    GetPage(name: homeScreen, page: () => const NavBar()),
+    // GetPage(name: joinCompany, page: () => JoinedCompany()),
 
     ///<======================== This is the all survey section =====================>
     GetPage(name: allProjectScreen, page: () => const AllProjectScreen()),

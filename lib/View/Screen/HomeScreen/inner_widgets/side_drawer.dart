@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:survey_markus/View/Screen/project/project_page.dart';
 import 'package:survey_markus/View/widgets/DeletePopup/delete.dart';
 import 'package:survey_markus/View/widgets/custom_image/custom_image.dart';
 import 'package:survey_markus/View/widgets/custom_text/custom_text.dart';
@@ -80,6 +81,7 @@ class SideDrawer extends StatelessWidget {
                 customRow(
                   onTap: () {
                     Get.toNamed(AppRoute.historyScreen);
+                    // Get.to(() => ProjectPage());
                   },
                   title: AppStaticStrings.yourSurvey,
                   icon: AppIcons.yourSurvey,
@@ -108,14 +110,17 @@ class SideDrawer extends StatelessWidget {
 
                 ///============================ Update Language ===========================
 
-                customRow(
-                  onTap: () {
-                    navigator?.pop();
-                    generalController.selectLanguage(show: true);
-                  },
-                  title: AppStaticStrings.updateTranslator,
-                  icon: AppIcons.language,
-                ),
+                Obx(() => customRow(
+                      onTap: () {
+                        navigator?.pop();
+                        generalController.selectLanguage(show: true);
+                      },
+                      title: (generalController.transLangu.value.isEmpty ||
+                              generalController.transLangu.value == "null")
+                          ? AppStaticStrings.updateTranslator
+                          : "${AppStaticStrings.updateTranslator} (${generalController.transLangu.value})",
+                      icon: AppIcons.language,
+                    )),
                 const Divider(),
 
                 ///============================ Delete Account ===========================

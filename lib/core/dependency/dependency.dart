@@ -8,6 +8,7 @@ import 'package:survey_markus/View/Screen/notification_screen/controller/notific
 import 'package:survey_markus/View/Screen/privacy_policy_screen/controller/privacy_controller.dart';
 import 'package:survey_markus/View/Screen/profile_screen/controller/profilecontroller.dart';
 import 'package:survey_markus/View/Screen/terms_and_condition_screen/controller/terms_controller.dart';
+import 'package:survey_markus/View/Screen/project/project_controller.dart';
 import 'package:survey_markus/global/controller/generel_controller.dart';
 import 'package:survey_markus/View/Screen/SurveyMainScreen/Controller/surve_controller.dart';
 
@@ -56,5 +57,9 @@ class DependancyInjection extends Bindings {
     ///================ Notification Controller =================
 
     Get.lazyPut(() => MyNotificationController(), fenix: true);
+
+    ///================ Project Controller =================
+
+    Get.lazyPut(() => ProjectController(), fenix: true);
   }
 }
