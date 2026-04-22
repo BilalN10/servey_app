@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:survey_markus/View/widgets/DeviceUtils/device_utils.dart';
 import 'package:survey_markus/core/app_routes/app_routes.dart';
 import 'package:survey_markus/core/dependency/dependency.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   DeviceUtils.lockDevicePortrait();
   DependancyInjection di = DependancyInjection();
 

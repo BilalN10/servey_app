@@ -1,3 +1,5 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class AppConstants {
   /// <====================== All Response Message Static==============================>
 
@@ -15,7 +17,7 @@ class AppConstants {
   static String teethHelth =
       "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVldGh8ZW58MHx8MHx8fDA%3D";
 
-  static String googleApiClientKey = "AIzaSyAo1cB_3F60sl9SYbVz0HfanVMKv3iUiNA";
+  static String googleApiClientKey = dotenv.env['GOOGLE_API_CLIENT_KEY'] ?? "";
 }
 
 enum Status { loading, error, completed, internetError }

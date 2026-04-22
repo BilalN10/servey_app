@@ -68,6 +68,7 @@ dependencies:
   http_parser: any
   translator: ^1.0.3+1
   language_picker: ^0.4.4+1
+  flutter_dotenv: ^5.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -93,6 +94,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
